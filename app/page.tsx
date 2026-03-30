@@ -4,7 +4,6 @@ import { useState } from "react";
 import IntroAnimation from "@/components/IntroAnimation";
 import LandingPage from "@/components/LandingPage";
 
-
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
 

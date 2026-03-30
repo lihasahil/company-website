@@ -2,14 +2,12 @@
 
 import React from "react";
 import {
-  Phone,
   Cloud,
   Search,
   Smartphone,
   Cpu,
   Laptop,
   MemoryStick as Microchip,
-  ChevronRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
 

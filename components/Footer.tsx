@@ -1,0 +1,244 @@
+/* eslint-disable @next/next/no-img-element */
+"use client";
+
+import { motion, Variants } from "framer-motion";
+
+const makeFadeUp = (delay: number): Variants => ({
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay,
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  },
+});
+
+export default function Footer() {
+  return (
+    <footer className="relative w-full overflow-hidden bg-[#0D0D0D] font-[Urbanist,sans-serif]">
+      {/* Top content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-10 pb-2">
+        {/* Main row */}
+        <motion.div
+          variants={makeFadeUp(0)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-12"
+        >
+          {/* LEFT — Logo + Socials */}
+          <div className="flex flex-col gap-8 min-w-53.5">
+            {/* Logo */}
+            <div className="flex flex-row items-center gap-4">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-linear-to-r from-[#004E89] to-[#212121]">
+                <img src="footer-logo.svg" alt="Logo" />
+              </div>
+              <span className="text-[#F2F2F2] text-[22px] font-medium">
+                Next Wave AI
+              </span>
+            </div>
+
+            {/* Socials */}
+            <div className="flex flex-row items-center gap-3">
+              {/* Twitter */}
+              <div className="w-9 h-9 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="white">
+                  <path d="M13.5 1.2a5.6 5.6 0 01-1.6.4A2.8 2.8 0 0013.1 0a5.5 5.5 0 01-1.8.7A2.8 2.8 0 006.8 3c0 .2 0 .4.1.6A7.9 7.9 0 011 .5 2.8 2.8 0 001.9 4.3a2.8 2.8 0 01-1.3-.3v.03a2.8 2.8 0 002.2 2.7 2.8 2.8 0 01-1.2.05 2.8 2.8 0 002.6 1.9A5.6 5.6 0 010 9.8a7.9 7.9 0 004.3 1.3c5.1 0 7.9-4.2 7.9-7.9v-.4a5.6 5.6 0 001.3-1.6z" />
+                </svg>
+              </div>
+              {/* Facebook */}
+              <div className="w-9 h-9 rounded-full bg-[#3757CB] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                <svg width="8" height="16" viewBox="0 0 8 16" fill="white">
+                  <path d="M5.2 3H7V0H5C3 0 2 1.2 2 3v1H0v3h2v9h3V7h2l.5-3H5V3.5c0-.3.1-.5.2-.5z" />
+                </svg>
+              </div>
+              {/* Instagram */}
+              <div className="w-9 h-9 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none" />
+                </svg>
+              </div>
+              {/* GitHub */}
+              <div className="w-9 h-9 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* CENTER + RIGHT — Nav columns */}
+          <div className="flex flex-row justify-center gap-35">
+            {/* Quick Link */}
+            <motion.div
+              variants={makeFadeUp(0.1)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              className="flex flex-col gap-6"
+            >
+              <span className="text-[#FAFAFA] font-semibold text-[18px] tracking-[0.02em]">
+                Quick Link
+              </span>
+              <div className="flex flex-col gap-5">
+                {["Services", "Industries", "Insights", "Contact"].map(
+                  (item) => (
+                    <a
+                      key={item}
+                      href="#"
+                      className="text-[#B9B3B3] text-[14px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors"
+                    >
+                      {item}
+                    </a>
+                  ),
+                )}
+              </div>
+            </motion.div>
+
+            {/* Customer Service */}
+            <motion.div
+              variants={makeFadeUp(0.15)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              className="flex flex-col gap-6"
+            >
+              <span className="text-[#FAFAFA] font-semibold text-[18px] tracking-[0.02em]">
+                Customer Service
+              </span>
+              <div className="flex flex-col gap-5">
+                {["FAQs", "Privacy Policy", "Careers"].map((item) => (
+                  <a
+                    key={item}
+                    href="#"
+                    className="text-[#B9B3B3] text-[14px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              variants={makeFadeUp(0.2)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              className="flex flex-col gap-6"
+            >
+              <span className="text-[#FAFAFA] font-semibold text-[18px] tracking-[0.02em]">
+                Customer Service
+              </span>
+              <div className="flex flex-col gap-5">
+                {/* Address */}
+                <div className="flex flex-row items-center gap-3">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#B9B3B3"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span className="text-[#B9B3B3] text-[14px] leading-[140%]">
+                    123 Street, Kathmandu Nepal
+                  </span>
+                </div>
+                {/* Phone */}
+                <div className="flex flex-row items-center gap-3">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#B9B3B3"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.28a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                  </svg>
+                  <span className="text-[#B9B3B3] text-[14px] leading-[140%]">
+                    +977 9876543210
+                  </span>
+                </div>
+                {/* Email */}
+                <div className="flex flex-row items-center gap-3">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#B9B3B3"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  <span className="text-[#B9B3B3] text-[14px] leading-[140%]">
+                    nextwaveai@gmail.com
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Divider + Copyright */}
+        <motion.div
+          variants={makeFadeUp(0.25)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          className="flex flex-col gap-9"
+        >
+          <div className="w-full h-px bg-[#F9F9FB]" />
+          <p className="text-center text-[#F9F9FB] text-[14px] tracking-[0.04em]">
+            Privacy and policy © Copyright 2025. NEXTWAVEAI
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Big background text */}
+      <div className="relative z-0 pointer-events-none w-full overflow-hidden">
+        <p
+          className="text-center font-medium tracking-[-0.02em] whitespace-nowrap w-full"
+          style={{
+            fontSize: "clamp(80px, 16vw, 200px)",
+            background:
+              "linear-gradient(180deg, #FFFFFF 23.57%, #8C8C8C 77.97%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            opacity: 0.6,
+            lineHeight: 1,
+          }}
+        >
+          Next Wave AI
+        </p>
+      </div>
+    </footer>
+  );
+}
