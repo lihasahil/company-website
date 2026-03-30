@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <LenisProvider>
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </LenisProvider>
       </body>
     </html>

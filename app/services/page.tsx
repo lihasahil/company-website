@@ -83,9 +83,18 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight max-w-3xl leading-[1.1]"
+            className="text-4xl md:text-6xl font-bold tracking-tight max-w-2xl leading-[1.1]"
+            
           >
-            Complete AI solutions for <span className="text-blue-500">your needs.</span>
+            <span
+            style={{
+              background: "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+            >
+            Complete AI solutions for your needs.
+            </span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -96,9 +105,28 @@ export default function ServicesPage() {
             One mission: move your organization from AI curiosity to measurable competitive advantage — fast.
           </motion.p>
         </div>
-
+<div className="absolute top-0 left-0 w-64 h-64 
+                  bg-[#32A0F4]/40 
+                  blur-[120px] 
+                  rounded-full 
+                  pointer-events-none" />
+                  <div className="absolute top-10 right-10 w-108 h-108 
+                  bg-[#32A0F4]/40 
+                  blur-[120px] 
+                  rounded-full 
+                  pointer-events-none" />
+                  <div className="absolute top-[50%] w-190 h-108 
+                  bg-[#32A0F4]/20 
+                  blur-[120px] 
+                  rounded-full 
+                  pointer-events-none" />
+                  <div className="absolute bottom-10 right-0 w-108 h-108 
+                  bg-[#4D00FF]/40 
+                  blur-[120px] 
+                  rounded-full 
+                  pointer-events-none" />
         {/* STATS ROW */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
           {stats.map((stat, idx) => (
             <motion.div
               key={idx}
@@ -166,7 +194,7 @@ export default function ServicesPage() {
             <p className="text-gray-400 text-lg">
               Our 30-min AI readiness call is free, focused, and actionable.
             </p>
-            <button className="inline-flex items-center gap-2 bg-[#0070f3] hover:bg-blue-600 transition-all px-10 py-4 rounded-full text-lg font-bold text-white shadow-xl shadow-blue-500/30 active:scale-95 group">
+            <button className="inline-flex items-center gap-2 bg-[#0070f3] hover:bg-blue-600 transition-all px-10 py-4 rounded-full text-lg font-bold text-white active:scale-95 group">
               Schedule a free AI consultation
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
