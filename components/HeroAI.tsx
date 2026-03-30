@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 const HeroAI = () => {
   return (
-    <section className="relative w-full min-h-screen bg-transparent text-white overflow-hidden font-sans">
+    <section className="relative w-full min-h-screen flex flex-col justify-center bg-transparent text-white overflow-hidden font-sans">
       {/* CUSTOM SVG LIGHT FLARES */}
       <div className="absolute top-0 right-0 pointer-events-none z-10">
         <div className="relative">
@@ -24,7 +24,7 @@ const HeroAI = () => {
             viewBox="0 0 683 734"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-[-100px] right-[-100px] w-[700px] h-auto opacity-80"
+            className="absolute top-[-100px] right-[-100px] w-[400px] md:w-[700px] h-auto opacity-80"
           >
             <g filter="url(#filter0_f_38_922)">
               <path
@@ -76,7 +76,7 @@ const HeroAI = () => {
             viewBox="0 0 641 529"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-[-50px] right-[-50px] w-[600px] h-auto opacity-60"
+            className="absolute top-[-50px] right-[-50px] w-[300px] md:w-[600px] h-auto opacity-60"
           >
             <g filter="url(#filter0_f_38_923)">
               <path
@@ -124,151 +124,144 @@ const HeroAI = () => {
       </div>
 
       {/* HERO CONTENT */}
-      <div className="relative z-20 flex flex-col items-center text-center mt-24 px-4">
+      <div className="relative z-20 flex flex-col items-center text-center pt-24 md:pt-32 px-4">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl font-bold tracking-tight mb-4 bg-clip-text text-transparent"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4 bg-clip-text text-transparent leading-[1.1]"
           style={{
             background: "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
         >
-          Next-Gen AI and Automation
+          Next-Gen AI and <br className="md:hidden" /> Automation
         </motion.h1>
 
-        <p className="max-w-2xl text-gray-400 text-lg md:text-xl font-light leading-relaxed mb-8">
+        <p className="max-w-2xl text-gray-400 text-base md:text-xl font-light leading-relaxed mb-6 px-4">
           From customer support to complex business workflows, our technology{" "}
           <br className="hidden md:block" />
           helps you reduce costs, increase efficiency, and scale without limits.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-5">
-          <button className="px-8 py-4 rounded-full bg-[#1e293b] text-white font-semibold hover:bg-[#334155] transition-all border border-white/5">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-6 sm:px-0">
+          <button className="px-8 py-4 rounded-full bg-[#1e293b] text-white font-semibold hover:bg-[#334155] transition-all border border-white/5 text-sm md:text-base">
             Learn More About Us
           </button>
-          <button className="px-8 py-4 rounded-full bg-[#0070f3] text-white font-semibold hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/30">
+          <button className="px-8 py-4 rounded-full bg-[#0070f3] text-white font-semibold hover:bg-blue-600 transition-all text-sm md:text-base">
             Free Consultation
           </button>
         </div>
       </div>
 
-      {/* AI NETWORK VISUALIZATION */}
-      <div className="relative z-10 w-full h-[600px] mt-8 flex items-center justify-center">
-        {/* SVG CONNECTIONS */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          // style={{ filter: "drop-shadow(0 0 12px rgba(59, 130, 246, 0.3))" }}
-        >
-          <g
-            transform={`translate(${typeof window !== "undefined" ? (window.innerWidth - 1200) / 2 : 0}, 0)`}
-          >
-            {/* LEFT SIDE PATHS */}
-            <NetworkPath d="M 132 50 L 400 50 L 400 265 L 544 265" />{" "}
-            {/* Cloud */}
-            <NetworkPath d="M 262 280 L 450 280 L 450 290 L 544 290" />{" "}
-            {/* Search */}
-            <NetworkPath
-              d={`M ${-window.innerWidth} 540 L 400 540 L 400 315 L 544 315`}
-            />{" "}
-            {/* Edge Left Bottom */}
-            <NetworkPath d="M 162 430 L 420 430 L 420 340 L 544 340" />{" "}
-            {/* Phone */}
-            {/* RIGHT SIDE PATHS */}
-            <NetworkPath d="M 1068 50 L 800 50 L 800 265 L 656 265" />{" "}
-            {/* CPU */}
-            <NetworkPath d="M 938 280 L 750 280 L 750 290 L 656 290" />{" "}
-            {/* Laptop */}
-            <NetworkPath d="M 1038 430 L 780 430 L 780 315 L 656 315" />{" "}
-            {/* Chip */}
-            <NetworkPath
-              d={`M ${window.innerWidth + 1200} 540 L 800 540 L 800 340 L 656 340`}
-            />{" "}
-            {/* Edge Right Bottom */}
-            {/* BOTTOM PATHS */}
-            <NetworkPath d="M 570 356 L 570 600" />
-            <NetworkPath d="M 590 356 L 590 600" />
-            <NetworkPath d="M 610 356 L 610 600" />
-            <NetworkPath d="M 630 356 L 630 600" />
-          </g>
-        </svg>
+      {/* AI NETWORK VISUALIZATION - Scaled for mobile */}
+      <div className="relative z-10 w-full h-[400px] md:h-[600px] mt-4 flex items-center justify-center overflow-hidden">
+        <div className="scale-[0.45] sm:scale-[0.7] md:scale-90 lg:scale-100 transition-transform duration-500 flex items-center justify-center w-full h-full">
+          <div className="relative w-[1200px] h-[600px] flex items-center justify-center shrink-0">
+            {/* SVG CONNECTIONS */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+              <g>
+                {/* LEFT SIDE PATHS */}
+                <NetworkPath d="M 132 50 L 400 50 L 400 265 L 544 265" />{" "}
+                {/* Cloud */}
+                <NetworkPath d="M 262 280 L 450 280 L 450 290 L 544 290" />{" "}
+                {/* Search */}
+                <NetworkPath d="M 10 540 L 400 540 L 400 315 L 544 315" />{" "}
+                {/* Edge Left Bottom */}
+                <NetworkPath d="M 162 430 L 420 430 L 420 340 L 544 340" />{" "}
+                {/* Phone */}
+                {/* RIGHT SIDE PATHS */}
+                <NetworkPath d="M 1068 50 L 800 50 L 800 265 L 656 265" />{" "}
+                {/* CPU */}
+                <NetworkPath d="M 938 280 L 750 280 L 750 290 L 656 290" />{" "}
+                {/* Laptop */}
+                <NetworkPath d="M 1038 430 L 780 430 L 780 315 L 656 315" />{" "}
+                {/* Chip */}
+                <NetworkPath d="M 1190 540 L 800 540 L 800 340 L 656 340" />{" "}
+                {/* Edge Right Bottom */}
+                {/* BOTTOM PATHS */}
+                <NetworkPath d="M 570 356 L 570 600" />
+                <NetworkPath d="M 590 356 L 590 600" />
+                <NetworkPath d="M 610 356 L 610 600" />
+                <NetworkPath d="M 630 356 L 630 600" />
+              </g>
+            </svg>
 
-        {/* NODES - Left Side */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="relative w-[1200px] h-full flex items-center justify-center">
-            {/* Cloud */}
-            <div className="absolute top-[20px] left-[100px] pointer-events-auto">
-              <Node icon={<Cloud size={24} />} />
-            </div>
-            {/* Search */}
-            <div className="absolute top-[250px] left-[230px] pointer-events-auto">
-              <Node icon={<Search size={24} />} />
-            </div>
-            {/* Phone */}
-            <div className="absolute top-[400px] left-[130px] pointer-events-auto">
-              <Node icon={<Smartphone size={24} />} />
-            </div>
-
-            {/* AI CENTER CHIP */}
-            <div className="relative z-30 w-28 h-28 rounded-2xl bg-[#111827] border border-blue-500/30 flex items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.3)] pointer-events-auto">
-              {/* PORTS LEFT */}
-              <div className="absolute -left-1.5 inset-y-0 h-full w-1.5 flex flex-col items-center">
-                {[265, 290, 315, 340].map((y) => (
-                  <div
-                    key={y}
-                    style={{ top: `${y - 244 - 6}px` }}
-                    className="absolute w-1.5 h-3 bg-[#1e293b] border border-blue-500/20 rounded-sm"
-                  />
-                ))}
+            {/* NODES - Left Side */}
+            <div className="absolute inset-0 pointer-events-none">
+              {/* Cloud */}
+              <div className="absolute top-[20px] left-[100px] pointer-events-auto">
+                <Node icon={<Cloud size={24} />} />
               </div>
-              {/* PORTS RIGHT */}
-              <div className="absolute -right-1.5 inset-y-0 h-full w-1.5 flex flex-col items-center">
-                {[265, 290, 315, 340].map((y) => (
-                  <div
-                    key={y}
-                    style={{ top: `${y - 244 - 6}px` }}
-                    className="absolute w-1.5 h-3 bg-[#1e293b] border border-blue-500/20 rounded-sm"
-                  />
-                ))}
+              {/* Search */}
+              <div className="absolute top-[250px] left-[230px] pointer-events-auto">
+                <Node icon={<Search size={24} />} />
               </div>
-              {/* PORTS BOTTOM */}
-              <div className="absolute -bottom-1.5 inset-x-0 w-full h-1.5 flex items-center">
-                {[570, 590, 610, 630].map((x) => (
-                  <div
-                    key={x}
-                    style={{ left: `${x - 544 - 6}px` }}
-                    className="absolute w-3 h-1.5 bg-[#1e293b] border border-blue-500/20 rounded-sm"
-                  />
-                ))}
+              {/* Phone */}
+              <div className="absolute top-[400px] left-[130px] pointer-events-auto">
+                <Node icon={<Smartphone size={24} />} />
               </div>
 
-              <span
-                className="text-4xl font-black text-white tracking-tighter ]"
-                style={{
-                  background:
-                    "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                AI
-              </span>
-            </div>
+              {/* AI CENTER CHIP */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-28 h-28 rounded-2xl bg-[#111827] border border-blue-500/30 flex items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.3)] pointer-events-auto shrink-0">
+                {/* PORTS LEFT */}
+                <div className="absolute -left-1.5 inset-y-0 h-full w-1.5 flex flex-col items-center">
+                  {[265, 290, 315, 340].map((y) => (
+                    <div
+                      key={y}
+                      style={{ top: `${y - 244 - 6}px` }}
+                      className="absolute w-1.5 h-3 bg-[#1e293b] border border-blue-500/20 rounded-sm"
+                    />
+                  ))}
+                </div>
+                {/* PORTS RIGHT */}
+                <div className="absolute -right-1.5 inset-y-0 h-full w-1.5 flex flex-col items-center">
+                  {[265, 290, 315, 340].map((y) => (
+                    <div
+                      key={y}
+                      style={{ top: `${y - 244 - 6}px` }}
+                      className="absolute w-1.5 h-3 bg-[#1e293b] border border-blue-500/20 rounded-sm"
+                    />
+                  ))}
+                </div>
+                {/* PORTS BOTTOM */}
+                <div className="absolute -bottom-1.5 inset-x-0 w-full h-1.5 flex items-center">
+                  {[570, 590, 610, 630].map((x) => (
+                    <div
+                      key={x}
+                      style={{ left: `${x - 544 - 6}px` }}
+                      className="absolute w-3 h-1.5 bg-[#1e293b] border border-blue-500/20 rounded-sm"
+                    />
+                  ))}
+                </div>
 
-            {/* NODES - Right Side */}
-            {/* CPU */}
-            <div className="absolute top-[20px] right-[100px] pointer-events-auto">
-              <Node icon={<Cpu size={24} />} />
-            </div>
-            {/* Laptop */}
-            <div className="absolute top-[250px] right-[230px] pointer-events-auto">
-              <Node icon={<Laptop size={24} />} />
-            </div>
-            {/* Microchip */}
-            <div className="absolute top-[400px] right-[130px] pointer-events-auto">
-              <Node icon={<Microchip size={24} />} />
+                <span
+                  className="text-4xl font-black text-white tracking-tighter"
+                  style={{
+                    background:
+                      "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  AI
+                </span>
+              </div>
+
+              {/* NODES - Right Side */}
+              {/* CPU */}
+              <div className="absolute top-[20px] right-[100px] pointer-events-auto">
+                <Node icon={<Cpu size={24} />} />
+              </div>
+              {/* Laptop */}
+              <div className="absolute top-[250px] right-[230px] pointer-events-auto">
+                <Node icon={<Laptop size={24} />} />
+              </div>
+              {/* Microchip */}
+              <div className="absolute top-[400px] right-[130px] pointer-events-auto">
+                <Node icon={<Microchip size={24} />} />
+              </div>
             </div>
           </div>
         </div>

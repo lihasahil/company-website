@@ -49,12 +49,12 @@ const Header = () => {
     >
       <motion.nav
         style={{ scaleX, scaleY, y, borderRadius: radius }}
-        className="w-full max-w-[1200px] px-6 lg:px-10 py-4 flex items-center justify-between origin-center"
+        className="w-full max-w-[1600px] px-6 lg:px-10 py-4 flex items-center justify-between origin-center"
       >
         {/* Background layer (separate = smoother) */}
         <motion.div
           style={{ opacity: bgOpacity }}
-          className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-md rounded-[inherit] border border-white/10"
+          className="absolute inset-0 bg-[#0a0a0a]/90 rounded-[inherit] border border-white/10"
         />
 
         {/* Content - Logo Area */}
@@ -64,14 +64,14 @@ const Header = () => {
           </div>
           <motion.span
             style={{ width: brandWidth, opacity: textOpacity, marginLeft: brandMargin }}
-            className="hidden md:block text-white font-semibold whitespace-nowrap overflow-hidden tracking-tight"
+            className="hidden md:block text-lg text-white font-semibold whitespace-nowrap overflow-hidden tracking-tight"
           >
             Next Wave AI
           </motion.span>
         </motion.div>
 
         {/* Content - Middle Links */}
-        <motion.div style={{ scaleX: invScaleX, scaleY: invScaleY }} className="hidden lg:flex items-center gap-8 text-[15px] font-medium text-gray-300 z-10">
+        <motion.div style={{ scaleX: invScaleX, scaleY: invScaleY }} className="hidden lg:flex items-center gap-14 text-[20px] font-medium text-gray-300 z-10">
           <Link href="/services" className="hover:text-white transition-colors">Services</Link>
           <Link href="#industries" className="hover:text-white transition-colors">Industries</Link>
           <Link href="/insights" className="hover:text-white transition-colors">Research</Link>
