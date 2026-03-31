@@ -18,12 +18,12 @@ const Header = () => {
     mass: 0.8,
   });
   // 🔥 Use scale instead of width
-  const scaleX = useTransform(smooth, [0, 1], [1, 0.6]);
-  const scaleY = useTransform(smooth, [0, 1], [1, 0.85]);
+  const scaleX = useTransform(smooth, [0, 1], [1, 0.5]);
+  const scaleY = useTransform(smooth, [0, 1], [1, 0.75]);
 
   // Inverse scales to prevent children from becoming squished ovals
   const invScaleX = useTransform(smooth, [0, 1], [1, 1 / 0.6]);
-  const invScaleY = useTransform(smooth, [0, 1], [1, 1 / 0.85]);
+  const invScaleY = useTransform(smooth, [0, 1], [1, 1 / 0.75]);
 
   // move slightly down
   const y = useTransform(smooth, [0, 1], [0, 16]);
@@ -32,7 +32,7 @@ const Header = () => {
   const bgOpacity = useTransform(smooth, [0, 1], [0, 1]);
 
   // subtle rounding
-  const radius = useTransform(smooth, [0, 1], ["0px", "40px"]);
+  const radius = useTransform(smooth, [0, 1], ["0px", "64px"]);
 
   // Collapse text properties smoothly
   const textOpacity = useTransform(smooth, [0, 0.3], [1, 0]);
@@ -71,7 +71,7 @@ const Header = () => {
         </motion.div>
 
         {/* Content - Middle Links */}
-        <motion.div style={{ scaleX: invScaleX, scaleY: invScaleY }} className="hidden lg:flex items-center gap-14 text-[20px] font-medium text-gray-300 z-10">
+        <motion.div style={{ scaleX: invScaleX, scaleY: invScaleY }} className="hidden lg:flex items-center gap-8 text-[20px] font-medium text-gray-300 z-10">
           <Link href="/services" className="hover:text-white transition-colors">Services</Link>
           <Link href="/industries-served" className="hover:text-white transition-colors">Industries</Link>
           <Link href="/insights" className="hover:text-white transition-colors">Research</Link>
@@ -82,10 +82,10 @@ const Header = () => {
         <motion.div style={{ scaleX: invScaleX, scaleY: invScaleY, originX: 1 }} className="relative z-10 flex items-center justify-end shrink-0">
           <motion.button
             style={{ paddingLeft: buttonPadding, paddingRight: buttonPadding }}
-            className="flex items-center justify-center h-10 md:h-12 bg-linear-to-b from-[#0ea5e9] to-[#0284c7] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
+            className="flex items-center justify-center h-10 md:h-10 bg-linear-to-b from-[#0ea5e9] to-[#0284c7] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
           >
             <div className="flex items-center justify-center whitespace-nowrap">
-              <Phone size={18} className="shrink-0" />
+              <Phone size={22} className="shrink-0" />
               <motion.span
                 style={{ width: contactTextWidth, opacity: textOpacity, marginLeft: contactMargin }}
                 className="font-semibold text-sm overflow-hidden"

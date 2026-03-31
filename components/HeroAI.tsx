@@ -10,6 +10,7 @@ import {
   MemoryStick as Microchip,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import CTAButton from "./CTAButton";
 
 const HeroAI = () => {
   return (
@@ -149,7 +150,7 @@ const HeroAI = () => {
           <button className="px-8 py-4 rounded-full bg-[#1e293b] text-white font-semibold hover:bg-[#334155] transition-all border border-white/5 text-sm md:text-base">
             Learn More About Us
           </button>
-          <button className="px-8 py-4 rounded-full bg-[#0070f3] text-white font-semibold hover:bg-blue-600 transition-all text-sm md:text-base">
+         <button className="px-8 py-4 rounded-full bg-[#0070f3] text-white font-semibold hover:bg-blue-600 transition-all text-sm md:text-base">
             Free Consultation
           </button>
         </div>
@@ -297,15 +298,15 @@ const NetworkPath: React.FC<NetworkPathProps> = ({ d }) => (
         style={{ filter: "blur(4px)" }}
       >
         <animateMotion
-          dur="3s"
+          dur="4s"
           repeatCount="indefinite"
           path={d}
           rotate="auto"
         />
       </ellipse>
-      <ellipse rx="4" ry="1.5" fill="#fff">
+      <ellipse rx="7" ry="3" fill="#fff">
         <animateMotion
-          dur="3s"
+          dur="4s"
           repeatCount="indefinite"
           path={d}
           rotate="auto"

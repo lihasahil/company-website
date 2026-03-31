@@ -3,6 +3,7 @@
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { CTASection } from "@/components/CTAButton";
 import { useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { MoveLeft, MoveRight } from "lucide-react";
@@ -143,12 +144,12 @@ export default function IndustriesPage() {
   return (
     <main
       className="relative min-h-screen w-full overflow-hidden flex flex-col items-center"
-      style={{ background: "#040404" }}
+      style={{ background: "#000000" }}
     >
       <Header />
 
       {/* Ambient blobs */}
-      <div
+      {/* <div
         className="pointer-events-none absolute"
         style={{
           width: 1016,
@@ -160,7 +161,7 @@ export default function IndustriesPage() {
           filter: "blur(257px)",
           borderRadius: "50%",
         }}
-      />
+      /> */}
       <div
         className="pointer-events-none absolute"
         style={{
@@ -189,7 +190,7 @@ export default function IndustriesPage() {
       />
 
       {/* ── Hero section ── */}
-      <section className="relative z-10 flex flex-col items-center pt-25 pb-0 px-6 gap-6">
+      <section className="relative z-10 flex flex-col items-center pt-20 pb-0 px-6 gap-6">
         {/* Label pill */}
         <motion.div
           variants={fadeUp}
@@ -218,8 +219,8 @@ export default function IndustriesPage() {
           style={{
             fontFamily: "'Urbanist', sans-serif",
             fontWeight: 400,
-            fontSize: "clamp(40px, 6vw, 64px)",
-            lineHeight: "89%",
+            fontSize: "clamp(32px, 6vw, 52px)",
+            lineHeight: "84%",
             letterSpacing: "-0.04em",
             background:
               "linear-gradient(1.48deg, #000000 -4.77%, #8C8C8C 15.82%, #FFFFFF 94.85%)",
@@ -242,7 +243,7 @@ export default function IndustriesPage() {
             fontFamily: "'Urbanist', sans-serif",
             fontWeight: 500,
             fontSize: 18,
-            lineHeight: "26px",
+            lineHeight: "22px",
             color: "rgba(255,255,255,0.5)",
           }}
         >
@@ -252,7 +253,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* ── Card section ── */}
-      <section className="relative z-10 flex flex-col items-center px-6 pt-12 pb-20 gap-8 w-full">
+      <section className="relative z-10 flex flex-col items-center px-6 pt-4 pb-12 gap-8 w-full">
         {/* Main card — entrance animation */}
         <motion.div
           variants={fadeUp}
@@ -354,7 +355,7 @@ export default function IndustriesPage() {
                 style={{
                   fontFamily: "'Urbanist', sans-serif",
                   fontWeight: 400,
-                  fontSize: 15,
+                  fontSize: 17,
                   lineHeight: "20px",
                   color: "rgba(255,255,255,0.70)",
                   maxWidth: 428,
@@ -369,7 +370,7 @@ export default function IndustriesPage() {
                   style={{
                     fontFamily: "'Urbanist', sans-serif",
                     fontWeight: 700,
-                    fontSize: 14,
+                    fontSize: 16,
                     lineHeight: "20px",
                     color: "#FFFFFF",
                     marginBottom: 6,
@@ -394,7 +395,7 @@ export default function IndustriesPage() {
                       style={{
                         fontFamily: "'Urbanist', sans-serif",
                         fontWeight: 400,
-                        fontSize: 14,
+                        fontSize: 16,
                         lineHeight: "20px",
                         color: "rgba(255,255,255,0.70)",
                       }}
@@ -423,8 +424,8 @@ export default function IndustriesPage() {
             whileTap={{ scale: 0.92 }}
             className="flex items-center justify-center"
             style={{
-              width: 48,
-              height: 48,
+              width: 36,
+              height: 36,
               borderRadius: "50%",
               background: "linear-gradient(180deg, #0091FF 0%, #005799 100%)",
               boxShadow: "inset 0px 5px 4.5px rgba(255,255,255,0.18)",
@@ -452,8 +453,8 @@ export default function IndustriesPage() {
                 whileHover={{ scale: 1.3 }}
                 whileTap={{ scale: 0.9 }}
                 style={{
-                  width: 16,
-                  height: 16,
+                  width: 12,
+                  height: 12,
                   borderRadius: "50%",
                   border: "1px solid rgba(255,255,255,0.09)",
                   cursor: "pointer",
@@ -471,8 +472,8 @@ export default function IndustriesPage() {
             whileTap={{ scale: 0.92 }}
             className="flex items-center justify-center"
             style={{
-              width: 48,
-              height: 48,
+              width: 36,
+              height: 36,
               borderRadius: "50%",
               background: "linear-gradient(180deg, #0091FF 0%, #005799 100%)",
               boxShadow: "inset 0px 5px 4.5px rgba(255,255,255,0.18)",
@@ -488,115 +489,8 @@ export default function IndustriesPage() {
         </motion.div>
       </section>
 
-      {/* ── CTA Section — scroll-triggered ── */}
-      <motion.section
-        className="relative w-full flex flex-col items-center justify-center overflow-hidden"
-        style={{
-          background: "#000000",
-          padding: "108px 72px",
-          gap: 48,
-          isolation: "isolate",
-          width: "100%",
-          height: 445,
-        }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {/* Left SVG wing */}
-        <img
-          src="/wing-left.svg"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute left-0 top-0 h-full"
-          style={{ objectFit: "cover", objectPosition: "left" }}
-        />
-
-        {/* Right SVG wing */}
-        <img
-          src="/wing-right.svg"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-0 h-full"
-          style={{ objectFit: "cover", objectPosition: "right" }}
-        />
-
-        {/* Center glow */}
-        <div
-          className="pointer-events-none absolute"
-          style={{
-            width: 199,
-            height: 295,
-            left: "calc(50% - 99.5px)",
-            top: -3,
-            background: "#0091FF",
-            filter: "blur(168px)",
-            borderRadius: "50%",
-          }}
-        />
-
-        {/* CTA text */}
-        <motion.div
-          className="relative z-10 flex flex-col items-center gap-3"
-          style={{ textAlign: "center" }}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-        >
-          <h2
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              fontWeight: 500,
-              fontSize: "clamp(32px, 4vw, 48px)",
-              lineHeight: 1,
-              color: "#FFFFFF",
-            }}
-          >
-            Not sure where to start?
-          </h2>
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 400,
-              fontSize: 16,
-              lineHeight: "24px",
-              color: "rgba(255,255,255,0.5)",
-              maxWidth: 457,
-            }}
-          >
-            Our 30 min AI readiness call is free, focused and actionable
-          </p>
-        </motion.div>
-
-        {/* CTA Button */}
-        <motion.button
-          className="relative z-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.28 }}
-          whileHover={{ scale: 1.04, opacity: 0.92 }}
-          whileTap={{ scale: 0.96 }}
-          style={{
-            fontFamily: "'Urbanist', sans-serif",
-            fontWeight: 700,
-            fontSize: 18,
-            lineHeight: "40px",
-            color: "#FFFFFF",
-            background: "linear-gradient(180deg, #0091FF 0%, #005799 100%)",
-            boxShadow: "inset 0px 5px 4.5px rgba(255,255,255,0.18)",
-            borderRadius: 16,
-            padding: "16px 32px",
-            border: "none",
-            cursor: "pointer",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Schedule a free AI consultation
-        </motion.button>
-      </motion.section>
+      {/* ── CTA Section ── */}
+      <CTASection />
 
       <Footer />
 

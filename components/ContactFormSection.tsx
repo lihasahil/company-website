@@ -45,7 +45,7 @@ export default function ContactFormSection() {
           padding: 5px 5px;
           color: #F2F2F2;
           font-family: 'Urbanist', sans-serif;
-          font-size: 15px;
+          font-size: 18px;
           font-weight: 300;
           outline: none;
           transition: border-color 0.3s ease;
@@ -77,7 +77,7 @@ export default function ContactFormSection() {
 
       <section
         id="contact-form"
-        className="font-urbanist h-screen relative w-full overflow-hidden pt-20 pb-30 px-6"
+        className="font-urbanist h-screen relative w-full overflow-hidden pt-24 pb-12 md:pb-30 lg:pb-36 px-6"
       >
         {/* GIF full background */}
         <div className="absolute inset-0 z-0">
@@ -109,7 +109,7 @@ export default function ContactFormSection() {
               Get In Touch
             </h2>
             <div className="w-full h-px bg-[#F2F2F2] mb-4" />
-            <p className="text-[#F2F2F2] font-light text-base max-w-2xl mx-auto">
+            <p className="text-[#F2F2F2] font-light text-lg max-w-2xl mx-auto">
               Contact us to get connected with our team of experts. We are here
               to help you with your AI and software development needs.
             </p>
@@ -153,7 +153,7 @@ export default function ContactFormSection() {
               >
                 {/* Name */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[#F2F2F2] font-light text-sm">
+                  <label className="text-[#F2F2F2] font-light text-lg">
                     Name
                   </label>
                   <input
@@ -168,7 +168,7 @@ export default function ContactFormSection() {
                 {/* Email + Phone */}
                 <div className="flex flex-row gap-6">
                   <div className="flex flex-col gap-1 flex-1">
-                    <label className="text-[#F2F2F2] font-light text-sm">
+                    <label className="text-[#F2F2F2] font-light text-lg">
                       Email
                     </label>
                     <input
@@ -181,7 +181,7 @@ export default function ContactFormSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1 flex-1">
-                    <label className="text-[#F2F2F2] font-light text-sm">
+                    <label className="text-[#F2F2F2] font-light text-lg">
                       Phone Number
                     </label>
                     <input
@@ -196,7 +196,7 @@ export default function ContactFormSection() {
 
                 {/* Service */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[#F2F2F2] font-light text-sm">
+                  <label className="text-[#F2F2F2] font-light text-lg">
                     Select the service or industry
                   </label>
                   <select
@@ -245,7 +245,7 @@ export default function ContactFormSection() {
                     </svg>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="text-[#F2F2F2] font-semibold text-[16px]">
+                    <span className="text-[#F2F2F2] font-semibold text-[18px]">
                       Phone
                     </span>
                     <span className="text-[#F2F2F2] font-semibold text-[18px]">
@@ -284,7 +284,7 @@ export default function ContactFormSection() {
                     </svg>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="text-[#F2F2F2] font-semibold text-[16px]">
+                    <span className="text-[#F2F2F2] font-semibold text-[18px]">
                       Email Address
                     </span>
                     <span className="text-[#F2F2F2] font-semibold text-[18px]">

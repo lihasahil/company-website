@@ -40,7 +40,7 @@ export default function UnleashPage() {
         style={{
           position: "sticky",
           top: 0,
-          height: "100vh",
+          height: "120vh",
           overflow: "hidden",
         }}
       >
