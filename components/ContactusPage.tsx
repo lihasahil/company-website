@@ -29,9 +29,9 @@ export default function ContactUsPage() {
         }
       `}</style>
 
-      <section className="hero-bg h-screen relative w-full flex flex-col items-center justify-between overflow-hidden">
+      <section className="hero-bg h-screen  relative w-full flex flex-col items-center justify-between overflow-hidden">
         {/* ── Top content ── */}
-        <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-10 gap-5">
+        <div className="relative  z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-10 gap-5">
           {/* Heading */}
           <motion.h1
             variants={makeFadeUp(0.2)}
@@ -50,7 +50,7 @@ export default function ContactUsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="text-base font-thin text-[#FFFFFF]"
+            className="text-lg font-thin text-[#FFFFFF]"
           >
             Find answers to common questions about NextWaveAI, our services, and
             how we can help your business grow.
@@ -84,7 +84,7 @@ export default function ContactUsPage() {
 
               requestAnimationFrame(scroll);
             }}
-            className="mt-6 inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-[13.5px] font-medium text-white backdrop-blur-md transition-all duration-300
+            className="mt-6 inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-[18px] font-medium text-white backdrop-blur-md transition-all duration-300
     border border-white/20 bg-[#2a2a2a]
     hover:bg-[rgba(5,109,188,0.22)] hover:border-[rgba(5,109,188,0.5)] hover:-translate-y-0.5
     hover:shadow-[0_0_28px_rgba(5,109,188,0.22)]"
@@ -123,7 +123,7 @@ export default function ContactUsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="text-sm leading-relaxed max-w-2xl mb-10"
+            className="text-lg leading-relaxed max-w-3xl mb-14"
             style={{ color: "#F2F2F2" }}
           >
             Contact us to get connected with our team of experts. We are here to

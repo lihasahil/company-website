@@ -184,6 +184,28 @@ const ServicesSection = () => {
 
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:90px_90px]" />
 
+            {/* PULSE GRID ANIMATION */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-70">
+              <defs>
+                <linearGradient id="service-pulse-gradient">
+                  <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0" />
+                  <stop offset="50%" stopColor="#0ea5e9" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <ServicePulse d="M 90 0 V 600" delay={0} />
+              <ServicePulse d="M 180 0 V 600" delay={1.5} />
+              <ServicePulse d="M 270 0 V 600" delay={3} />
+              <ServicePulse d="M 360 0 V 600" delay={0.8} />
+              <ServicePulse d="M 450 0 V 600" delay={2.2} />
+
+              <ServicePulse d="M 0 90 H 800" delay={0.5} />
+              <ServicePulse d="M 0 180 H 800" delay={2} />
+              <ServicePulse d="M 0 270 H 800" delay={3.5} />
+              <ServicePulse d="M 0 360 H 800" delay={1.2} />
+              <ServicePulse d="M 0 450 H 800" delay={2.8} />
+            </svg>
+
             <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12">
               <p className="text-lg md:text-[22px] text-white/90">
                 Try Our AI Solutions that Power Modern Businesses with Cutting-Edge Technology.
@@ -198,7 +220,7 @@ const ServicesSection = () => {
           >
             <div>
               <p className="text-white/95 text-base md:text-lg mb-4">
-                We deliver tailored technology solutions across diverse industries.
+                We deliver tailored technology solutions across diverse industries, helping businesses adapt, innovate, and grow in a rapidly evolving digital landscape. Our expertise allows us to understand industry-specific challenges and build solutions that drive real impact.
               </p>
 
               <button className="px-6 py-3 rounded-full bg-[#0ea5e9] text-white">
@@ -234,5 +256,47 @@ const ServicesSection = () => {
     </section>
   );
 };
+
+interface ServicePulseProps {
+  d: string;
+  delay?: number;
+}
+
+const ServicePulse: React.FC<ServicePulseProps> = ({ d, delay = 0 }) => (
+  <g>
+    <motion.g
+      initial={{ opacity: 0 }}
+      animate={{ opacity: [0, 1, 0] }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay,
+      }}
+    >
+      <ellipse
+        rx="15"
+        ry="5"
+        fill="url(#service-pulse-gradient)"
+        // style={{ filter: "blur(4px)" }}
+      >
+        <animateMotion
+          dur="4s"
+          repeatCount="indefinite"
+          path={d}
+          rotate="auto"
+        />
+      </ellipse>
+      <ellipse rx="7" ry="3" fill="#fff">
+        <animateMotion
+          dur="4s"
+          repeatCount="indefinite"
+          path={d}
+          rotate="auto"
+        />
+      </ellipse>
+    </motion.g>
+  </g>
+);
 
 export default ServicesSection;
