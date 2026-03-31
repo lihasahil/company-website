@@ -19,11 +19,6 @@ export default function ContactUsPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=DM+Sans:wght@300;400&display=swap');
-
-        .font-sora { font-family: 'Sora', sans-serif; }
-        .font-dm   { font-family: 'DM Sans', sans-serif; }
-
         .hero-bg {
           background: radial-gradient(
             161.57% 107.5% at 50% 0%,
@@ -34,7 +29,7 @@ export default function ContactUsPage() {
         }
       `}</style>
 
-      <section className="hero-bg font-sora h-screen relative w-full flex flex-col items-center justify-between overflow-hidden">
+      <section className="hero-bg h-screen relative w-full flex flex-col items-center justify-between overflow-hidden">
         {/* ── Top content ── */}
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-10 gap-5">
           {/* Heading */}
@@ -43,7 +38,7 @@ export default function ContactUsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="text-6xl font-thin bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent"
+            className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent"
             style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
           >
             Contact us to discuss your project
@@ -55,8 +50,7 @@ export default function ContactUsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="text-base font-thin bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent"
-            style={{ color: "rgba(255,255,255,0.42)" }}
+            className="text-base font-thin text-[#FFFFFF]"
           >
             Find answers to common questions about NextWaveAI, our services, and
             how we can help your business grow.
@@ -108,7 +102,7 @@ export default function ContactUsPage() {
             viewport={{ once: true, amount: 0.3 }}
             className="font-light tracking-tight"
             style={{
-              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
               color: "#F2F2F2",
             }}
           >

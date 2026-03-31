@@ -7,6 +7,7 @@ import UnleashPage from "./UnleashPage";
 import ServingClientPage from "./ServingClientPage";
 import ContactUsPage from "./ContactusPage";
 import ContactFormSection from "./ContactFormSection";
+import Footer from "./Footer";
 
 const LandingPage = () => {
   return (

@@ -73,16 +73,16 @@ const Header = () => {
         {/* Content - Middle Links */}
         <motion.div style={{ scaleX: invScaleX, scaleY: invScaleY }} className="hidden lg:flex items-center gap-14 text-[20px] font-medium text-gray-300 z-10">
           <Link href="/services" className="hover:text-white transition-colors">Services</Link>
-          <Link href="#industries" className="hover:text-white transition-colors">Industries</Link>
+          <Link href="/industries-served" className="hover:text-white transition-colors">Industries</Link>
           <Link href="/insights" className="hover:text-white transition-colors">Research</Link>
-          <Link href="#technology" className="hover:text-white transition-colors">Technology</Link>
+          <Link href="/technologies" className="hover:text-white transition-colors">Technology</Link>
         </motion.div>
 
         {/* Content - Contact CTA */}
         <motion.div style={{ scaleX: invScaleX, scaleY: invScaleY, originX: 1 }} className="relative z-10 flex items-center justify-end shrink-0">
           <motion.button
             style={{ paddingLeft: buttonPadding, paddingRight: buttonPadding }}
-            className="flex items-center justify-center h-10 md:h-12 bg-gradient-to-b from-[#0ea5e9] to-[#0284c7] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
+            className="flex items-center justify-center h-10 md:h-12 bg-linear-to-b from-[#0ea5e9] to-[#0284c7] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
           >
             <div className="flex items-center justify-center whitespace-nowrap">
               <Phone size={18} className="shrink-0" />

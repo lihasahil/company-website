@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/lenis-provider";
-import Footer from "@/components/Footer";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -22,13 +21,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${urbanist.variable} font-sans h-full antialiased`}
+      className={`${urbanist.variable} font-sans min-h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <LenisProvider>
-          {children}
-          {/* <Footer /> */}
-        </LenisProvider>
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );

@@ -166,23 +166,17 @@ export default function ServingClientPage() {
             transform: `translateY(${s.textY}px)`,
           }}
         >
-          <h1
-            className="text-5xl font-light text-white mb-6"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
+          <h1 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent pb-8">
             Serving Clients Globally
           </h1>
-          <p className="text-white/70 text-sm mb-1">
+          <p className="text-[#FFFFFF] font-light mb-1">
             Building solutions for a connected world.
           </p>
-          <p className="text-white/70 text-sm mb-6">
+          <p className="text-[#FFFFFF] font-light text-base mb-6">
             Delivering scalable technology that adapts across borders and
             markets.
           </p>
-          <h2
-            className="text-3xl font-light text-white"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
+          <h2 className="text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
             10+ Countries
           </h2>
         </div>
@@ -216,13 +210,10 @@ export default function ServingClientPage() {
             transform: `translateY(${s.faqTitleY}px)`,
           }}
         >
-          <h2
-            className="text-5xl font-light text-white mb-4"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
+          <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
             Frequently Asked Questions
           </h2>
-          <p className="text-white/50 text-sm max-w-lg">
+          <p className="text-[#FFFFFF] font-thin text-sm max-w-7xl text-center mb-10">
             Find answers to common questions about NextWaveAI, our services, and
             how we can help your business grow.
           </p>
@@ -241,13 +232,10 @@ export default function ServingClientPage() {
             style={{ backgroundColor: "#000" }}
           />
           <div className="relative z-10 w-full flex flex-col items-center pointer-events-none">
-            <h2
-              className="text-5xl font-light text-white mb-3 text-center"
-              style={{ fontFamily: "Georgia, serif" }}
-            >
+            <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
               Frequently Asked Questions
             </h2>
-            <p className="text-white/50 text-sm max-w-lg text-center mb-10">
+            <p className="text-[#FFFFFF] font-thin text-sm max-w-7xl text-center mb-10">
               Find answers to common questions about NextWaveAI, our services,
               and how we can help your business grow.
             </p>

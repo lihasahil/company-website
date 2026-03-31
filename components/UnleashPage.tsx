@@ -80,9 +80,9 @@ export default function UnleashPage() {
           {/* Left — slides in from left */}
           <motion.div
             style={{ x: leftX, opacity: leftOpacity }}
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-6"
           >
-            <div className="p-4 w-56 h-100 rounded-3xl border border-[#F2F2F2] relative overflow-hidden">
+            <div className="p-4 w-56 h-98 rounded-3xl border border-[#F2F2F2] relative overflow-hidden">
               <div
                 className="absolute inset-0 rounded-3xl"
                 style={{
@@ -153,11 +153,11 @@ export default function UnleashPage() {
             className="flex items-center justify-center"
           >
             <div className="max-w-7xl mx-auto text-center">
-              <h1 className="text-6xl font-thin bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+              <h1 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
                 Unleash your full Potential
               </h1>
               <div className="flex items-center -ml-35 justify-center gap-4">
-                <h2 className="text-6xl font-thin bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+                <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
                   with Next Wave AI
                 </h2>
                 <img src="/nxt.svg" className="w-10" />
@@ -173,9 +173,9 @@ export default function UnleashPage() {
           {/* Right — slides in from right */}
           <motion.div
             style={{ x: rightX, opacity: rightOpacity }}
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-6"
           >
-            <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-3xl w-56 h-100">
+            <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-3xl w-56 h-98">
               <div className="flex justify-between">
                 <span className="text-2xl">
                   Insights &<br />
