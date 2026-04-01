@@ -3,7 +3,6 @@
 import Header from "@/components/Header";
 import CareersSection from "@/components/CareersSection";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
 
 export default function CareersPage() {
   return (

@@ -48,16 +48,19 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
     <div
       onClick={() => setOpen(!open)}
-      className="cursor-pointer border border-white/10 rounded-xl px-6 py-5 hover:border-white/20 bg-white/5 transition-colors"
+      className="cursor-pointer border border-white/10 rounded-xl px-4 sm:px-6 py-4 sm:py-5 hover:border-white/20 bg-white/5 transition-colors"
       style={{ pointerEvents: "auto" }}
     >
-      <div className="flex justify-between items-center">
-        <span className="text-white text-base font-light">{question}</span>
+      <div className="flex justify-between items-center gap-3">
+        <span className="text-white text-sm sm:text-base font-light">
+          {question}
+        </span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.3 }}
+          className="shrink-0"
         >
-          <ChevronDown className="text-white/60 w-5 h-5 shrink-0" />
+          <ChevronDown className="text-white/60 w-4 h-4 sm:w-5 sm:h-5" />
         </motion.div>
       </div>
       <motion.div
@@ -66,7 +69,9 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         transition={{ duration: 0.35, ease: "easeInOut" }}
         style={{ overflow: "hidden" }}
       >
-        <p className="text-white/50 text-sm mt-4 leading-relaxed">{answer}</p>
+        <p className="text-white/50 text-xs sm:text-sm mt-3 sm:mt-4 leading-relaxed">
+          {answer}
+        </p>
       </motion.div>
     </div>
   );
@@ -74,6 +79,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function ServingClientPage() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const [s, setS] = useState({
     globeY: 0,
     textOpacity: 1,
@@ -85,17 +91,22 @@ export default function ServingClientPage() {
     p: 0,
   });
 
+  // Detect mobile
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   useEffect(() => {
     const compute = () => {
       const el = sectionRef.current;
       if (!el) return;
       const vh = window.innerHeight;
-
-      // Recalculate sectionTop on EVERY scroll event — never stale
       const rect = el.getBoundingClientRect();
       const sectionTop = rect.top + window.scrollY;
       const sectionHeight = el.offsetHeight;
-
       const scrolled = window.scrollY - sectionTop;
       const p = clamp(scrolled / (sectionHeight - vh), 0, 1);
 
@@ -133,7 +144,6 @@ export default function ServingClientPage() {
     };
 
     window.addEventListener("scroll", compute, { passive: true });
-    // Also recompute on resize in case layout shifts
     window.addEventListener("resize", compute);
     compute();
     return () => {
@@ -144,6 +154,54 @@ export default function ServingClientPage() {
 
   const isScreen3 = s.p >= 0.68;
 
+  // ── MOBILE: static layout, no scroll animations ──
+  if (isMobile) {
+    return (
+      <section
+        ref={sectionRef}
+        className="relative w-full bg-black text-white py-16 px-5 flex flex-col items-center gap-16"
+      >
+        {/* Screen 1: Heading + Globe */}
+        <div className="flex flex-col items-center text-center gap-6 w-full">
+          <h1 className="text-3xl sm:text-4xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
+            Serving Clients Globally
+          </h1>
+          <p className="text-white/80 font-light text-sm sm:text-base">
+            Building solutions for a connected world.
+            <br />
+            Delivering scalable technology that adapts across borders and
+            markets.
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+            10+ Countries
+          </h2>
+          <img
+            src="/globe.gif"
+            alt="Globe"
+            className="w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] object-cover rounded-full"
+          />
+        </div>
+
+        {/* Screen 2 + 3: FAQ */}
+        <div className="flex flex-col items-center text-center gap-6 w-full max-w-2xl">
+          <h2 className="text-2xl sm:text-3xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-white/60 font-thin text-xs sm:text-sm">
+            Find answers to common questions about NextWaveAI, our services, and
+            how we can help your business grow.
+          </p>
+          <div className="w-full flex flex-col gap-3">
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // ── DESKTOP: original scroll-animated layout ──
   return (
     <section
       ref={sectionRef}
@@ -166,17 +224,17 @@ export default function ServingClientPage() {
             transform: `translateY(${s.textY}px)`,
           }}
         >
-          <h1 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent pb-8">
+          <h1 className="text-4xl xl:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent pb-8 leading-tight">
             Serving Clients Globally
           </h1>
-          <p className="text-[#FFFFFF] font-light mb-1">
+          <p className="text-[#FFFFFF] font-light mb-1 text-sm xl:text-base">
             Building solutions for a connected world.
           </p>
-          <p className="text-[#FFFFFF] font-light text-base mb-6">
+          <p className="text-[#FFFFFF] font-light text-sm xl:text-base mb-6">
             Delivering scalable technology that adapts across borders and
             markets.
           </p>
-          <h2 className="text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+          <h2 className="text-3xl xl:text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
             10+ Countries
           </h2>
         </div>
@@ -193,8 +251,8 @@ export default function ServingClientPage() {
             src="/globe.gif"
             alt="Globe"
             style={{
-              width: "550px",
-              height: "550px",
+              width: "clamp(320px, 40vw, 550px)",
+              height: "clamp(320px, 40vw, 550px)",
               objectFit: "cover",
               borderRadius: "50%",
               flexShrink: 0,
@@ -210,10 +268,10 @@ export default function ServingClientPage() {
             transform: `translateY(${s.faqTitleY}px)`,
           }}
         >
-          <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
+          <h2 className="text-4xl xl:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3">
             Frequently Asked Questions
           </h2>
-          <p className="text-[#FFFFFF] font-thin text-sm max-w-7xl text-center mb-10">
+          <p className="text-[#FFFFFF] font-thin text-xs xl:text-sm max-w-2xl mb-10">
             Find answers to common questions about NextWaveAI, our services, and
             how we can help your business grow.
           </p>
@@ -221,7 +279,7 @@ export default function ServingClientPage() {
 
         {/* SCREEN 3: FAQ Accordion */}
         <div
-          className="absolute inset-0 z-30 flex flex-col items-center justify-center px-6 pointer-events-none"
+          className="absolute inset-0 z-30 flex flex-col items-center justify-center px-4 lg:px-8 xl:px-12 pointer-events-none"
           style={{
             opacity: s.faqAccOpacity,
             transform: `translateY(${s.faqAccY}px)`,
@@ -232,15 +290,15 @@ export default function ServingClientPage() {
             style={{ backgroundColor: "#000" }}
           />
           <div className="relative z-10 w-full flex flex-col items-center pointer-events-none">
-            <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
+            <h2 className="text-4xl xl:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
               Frequently Asked Questions
             </h2>
-            <p className="text-[#FFFFFF] font-thin text-sm max-w-7xl text-center mb-10">
+            <p className="text-[#FFFFFF] font-thin text-xs xl:text-sm max-w-2xl text-center mb-8">
               Find answers to common questions about NextWaveAI, our services,
               and how we can help your business grow.
             </p>
             <div
-              className="w-full max-w-7xl flex flex-col gap-3"
+              className="w-full max-w-3xl xl:max-w-5xl flex flex-col gap-3"
               style={{ pointerEvents: isScreen3 ? "auto" : "none" }}
             >
               {faqs.map((faq, i) => (
