@@ -32,13 +32,13 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
       style={{
         fontFamily: "'Urbanist', sans-serif",
         fontWeight: 700,
-        fontSize: 18,
-        lineHeight: "40px",
+        fontSize: "clamp(16px, 1.2vw, 18px)",
+        lineHeight: "1.2",
         color: "#FFFFFF",
         background: "linear-gradient(180deg, #0091FF 0%, #005799 100%)",
         boxShadow: "inset 0px 5px 4.5px rgba(255,255,255,0.18)",
         borderRadius: 16,
-        padding: "12px 32px",
+        padding: "16px 32px",
         border: "none",
         cursor: "pointer",
         whiteSpace: "nowrap",
@@ -69,14 +69,15 @@ export const CTASection: React.FC<CTASectionProps> = ({
 }) => {
   return (
     <motion.section
-      className="relative w-full flex flex-col items-center justify-center overflow-hidden"
+      className="relative w-full flex flex-col items-center justify-center overflow-hidden px-6 text-center"
       style={{
         background: "#000000",
-        padding: "108px 72px",
-        gap: 48,
+        paddingTop: "clamp(60px, 10vw, 108px)",
+        paddingBottom: "clamp(60px, 10vw, 108px)",
+        gap: "clamp(32px, 5vw, 48px)",
         isolation: "isolate",
         width: "100%",
-        minHeight: 445,
+        minHeight: 400,
       }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -88,7 +89,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
         src="/wing-left.svg"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-0 h-full"
+        className="pointer-events-none absolute left-0 top-0 h-full opacity-40 lg:opacity-100"
         style={{ objectFit: "cover", objectPosition: "left" }}
       />
 
@@ -97,9 +98,10 @@ export const CTASection: React.FC<CTASectionProps> = ({
         src="/wing-right.svg"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-0 h-full"
+        className="pointer-events-none absolute right-0 top-0 h-full opacity-40 lg:opacity-100"
         style={{ objectFit: "cover", objectPosition: "right" }}
       />
+
 
       {/* Center glow */}
       <div

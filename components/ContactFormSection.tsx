@@ -77,7 +77,7 @@ export default function ContactFormSection() {
 
       <section
         id="contact-form"
-        className="font-urbanist h-screen relative w-full overflow-hidden pt-24 pb-12 md:pb-30 lg:pb-36 px-6"
+        className="font-urbanist min-h-screen relative w-full overflow-hidden pt-24 pb-12 md:pb-30 lg:pb-36 px-6"
       >
         {/* GIF full background */}
         <div className="absolute inset-0 z-0">
@@ -103,13 +103,13 @@ export default function ContactFormSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
-            className="text-center mb-14"
+            className="text-center mb-10 md:mb-14"
           >
-            <h2 className="text-[#F2F2F2] mt-10 font-light text-5xl mb-4">
+            <h2 className="text-[#F2F2F2] mt-10 font-light text-4xl md:text-5xl mb-4">
               Get In Touch
             </h2>
-            <div className="w-full h-px bg-[#F2F2F2] mb-4" />
-            <p className="text-[#F2F2F2] font-light text-lg max-w-2xl mx-auto">
+            <div className="w-full h-px bg-[#F2F2F2]/20 mb-4" />
+            <p className="text-[#F2F2F2] font-light text-base md:text-lg max-w-2xl mx-auto opacity-80">
               Contact us to get connected with our team of experts. We are here
               to help you with your AI and software development needs.
             </p>
@@ -119,7 +119,7 @@ export default function ContactFormSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
-            className="flex flex-col lg:flex-row items-start gap-10"
+            className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16"
           >
             {/* LEFT — Map */}
             <motion.div
@@ -127,13 +127,13 @@ export default function ContactFormSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.2 }}
-              className="shrink-0 w-full lg:w-130.5 h-129 rounded-3xl overflow-hidden"
+              className="shrink-0 w-full lg:w-[500px] h-[300px] md:h-[400px] lg:h-[500px] rounded-3xl overflow-hidden border border-white/10"
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.31!2d85.2910!3d27.7172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2C%20Nepal!5e0!3m2!1sen!2snp!4v1234567890"
-                width="80%"
-                height="80%"
-                style={{ border: 0, borderRadius: "24px" }}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -141,19 +141,19 @@ export default function ContactFormSection() {
             </motion.div>
 
             {/* RIGHT — Form + Contact Info */}
-            <div className="flex flex-col justify-between w-full lg:w-174">
+            <div className="flex flex-col justify-between w-full">
               {/* Form fields */}
               <motion.div
                 variants={makeFadeUp(0.15)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.2 }}
-                className="flex flex-col gap-10"
-                style={{ maxWidth: "632px" }}
+                className="flex flex-col gap-8 md:gap-10 w-full"
+                style={{ maxWidth: "700px" }}
               >
                 {/* Name */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[#F2F2F2] font-light text-lg">
+                  <label className="text-[#F2F2F2] font-medium text-base md:text-lg">
                     Name
                   </label>
                   <input
@@ -166,9 +166,9 @@ export default function ContactFormSection() {
                 </div>
 
                 {/* Email + Phone */}
-                <div className="flex flex-row gap-6">
+                <div className="flex flex-col sm:flex-row gap-8 sm:gap-6">
                   <div className="flex flex-col gap-1 flex-1">
-                    <label className="text-[#F2F2F2] font-light text-lg">
+                    <label className="text-[#F2F2F2] font-medium text-base md:text-lg">
                       Email
                     </label>
                     <input
@@ -181,7 +181,7 @@ export default function ContactFormSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1 flex-1">
-                    <label className="text-[#F2F2F2] font-light text-lg">
+                    <label className="text-[#F2F2F2] font-medium text-base md:text-lg">
                       Phone Number
                     </label>
                     <input
@@ -196,11 +196,11 @@ export default function ContactFormSection() {
 
                 {/* Service */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[#F2F2F2] font-light text-lg">
+                  <label className="text-[#F2F2F2] font-medium text-base md:text-lg">
                     Select the service or industry
                   </label>
                   <select
-                    className="underline-input"
+                    className="underline-input cursor-pointer"
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
@@ -214,7 +214,7 @@ export default function ContactFormSection() {
                 </div>
 
                 {/* Submit */}
-                <button className="submit-btn">Submit</button>
+                <button className="submit-btn w-full sm:w-[248px] mt-4">Submit</button>
               </motion.div>
 
               {/* Contact info row */}
@@ -223,72 +223,53 @@ export default function ContactFormSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.2 }}
-                className="flex flex-row items-center gap-6 px-6 py-3"
-                style={{ maxWidth: "694px" }}
+                className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 mt-16 pt-10 border-t border-white/10"
               >
                 {/* Phone */}
                 <div className="flex flex-row items-center gap-4">
-                  <div className="w-11.25 h-11.25 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                     <svg
-                      viewBox="0 0 45 45"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
                       fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="45"
-                      height="45"
+                      stroke="#F2F2F2"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
-                      <path
-                        d="M34 29.5c0 .6-.1 1.1-.4 1.6-.3.5-.7 1-1.2 1.4-.8.7-1.7 1.1-2.7 1.1-.7 0-1.4-.2-2.2-.5-.8-.3-1.6-.8-2.4-1.4-.8-.6-1.6-1.3-2.3-2.1-.7-.8-1.4-1.6-2-2.4-.6-.8-1.1-1.6-1.4-2.4-.3-.8-.5-1.5-.5-2.2 0-.7.1-1.3.4-1.9.3-.6.7-1.1 1.3-1.5.7-.5 1.4-.7 2.2-.7.3 0 .6.1.9.2.3.1.6.3.8.6l2.8 3.9c.2.3.4.6.5.9.1.3.2.5.2.8 0 .3-.1.7-.3 1-.2.3-.4.6-.7.9l-.9.9c-.1.1-.2.3-.2.5 0 .1 0 .2.1.3.1.1.1.2.2.3.4.6.9 1.2 1.4 1.7.6.6 1.2 1.1 1.8 1.5.1.1.2.1.3.2.1.1.3.1.4.1.2 0 .4-.1.5-.2l.9-.9c.3-.3.6-.5.9-.7.3-.2.6-.3.9-.3.2 0 .5.1.8.2.3.1.6.3.9.5l3.9 2.8c.3.2.5.5.6.8.1.3.2.6.2.9z"
-                        stroke="#F2F2F2"
-                        strokeWidth="1.5"
-                        strokeMiterlimit="10"
-                      />
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.28a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                     </svg>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[#F2F2F2] font-semibold text-[18px]">
-                      Phone
-                    </span>
-                    <span className="text-[#F2F2F2] font-semibold text-[18px]">
+                  <div className="flex flex-col">
+                    <span className="text-white/60 text-sm">Phone</span>
+                    <span className="text-[#F2F2F2] font-semibold text-lg">
                       +977 9876543210
                     </span>
                   </div>
                 </div>
 
-                {/* Divider */}
-                <div className="w-px h-10 bg-black mx-2" />
-
                 {/* Email */}
                 <div className="flex flex-row items-center gap-4">
-                  <div className="w-10 h-10 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                     <svg
-                      viewBox="0 0 40 40"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
                       fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="40"
-                      height="40"
+                      stroke="#F2F2F2"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
-                      <path
-                        d="M32 8H8C5.8 8 4 9.8 4 12v16c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4V12c0-2.2-1.8-4-4-4z"
-                        stroke="#F2F2F2"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M36 12L20 22 4 12"
-                        stroke="#F2F2F2"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
                     </svg>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[#F2F2F2] font-semibold text-[18px]">
-                      Email Address
-                    </span>
-                    <span className="text-[#F2F2F2] font-semibold text-[18px]">
-                      hemantgoyal@nxtwaveai.com
+                  <div className="flex flex-col">
+                    <span className="text-white/60 text-sm">Email Address</span>
+                    <span className="text-[#F2F2F2] font-semibold text-lg">
+                      info@nxtwaveai.com
                     </span>
                   </div>
                 </div>
@@ -297,6 +278,7 @@ export default function ContactFormSection() {
           </motion.div>
         </div>
       </section>
+
     </>
   );
 }

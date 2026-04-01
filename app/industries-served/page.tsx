@@ -253,30 +253,31 @@ export default function IndustriesPage() {
       </section>
 
       {/* ── Card section ── */}
-      <section className="relative z-10 flex flex-col items-center px-6 pt-4 pb-12 gap-8 w-full">
+      <section className="relative z-10 flex flex-col items-center px-6 pt-4 pb-12 gap-8 w-full max-w-7xl">
         {/* Main card — entrance animation */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.35}
-          className="flex flex-row items-stretch gap-0 w-full max-w-4xl"
+          className="flex flex-col md:flex-row items-stretch gap-0 w-full"
           style={{
             background: "rgba(0,0,0,0.20)",
             border: "1px solid rgba(255,255,255,0.21)",
             borderRadius: 22,
             padding: 12,
-            minHeight: 361,
+            minHeight: "auto",
             overflow: "hidden",
+            backdropFilter: "blur(10px)",
           }}
         >
           {/* Image — AnimatePresence for cross-fade */}
           <div
-            className="relative shrink-0 overflow-hidden"
+            className="relative shrink-0 overflow-hidden w-full md:w-[40%] lg:w-[45%]"
             style={{
-              width: "clamp(180px, 40%, 499px)",
               borderRadius: 18,
-              minHeight: 280,
+              aspectRatio: "1/1",
+              minHeight: 300,
             }}
           >
             <AnimatePresence mode="wait">
@@ -320,18 +321,18 @@ export default function IndustriesPage() {
               initial="enter"
               animate="center"
               exit="exit"
-              className="relative flex flex-col justify-center pl-6 pr-2 py-6 gap-5 flex-1"
+              className="relative flex flex-col justify-center px-4 md:px-8 py-8 md:py-6 gap-6 flex-1"
             >
               {/* Glow blob */}
               <div
                 className="pointer-events-none absolute"
                 style={{
-                  width: 314,
-                  height: 192,
+                  width: "100%",
+                  height: "100%",
                   right: 0,
                   bottom: 0,
-                  background: "#0091FF",
-                  opacity: 0.2,
+                  background: current.accentColor,
+                  opacity: 0.08,
                   filter: "blur(65px)",
                   borderRadius: "50%",
                 }}
@@ -339,10 +340,9 @@ export default function IndustriesPage() {
 
               {/* Industry title */}
               <h2
+                className="text-3xl md:text-4xl font-bold"
                 style={{
                   fontFamily: "'Urbanist', sans-serif",
-                  fontWeight: 700,
-                  fontSize: 36,
                   lineHeight: 1,
                   color: current.accentColor,
                 }}
@@ -352,35 +352,30 @@ export default function IndustriesPage() {
 
               {/* Description */}
               <p
+                className="text-base md:text-lg opacity-80 leading-relaxed"
                 style={{
                   fontFamily: "'Urbanist', sans-serif",
                   fontWeight: 400,
-                  fontSize: 17,
-                  lineHeight: "20px",
                   color: "rgba(255,255,255,0.70)",
-                  maxWidth: 428,
+                  maxWidth: 500,
                 }}
               >
                 {current.description}
               </p>
 
               {/* Key features */}
-              <div>
+              <div className="mt-2">
                 <p
+                  className="text-sm md:text-base font-bold text-white mb-3 tracking-wider uppercase"
                   style={{
                     fontFamily: "'Urbanist', sans-serif",
-                    fontWeight: 700,
-                    fontSize: 16,
-                    lineHeight: "20px",
-                    color: "#FFFFFF",
-                    marginBottom: 6,
                   }}
                 >
-                  Key Features:
+                  Key Highlights:
                 </p>
-                <ul className="flex flex-col gap-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {current.features.map((f, i) => (
-                    <motion.li
+                    <motion.div
                       key={f}
                       initial={{ opacity: 0, x: 10 }}
                       animate={{
@@ -392,22 +387,22 @@ export default function IndustriesPage() {
                           ease: "easeOut",
                         },
                       }}
+                      className="flex items-center gap-2 text-sm md:text-base text-white/70"
                       style={{
                         fontFamily: "'Urbanist', sans-serif",
                         fontWeight: 400,
-                        fontSize: 16,
-                        lineHeight: "20px",
-                        color: "rgba(255,255,255,0.70)",
                       }}
                     >
-                      – {f}
-                    </motion.li>
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: current.accentColor }} />
+                      {f}
+                    </motion.div>
                   ))}
-                </ul>
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </motion.div>
+
 
         {/* Controls: prev / dots / next */}
         <motion.div

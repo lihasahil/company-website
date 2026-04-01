@@ -24,8 +24,18 @@ import {
 const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState("services");
   const [expanded, setExpanded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const sectionRef = useRef(null);
+
+  React.useEffect(() => {
+    setMounted(true);
+    const checkDesktop = () => setIsDesktop(window.innerWidth > 1024);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   // 🔥 Scroll tracking
   const { scrollYProgress } = useScroll({
@@ -173,12 +183,15 @@ const ServicesSection = () => {
         </motion.h2>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full max-w-[1400px] h-[400px] lg:h-[500px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full max-w-[1400px]">
 
           {/* LEFT CARD */}
           <motion.div
-            style={{ x: leftX, opacity: leftOpacity }}
-            className="lg:col-span-5 relative rounded-[32px] overflow-hidden bg-[#050505] shadow-2xl"
+            style={{ 
+              x: isDesktop ? leftX : 0, 
+              opacity: leftOpacity 
+            }}
+            className="lg:col-span-5 relative rounded-[32px] overflow-hidden bg-[#050505] shadow-2xl min-h-[300px] lg:h-full"
           >
             <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-[radial-gradient(ellipse_at_top_left,rgba(37,99,235,0.45)_0%,rgba(0,0,0,0)_60%)] z-0" />
 
@@ -206,7 +219,7 @@ const ServicesSection = () => {
               <ServicePulse d="M 0 450 H 800" delay={2.8} />
             </svg>
 
-            <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12">
+            <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12 min-h-[300px]">
               <p className="text-lg md:text-[22px] text-white/90">
                 Try Our AI Solutions that Power Modern Businesses with Cutting-Edge Technology.
               </p>
@@ -215,21 +228,24 @@ const ServicesSection = () => {
 
           {/* RIGHT CARD */}
           <motion.div
-            style={{ x: rightX, opacity: rightOpacity }}
-            className="lg:col-span-7 bg-[#111111] rounded-[32px] p-4 md:p-8 flex flex-col justify-between shadow-2xl"
+            style={{ 
+              x: isDesktop ? rightX : 0, 
+              opacity: rightOpacity 
+            }}
+            className="lg:col-span-7 bg-[#111111] rounded-[32px] p-6 md:p-10 flex flex-col gap-8 shadow-2xl"
           >
             <div>
-              <p className="text-white/95 text-base md:text-lg mb-4">
+              <p className="text-white/95 text-base md:text-lg mb-6 leading-relaxed">
                 We deliver tailored technology solutions across diverse industries, helping businesses adapt, innovate, and grow in a rapidly evolving digital landscape. Our expertise allows us to understand industry-specific challenges and build solutions that drive real impact.
               </p>
 
-              <button className="px-6 py-3 rounded-full bg-[#0ea5e9] text-white">
+              <button className="px-8 py-3.5 rounded-full bg-[#0ea5e9] text-white font-semibold hover:bg-[#0284c7] transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(14,165,233,0.3)]">
                 Industries we've innovated
               </button>
             </div>
 
             {/* Tags */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
               {activeData.map((item, index) => (
                 <motion.div
                   key={item.name}
@@ -240,10 +256,12 @@ const ServicesSection = () => {
                       [0, 1]
                     ),
                   }}
-                  className="flex items-center gap-3 px-4 py-3 rounded-full bg-[#1a1a1a] border border-[#2a2a2a]"
+                  className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#1a1a1a] border border-[#2a2a2a] hover:bg-[#222] hover:border-[#334155] transition-all"
                 >
-                  <item.icon size={16} className="text-[#0ea5e9]" />
-                  <span className="text-gray-300 text-sm">
+                  <div className="w-8 h-8 rounded-lg bg-sky-500/10 flex items-center justify-center shrink-0">
+                    <item.icon size={18} className="text-[#0ea5e9]" />
+                  </div>
+                  <span className="text-gray-300 text-sm md:text-base font-medium">
                     {item.name}
                   </span>
                 </motion.div>
@@ -252,6 +270,7 @@ const ServicesSection = () => {
           </motion.div>
 
         </div>
+
       </div>
     </section>
   );

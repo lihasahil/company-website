@@ -2,11 +2,19 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function UnleashPage() {
   const sectionRef = useRef(null);
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth > 1024);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -74,19 +82,22 @@ export default function UnleashPage() {
 
         {/* Content */}
         <div
-          className="flex justify-around items-center gap-2 mt-10"
+          className="flex flex-col lg:flex-row justify-around items-center gap-12 lg:gap-2 mt-10 px-6 overflow-y-auto lg:overflow-visible h-[80vh] lg:h-auto"
           style={{ position: "relative", zIndex: 2, color: "white" }}
         >
           {/* Left — slides in from left */}
           <motion.div
-            style={{ x: leftX, opacity: leftOpacity }}
-            className="flex flex-col gap-6"
+            style={{ 
+              x: isDesktop ? leftX : 0, 
+              opacity: leftOpacity 
+            }}
+            className="flex flex-col gap-6 scale-90 md:scale-100"
           >
-            <div className="p-4 w-56 h-98 rounded-3xl border border-[#F2F2F2] relative overflow-hidden">
+            <div className="p-4 w-56 h-98 rounded-3xl border border-white/20 relative overflow-hidden bg-black/20 backdrop-blur-sm">
               <div
                 className="absolute inset-0 rounded-3xl"
                 style={{
-                  background: `radial-gradient(61.14% 90% at 50% 50%, rgba(0,0,0,0.95) 75%, rgba(0,0,0,0) 100%), url('/card.gif')`,
+                  background: `radial-gradient(61.14% 90% at 50% 50%, rgba(0,0,0,0.9) 75%, rgba(0,0,0,0) 100%), url('/card.gif')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -98,37 +109,37 @@ export default function UnleashPage() {
                     <br />
                     Clients
                   </span>
-                  <span className="text-[1.5rem] text-[#F2F2F2]">50+</span>
+                  <span className="text-[1.5rem] text-[#F2F2F2] font-semibold">50+</span>
                 </div>
                 <div className="flex justify-center items-end gap-2">
                   <img src="/stars.svg" alt="" />
                 </div>
-                <span className="text-[0.9rem] font-light text-[#F2F2F2]">
+                <span className="text-[0.9rem] font-light text-[#F2F2F2]/80 leading-relaxed">
                   Trusted by 99+ partners, we transform complex data into
                   measurable ROI. Join the leaders scaling their future with our
                   precision AI solutions.
                 </span>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-between p-4 border border-[#F2F2F2] rounded-3xl w-56 h-64">
-              <div className="flex flex-col gap-2">
+            <div className="flex flex-col items-center justify-between p-6 border border-white/20 rounded-3xl w-56 h-64 bg-black/20 backdrop-blur-sm">
+              <div className="flex flex-col gap-4 w-full">
                 <div className="flex justify-between items-start">
                   <span className="text-[1rem] font-light text-[#F2F2F2]">
                     Projects
                     <br />
                     Completed
                   </span>
-                  <span className="text-[1.5rem] text-[#F2F2F2] leading-none">
+                  <span className="text-[1.5rem] text-[#F2F2F2] leading-none font-semibold">
                     50<sup className="text-[0.6rem] align-super">+</sup>
                   </span>
                 </div>
-                <div className="flex justify-between items-start gap-15">
+                <div className="flex justify-between items-start gap-4">
                   <span className="text-[1rem] font-light text-[#F2F2F2]">
                     Dedicated
                     <br />
                     Support
                   </span>
-                  <span className="text-[1.5rem] text-[#F2F2F2]">24/7</span>
+                  <span className="text-[1.5rem] text-[#F2F2F2] font-semibold">24/7</span>
                 </div>
                 <div className="flex justify-between items-start">
                   <span className="text-[1rem] font-light text-[#F2F2F2]">
@@ -136,12 +147,12 @@ export default function UnleashPage() {
                     <br />
                     Retention
                   </span>
-                  <span className="text-[1.5rem] text-[#F2F2F2] leading-none">
+                  <span className="text-[1.5rem] text-[#F2F2F2] leading-none font-semibold">
                     92<sup className="text-[0.6rem] align-super">%</sup>
                   </span>
                 </div>
               </div>
-              <button className="bg-[#056DBC] rounded-full p-2">
+              <button className="bg-[#056DBC] hover:bg-[#0284c7] transition-colors rounded-full px-6 py-2 text-sm font-medium w-full mt-4">
                 Read Case Studies
               </button>
             </div>
@@ -150,73 +161,76 @@ export default function UnleashPage() {
           {/* Center — rises from bottom */}
           <motion.div
             style={{ y: centerY, opacity: centerOpacity }}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center order-first lg:order-none"
           >
-            <div className="max-w-7xl mx-auto text-center">
-              <h1 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+            <div className="max-w-7xl mx-auto text-center px-4">
+              <h1 className="text-4xl md:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
                 Unleash your full Potential
               </h1>
-              <div className="flex items-center -ml-35 justify-center gap-4">
-                <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-2">
+                <h2 className="text-4xl md:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
                   with Next Wave AI
                 </h2>
-                <img src="/nxt.svg" className="w-10" />
+                <img src="/nxt.svg" alt="icon" className="w-8 md:w-10" />
               </div>
-              <p className="text-left font-light text-md mt-20">
+              <p className="text-center lg:text-left font-light text-base md:text-lg mt-12 md:mt-20 max-w-xl mx-auto opacity-80">
                 NextWaveAI builds AI-powered chatbots, scalable backend systems,
-                and automation
-                <br /> solutions for businesses across industries.
+                and automation solutions for businesses across industries.
               </p>
             </div>
           </motion.div>
 
           {/* Right — slides in from right */}
           <motion.div
-            style={{ x: rightX, opacity: rightOpacity }}
-            className="flex flex-col gap-6"
+            style={{ 
+              x: isDesktop ? rightX : 0, 
+              opacity: rightOpacity 
+            }}
+            className="flex flex-col gap-6 scale-90 md:scale-100"
           >
-            <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-3xl w-56 h-98">
+            <div className="flex flex-col items-start justify-between p-6 border border-white/20 rounded-3xl w-56 h-98 bg-black/20 backdrop-blur-sm">
               <div className="flex justify-between">
-                <span className="text-2xl">
+                <span className="text-2xl font-medium">
                   Insights &<br />
                   Stories
                 </span>
               </div>
-              <img src="/design1.gif" alt="" className="w-full h-auto" />
-              <span className="text-[0.8rem]">
+              <img src="/design1.gif" alt="Design" className="w-full h-auto rounded-xl my-4" />
+              <span className="text-[0.8rem] text-white/60">
                 How our services shape industries.
               </span>
             </div>
-            <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-2xl w-56 h-64">
-              <h1 className="text-2xl">
+            <div className="flex flex-col items-start justify-between p-6 border border-white/20 rounded-3xl w-56 h-64 bg-black/20 backdrop-blur-sm">
+              <h1 className="text-2xl font-medium">
                 Masters of <br />
                 Agentic AI
               </h1>
               <div className="grid grid-cols-2 gap-4 items-center mt-4 mx-auto">
                 <img
                   src="/view.svg"
-                  alt=""
-                  className="bg-[#3798E3] rounded-full p-5"
+                  alt="View"
+                  className="bg-[#3798E3] rounded-full p-3 w-12 h-12"
                 />
                 <img
                   src="/robot.svg"
-                  alt=""
-                  className="rounded-full border border-[#FFFFFF] p-5"
+                  alt="Robot"
+                  className="rounded-full border border-white/20 p-3 w-12 h-12"
                 />
                 <img
                   src="/roarm.svg"
-                  alt=""
-                  className="rounded-full border border-[#FFFFFF] p-5"
+                  alt="Arm"
+                  className="rounded-full border border-white/20 p-3 w-12 h-12"
                 />
                 <img
                   src="/editing.svg"
-                  alt=""
-                  className="rounded-full border border-[#FFFFFF] p-5"
+                  alt="Editing"
+                  className="rounded-full border border-white/20 p-3 w-12 h-12"
                 />
               </div>
             </div>
           </motion.div>
         </div>
+
       </div>
     </section>
   );

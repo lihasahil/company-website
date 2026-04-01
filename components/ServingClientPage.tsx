@@ -160,23 +160,22 @@ export default function ServingClientPage() {
       >
         {/* SCREEN 1: Text */}
         <div
-          className="absolute top-0 left-0 right-0 z-10 mt-20 flex flex-col items-center pt-16 text-center px-4 pointer-events-none"
+          className="absolute top-0 left-0 right-0 z-10 mt-6 md:mt-12 flex flex-col items-center pt-8 md:pt-16 text-center px-6 pointer-events-none"
           style={{
             opacity: s.textOpacity,
             transform: `translateY(${s.textY}px)`,
           }}
         >
-          <h1 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent pb-8">
+          <h1 className="text-4xl md:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent pb-4 md:pb-8">
             Serving Clients Globally
           </h1>
-          <p className="text-[#FFFFFF] font-light mb-1">
+          <p className="text-[#FFFFFF]/80 font-light text-sm md:text-base mb-1">
             Building solutions for a connected world.
           </p>
-          <p className="text-[#FFFFFF] font-light text-base mb-6">
-            Delivering scalable technology that adapts across borders and
-            markets.
+          <p className="text-[#FFFFFF]/60 font-light text-xs md:text-base mb-6 max-w-xs md:max-w-none">
+            Delivering scalable technology that adapts across borders and markets.
           </p>
-          <h2 className="text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
             10+ Countries
           </h2>
         </div>
@@ -185,35 +184,31 @@ export default function ServingClientPage() {
         <div
           className="absolute left-0 right-0 flex justify-center pointer-events-none z-10"
           style={{
-            top: "40%",
+            top: "45%",
             transform: `translateY(calc(-50% + ${s.globeY}px))`,
           }}
         >
-          <img
-            src="/globe.gif"
-            alt="Globe"
-            style={{
-              width: "550px",
-              height: "550px",
-              objectFit: "cover",
-              borderRadius: "50%",
-              flexShrink: 0,
-            }}
-          />
+          <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] lg:w-[550px] lg:h-[550px] shrink-0">
+            <img
+              src="/globe.gif"
+              alt="Globe"
+              className="w-full h-full object-cover rounded-full"
+            />
+          </div>
         </div>
 
         {/* SCREEN 2: FAQ Title */}
         <div
-          className="absolute bottom-12 left-0 right-0 z-20 flex flex-col items-center text-center px-4 pointer-events-none"
+          className="absolute bottom-12 left-0 right-0 z-20 flex flex-col items-center text-center px-6 pointer-events-none"
           style={{
             opacity: s.faqTitleOpacity,
             transform: `translateY(${s.faqTitleY}px)`,
           }}
         >
-          <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
+          <h2 className="text-4xl md:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
             Frequently Asked Questions
           </h2>
-          <p className="text-[#FFFFFF] font-thin text-sm max-w-7xl text-center mb-10">
+          <p className="text-[#FFFFFF]/60 font-thin text-xs md:text-sm max-w-2xl text-center mb-10">
             Find answers to common questions about NextWaveAI, our services, and
             how we can help your business grow.
           </p>
@@ -232,15 +227,15 @@ export default function ServingClientPage() {
             style={{ backgroundColor: "#000" }}
           />
           <div className="relative z-10 w-full flex flex-col items-center pointer-events-none">
-            <h2 className="text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
+            <h2 className="text-4xl md:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-4 md:mb-6 text-center">
               Frequently Asked Questions
             </h2>
-            <p className="text-[#FFFFFF] font-thin text-sm max-w-7xl text-center mb-10">
+            <p className="text-[#FFFFFF]/60 font-thin text-xs md:text-sm max-w-2xl text-center mb-8 md:mb-12">
               Find answers to common questions about NextWaveAI, our services,
               and how we can help your business grow.
             </p>
             <div
-              className="w-full max-w-7xl flex flex-col gap-3"
+              className="w-full max-w-4xl flex flex-col gap-3 md:gap-4"
               style={{ pointerEvents: isScreen3 ? "auto" : "none" }}
             >
               {faqs.map((faq, i) => (
@@ -249,6 +244,7 @@ export default function ServingClientPage() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
