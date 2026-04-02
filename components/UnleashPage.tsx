@@ -3,7 +3,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, cubicBezier } from "framer-motion";
 
 export default function UnleashPage() {
   const sectionRef = useRef(null);
@@ -21,22 +21,54 @@ export default function UnleashPage() {
   );
 
   const entranceProgress = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
-
   const leftX = useTransform(entranceProgress, [0, 1], ["-80px", "0px"]);
   const leftOpacity = useTransform(entranceProgress, [0, 0.5], [0, 1]);
-
   const centerY = useTransform(entranceProgress, [0, 1], ["60px", "0px"]);
   const centerOpacity = useTransform(entranceProgress, [0, 0.6], [0, 1]);
-
   const rightX = useTransform(entranceProgress, [0, 1], ["80px", "0px"]);
   const rightOpacity = useTransform(entranceProgress, [0, 0.5], [0, 1]);
+
+  // Shared animation config
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (delay: number = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
+    }),
+  };
+
+  const slideLeft = {
+    hidden: { opacity: 0, x: -60 },
+    visible: (delay: number = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
+    }),
+  };
+
+  const slideRight = {
+    hidden: { opacity: 0, x: 60 },
+    visible: (delay: number = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
+    }),
+  };
 
   return (
     <>
       {/* ── MOBILE / TABLET layout (hidden on lg+) ── */}
-      <section className="flex lg:hidden flex-col items-center justify-start bg-black text-white py-10 px-5 gap-6">
-        {/* Heading */}
-        <div className="text-center w-full pt-10">
+      <section className="flex lg:hidden flex-col items-center justify-start bg-black text-white py-10 px-5 gap-6 overflow-hidden">
+        {/* Heading — fades up from bottom */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          custom={0}
+          className="text-center w-full pt-10"
+        >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
             Unleash your full Potential
           </h1>
@@ -50,12 +82,19 @@ export default function UnleashPage() {
             NextWaveAI builds AI-powered chatbots, scalable backend systems, and
             automation solutions for businesses across industries.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Cards — vertical stack, full width */}
+        {/* Cards */}
         <div className="w-full flex flex-col items-center gap-4 pb-20">
-          {/* Card 1 — Satisfied Clients */}
-          <div className="p-5 w-full max-w-md h-80 rounded-3xl border border-[#F2F2F2] relative overflow-hidden">
+          {/* Card 1 — slides in from LEFT */}
+          <motion.div
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0}
+            className="p-5 w-full max-w-md h-80 rounded-3xl border border-[#F2F2F2] relative overflow-hidden"
+          >
             <div
               className="absolute inset-0 rounded-3xl"
               style={{
@@ -82,10 +121,17 @@ export default function UnleashPage() {
                 precision AI solutions.
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Card 2 — Stats */}
-          <div className="flex flex-col items-center justify-between p-5 border border-[#F2F2F2] rounded-3xl w-full max-w-md h-64">
+          {/* Card 2 — slides in from RIGHT */}
+          <motion.div
+            variants={slideRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0.05}
+            className="flex flex-col items-center justify-between p-5 border border-[#F2F2F2] rounded-3xl w-full max-w-md h-64"
+          >
             <div className="flex flex-col gap-3 w-full">
               <div className="flex justify-between items-start">
                 <span className="text-base font-light text-[#F2F2F2]">
@@ -115,10 +161,17 @@ export default function UnleashPage() {
             <button className="bg-[#056DBC] rounded-full px-4 py-2.5 text-sm text-white w-full">
               Read Case Studies
             </button>
-          </div>
+          </motion.div>
 
-          {/* Card 3 — Insights */}
-          <div className="flex flex-col items-start justify-between p-5 border border-[#F2F2F2] rounded-3xl w-full max-w-md h-80">
+          {/* Card 3 — slides in from LEFT */}
+          <motion.div
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0.05}
+            className="flex flex-col items-start justify-between p-5 border border-[#F2F2F2] rounded-3xl w-full max-w-md h-80"
+          >
             <span className="text-xl">
               Insights &<br />
               Stories
@@ -131,10 +184,17 @@ export default function UnleashPage() {
             <span className="text-sm text-white/70">
               How our services shape industries.
             </span>
-          </div>
+          </motion.div>
 
-          {/* Card 4 — Agentic AI */}
-          <div className="flex flex-col items-start justify-between p-5 border border-[#F2F2F2] rounded-2xl w-full max-w-md h-64">
+          {/* Card 4 — slides in from RIGHT */}
+          <motion.div
+            variants={slideRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0.05}
+            className="flex flex-col items-start justify-between p-5 border border-[#F2F2F2] rounded-2xl w-full max-w-md h-64"
+          >
             <h1 className="text-xl">
               Masters of <br />
               Agentic AI
@@ -161,7 +221,7 @@ export default function UnleashPage() {
                 className="rounded-full border border-[#FFFFFF] p-5"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -170,7 +230,6 @@ export default function UnleashPage() {
         ref={sectionRef}
         className="hidden lg:block relative lg:h-[200vh]"
       >
-        {/* Sticky wrapper — fixed on desktop */}
         <div
           className="sticky top-0 overflow-hidden"
           style={{ height: "100vh" }}
@@ -203,7 +262,7 @@ export default function UnleashPage() {
             />
           </motion.div>
 
-          {/* ── DESKTOP layout (lg+) ── */}
+          {/* Desktop 3-col layout */}
           <div
             className="hidden lg:flex justify-around items-center gap-2 mt-10"
             style={{ position: "relative", zIndex: 2, color: "white" }}
