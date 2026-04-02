@@ -44,10 +44,14 @@ const Header = () => {
     <>
       <motion.div
         style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
           display: "flex",
           justifyContent: "center",
         }}
-        className="fixed top-0 left-0 right-0 lg:static z-100"
       >
         <motion.nav
           style={{ scaleX, scaleY, y, borderRadius: radius }}
