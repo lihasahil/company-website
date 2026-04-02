@@ -85,13 +85,12 @@ export default function ServingClientPage() {
     textOpacity: 1,
     textY: 0,
     faqTitleOpacity: 0,
-    faqTitleY: 40,
+    faqTitleScale: 1.4,
     faqAccOpacity: 0,
-    faqAccY: 60,
+    faqAccY: 30,
     p: 0,
   });
 
-  // Detect mobile
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 1024);
     check();
@@ -121,24 +120,10 @@ export default function ServingClientPage() {
         globeY,
         textOpacity: mix(norm(p, 0, 0.2), 1, 0),
         textY: mix(norm(p, 0, 0.2), 0, -80),
-        faqTitleOpacity:
-          p < 0.3
-            ? 0
-            : p < 0.38
-              ? mix(norm(p, 0.3, 0.38), 0, 1)
-              : p < 0.58
-                ? 1
-                : mix(norm(p, 0.58, 0.66), 1, 0),
-        faqTitleY:
-          p < 0.3
-            ? 40
-            : p < 0.38
-              ? mix(norm(p, 0.3, 0.38), 40, 0)
-              : p < 0.58
-                ? 0
-                : mix(norm(p, 0.58, 0.66), 0, -40),
-        faqAccOpacity: mix(norm(p, 0.68, 0.82), 0, 1),
-        faqAccY: mix(norm(p, 0.68, 0.82), 60, 0),
+        faqTitleOpacity: mix(norm(p, 0.28, 0.38), 0, 1),
+        faqTitleScale: mix(norm(p, 0.28, 0.68), 1.4, 1),
+        faqAccOpacity: mix(norm(p, 0.65, 0.78), 0, 1),
+        faqAccY: mix(norm(p, 0.65, 0.78), 30, 0),
         p,
       });
     };
@@ -152,16 +137,15 @@ export default function ServingClientPage() {
     };
   }, []);
 
-  const isScreen3 = s.p >= 0.68;
+  const isScreen3 = s.p >= 0.65;
 
-  // ── MOBILE: static layout, no scroll animations ──
+  // ── MOBILE ──
   if (isMobile) {
     return (
       <section
         ref={sectionRef}
         className="relative w-full bg-black text-white py-16 px-5 flex flex-col items-center gap-16"
       >
-        {/* Screen 1: Heading + Globe */}
         <div className="flex flex-col items-center text-center gap-6 w-full">
           <h1 className="text-3xl sm:text-4xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
             Serving Clients Globally
@@ -182,7 +166,6 @@ export default function ServingClientPage() {
           />
         </div>
 
-        {/* Screen 2 + 3: FAQ */}
         <div className="flex flex-col items-center text-center gap-6 w-full max-w-2xl">
           <h2 className="text-2xl sm:text-3xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
             Frequently Asked Questions
@@ -201,7 +184,7 @@ export default function ServingClientPage() {
     );
   }
 
-  // ── DESKTOP: original scroll-animated layout ──
+  // ── DESKTOP ──
   return (
     <section
       ref={sectionRef}
@@ -216,7 +199,7 @@ export default function ServingClientPage() {
         }}
         className="pointer-events-none"
       >
-        {/* SCREEN 1: Text */}
+        {/* SCREEN 1: Hero Text */}
         <div
           className="absolute top-0 left-0 right-0 z-10 mt-6 md:mt-12 flex flex-col items-center pt-8 md:pt-16 text-center px-6 pointer-events-none"
           style={{
@@ -260,54 +243,60 @@ export default function ServingClientPage() {
           />
         </div>
 
-        {/* SCREEN 2: FAQ Title */}
+        {/* SCREEN 2 → 3: Unified FAQ — title animates from below up to above accordion */}
         <div
-          className="absolute bottom-12 left-0 right-0 z-20 flex flex-col items-center text-center px-6 pointer-events-none"
-          style={{
-            opacity: s.faqTitleOpacity,
-            transform: `translateY(${s.faqTitleY}px)`,
-          }}
+          className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 lg:px-8 xl:px-12 pointer-events-none"
+          style={{ opacity: s.faqTitleOpacity }}
         >
-          <h2 className="text-4xl xl:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-[#FFFFFF] font-thin text-xs xl:text-sm max-w-2xl mb-10">
-            Find answers to common questions about NextWaveAI, our services, and
-            how we can help your business grow.
-          </p>
-        </div>
-
-        {/* SCREEN 3: FAQ Accordion */}
-        <div
-          className="absolute inset-0 z-30 flex flex-col items-center justify-center px-4 lg:px-8 xl:px-12 pointer-events-none"
-          style={{
-            opacity: s.faqAccOpacity,
-            transform: `translateY(${s.faqAccY}px)`,
-          }}
-        >
+          {/* Black overlay fades in as accordion appears */}
           <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ backgroundColor: "#000" }}
+            className="absolute inset-0"
+            style={{
+              backgroundColor: "#000",
+              opacity: s.faqAccOpacity,
+            }}
           />
-          <div className="relative z-10 w-full flex flex-col items-center pointer-events-none">
-            <h2 className="text-4xl xl:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent mb-3 text-center">
+
+          {/* Title + subtitle: starts large and from below globe, shrinks and moves up */}
+          <div
+            className="relative z-10 flex flex-col items-center w-full transition-none"
+            style={{
+              transform: `translateY(${mix(norm(s.faqTitleScale, 1, 1.4), 0, 60)}vh)`,
+            }}
+          >
+            <h2
+              className="bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent font-medium text-center mb-3 leading-tight"
+              style={{
+                fontSize: `clamp(1.8rem, ${mix(norm(s.faqTitleScale, 1, 1.4), 3.5, 5.5)}vw, ${mix(norm(s.faqTitleScale, 1, 1.4), 3.75, 6)}rem)`,
+              }}
+            >
               Frequently Asked Questions
             </h2>
-            <p className="text-[#FFFFFF] font-thin text-xs xl:text-sm max-w-2xl text-center mb-8">
+            <p
+              className="text-[#FFFFFF] font-thin text-xs xl:text-sm max-w-2xl text-center"
+              style={{
+                opacity: norm(s.faqTitleScale, 1.15, 1.0),
+              }}
+            >
               Find answers to common questions about NextWaveAI, our services,
               and how we can help your business grow.
             </p>
-            <div
-              className="w-full max-w-3xl xl:max-w-5xl flex flex-col gap-3"
-              style={{ pointerEvents: isScreen3 ? "auto" : "none" }}
-            >
-              {faqs.map((faq, i) => (
-                <FAQItem key={i} question={faq.question} answer={faq.answer} />
-              ))}
-            </div>
+          </div>
+
+          {/* Accordion: fades in below the title */}
+          <div
+            className="relative z-10 w-full max-w-3xl xl:max-w-5xl flex flex-col gap-3 mt-8"
+            style={{
+              opacity: s.faqAccOpacity,
+              transform: `translateY(${s.faqAccY}px)`,
+              pointerEvents: isScreen3 ? "auto" : "none",
+            }}
+          >
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} question={faq.question} answer={faq.answer} />
+            ))}
           </div>
         </div>
-
       </div>
     </section>
   );
