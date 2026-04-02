@@ -52,7 +52,7 @@ export default function Footer() {
           className="flex flex-col lg:flex-row justify-between items-start gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-10 lg:mb-12"
         >
           {/* LEFT — Logo + Socials */}
-          <div className="flex flex-col gap-6 sm:gap-8 w-full lg:min-w-[214px]">
+          <div className="flex flex-col gap-6 sm:gap-8 w-full lg:min-w-53.5">
             {/* Logo */}
             <Link
               href="/"
@@ -112,7 +112,7 @@ export default function Footer() {
           </div>
 
           {/* CENTER + RIGHT — Nav columns */}
-          <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap justify-start sm:justify-between lg:justify-center gap-8 sm:gap-12 lg:gap-20 xl:gap-[140px] w-full ">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap justify-start sm:justify-between lg:justify-center gap-8 sm:gap-12 lg:gap-20 xl:gap-35 w-full ">
             {/* Quick Link */}
             <motion.div
               variants={makeFadeUp(0.1)}
@@ -121,7 +121,7 @@ export default function Footer() {
               viewport={{ once: false, amount: 0.2 }}
               className="flex flex-col gap-4 sm:gap-6"
             >
-              <span className="text-[#FAFAFA] font-semibold text-[18px] sm:text-[20px] lg:text-[22px] tracking-[0.02em]">
+              <span className="text-[#FAFAFA] font-semibold text-[18px] text-nowrap tracking-[0.02em]">
                 Quick Link
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
@@ -156,7 +156,7 @@ export default function Footer() {
               viewport={{ once: false, amount: 0.2 }}
               className="flex flex-col gap-4 sm:gap-6"
             >
-              <span className="text-[#FAFAFA] font-semibold text-[18px] sm:text-[20px] lg:text-[22px] tracking-[0.02em]">
+              <span className="text-[#FAFAFA] font-semibold text-[18px] text-nowrap tracking-[0.02em]">
                 Customer Service
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
@@ -182,7 +182,7 @@ export default function Footer() {
                 </Link>
                 <Link
                   href="/careers"
-                  className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
+                  className="text-[#B9B3B3] text-[16px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                 >
                   Careers
                 </Link>
@@ -197,7 +197,7 @@ export default function Footer() {
               viewport={{ once: false, amount: 0.2 }}
               className="flex flex-col gap-4 sm:gap-6 w-full sm:w-auto"
             >
-              <span className="text-[#FAFAFA] font-semibold text-[18px] sm:text-[20px] lg:text-[22px] tracking-[0.02em]">
+              <span className="text-[#FAFAFA] font-semibold text-[18px] tracking-[0.02em]">
                 Contact Info
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
@@ -217,7 +217,7 @@ export default function Footer() {
                     <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
-                  <span className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] leading-[140%] whitespace-nowrap">
+                  <span className="text-[#B9B3B3] text-[16px] leading-[140%] whitespace-nowrap">
                     123 Street, Kathmandu Nepal
                   </span>
                 </div>
@@ -236,7 +236,7 @@ export default function Footer() {
                   >
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.28a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                   </svg>
-                  <span className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] leading-[140%] whitespace-nowrap">
+                  <span className="text-[#B9B3B3] text-[16px] leading-[140%] whitespace-nowrap">
                     +977 9876543210
                   </span>
                 </div>
@@ -256,7 +256,7 @@ export default function Footer() {
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
-                  <span className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] leading-[140%] whitespace-nowrap">
+                  <span className="text-[#B9B3B3] text-[16px] leading-[140%] whitespace-nowrap">
                     nextwaveai@gmail.com
                   </span>
                 </div>
@@ -274,7 +274,7 @@ export default function Footer() {
           className="flex flex-col gap-6 sm:gap-8 lg:gap-9"
         >
           <div className="w-full h-px bg-[#F9F9FB]" />
-          <p className="text-center text-[#F9F9FB] text-[14px] sm:text-[16px] lg:text-[18px] tracking-[0.04em] px-4">
+          <p className="text-center text-[#F9F9FB] text-[14px] sm:text-[16px] tracking-[0.04em] px-4">
             Privacy and policy © Copyright 2025. NEXTWAVEAI
           </p>
         </motion.div>
@@ -287,7 +287,7 @@ export default function Footer() {
           style={{
             fontSize: "clamp(60px, 18vw, 220px)",
             background:
-              "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
+              "linear-gradient(1.48deg, #000000 -4.77%, #8C8C8C 15.82%, #FFFFFF 94.85%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -298,6 +298,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-
   );
 }
