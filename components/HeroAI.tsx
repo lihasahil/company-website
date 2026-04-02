@@ -153,40 +153,55 @@ const HeroAI = () => {
       </div>
 
       {/* HERO CONTENT */}
-      <div className="relative z-20 flex flex-col items-center text-center pt-24 md:pt-32 px-4">
+      <div className="relative z-20 flex flex-col items-center text-center pt-8 md:pt-32 px-4">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4 bg-clip-text text-transparent leading-[1.1]"
-          style={{
+          className="text-5xl  md:text-7xl font-bold tracking-tighter mb-12 md:mb-0 bg-clip-text text-transparent leading-[1.1]"
+         
+        >
+          <span
+           style={{
             background: "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
-        >
-          Next-Gen AI and <br className="md:hidden" /> Automation
+          >
+          Next-Gen AI and Automation
+          </span>
         </motion.h1>
 
-        <p className="max-w-2xl text[#f2f2f2] text-base font-light leading-relaxed mb-6 px-4">
+        {/* MOBILE AI NETWORK VISUALIZATION - Only visible on small screens */}
+        <div className="md:hidden relative w-full h-[350px] flex items-center justify-center overflow-hidden">
+          <div className="scale-[3.0] sm:scale-[3.8] transition-transform duration-500 flex items-center justify-center w-full h-full">
+            <img 
+              src="/Circuit.svg" 
+              alt="AI Circuit Visualization" 
+              className="w-[1445px] h-[595px] object-contain shrink-0" 
+            />
+          </div>
+        </div>
+
+        <p className="relative z-30 max-w-2xl text[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-2 px-4 -mt-32 md:mt-0">
           From customer support to complex business workflows, our technology{" "}
           <br className="hidden md:block" />
           helps you reduce costs, increase efficiency, and scale without limits.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-6 sm:px-0">
-          <button className="px-8 py-4 rounded-full bg-[#F2F2F233] text-white font-semibold hover:bg-[#F2F2F233]/20 transition-all border border-[#f2f2f2] text-sm md:text-base">
+        <div className="flex flex-col z-20 sm:flex-row gap-4 w-full sm:w-auto px-6 sm:px-0 pb-2 md:pb-0">
+          <button className="px-4 py-2 rounded-full bg-[#F2F2F233] text-white font-semibold hover:bg-[#F2F2F233]/20 transition-all border border-[#f2f2f2] text-sm md:text-base">
             Learn More About Us
           </button>
-          <button className="px-8 py-4 rounded-full bg-[#056DBC] text-white font-semibold hover:bg-[#056DBC]/80 transition-all text-sm md:text-base">
+          <button className="px-4 py-2 rounded-full bg-[#056DBC] text-white font-semibold hover:bg-[#056DBC]/80 transition-all text-sm md:text-base">
             Free Consultation
           </button>
         </div>
       </div>
 
-      {/* AI NETWORK VISUALIZATION */}
-      <div className="relative z-10 w-full h-[400px] md:h-[600px] mt-4 flex items-center justify-center overflow-hidden">
-        <div className="scale-[0.45] sm:scale-[0.7] md:scale-90 lg:scale-100 transition-transform duration-500 flex items-center justify-center w-full h-full">
+      {/* DESKTOP AI NETWORK VISUALIZATION - Only visible on medium screens and up */}
+      <div className="hidden md:flex relative z-10 w-full h-[560px] items-center justify-center overflow-hidden">
+        <div className="scale-90 lg:scale-100 transition-transform duration-500 flex items-center justify-center w-full h-full">
           <div className="relative w-[1200px] h-[600px] flex items-center justify-center shrink-0">
             {/* SVG CONNECTIONS */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none">

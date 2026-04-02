@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Phone, X, Menu } from "lucide-react";
 import {
@@ -12,6 +12,8 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 
+import { usePathname } from "next/navigation";
+
 const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/industries-served", label: "Industries" },
@@ -21,24 +23,51 @@ const navLinks = [
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleAnchorClick = (e: React.MouseEvent, id: string) => {
+    if (pathname === "/") {
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   const { scrollY } = useScroll();
   const progress = useTransform(scrollY, [0, 100, 500], [0, 0, 1]);
   const smooth = useSpring(progress, { stiffness: 80, damping: 18, mass: 0.8 });
 
-  const scaleX = useTransform(smooth, [0, 1], [1, 0.5]);
-  const scaleY = useTransform(smooth, [0, 1], [1, 0.75]);
-  const invScaleX = useTransform(smooth, [0, 1], [1, 1 / 0.6]);
-  const invScaleY = useTransform(smooth, [0, 1], [1, 1 / 0.75]);
-  const y = useTransform(smooth, [0, 1], [0, 16]);
-  const bgOpacity = useTransform(smooth, [0, 1], [0, 1]);
-  const radius = useTransform(smooth, [0, 1], ["0px", "64px"]);
-  const textOpacity = useTransform(smooth, [0, 0.3], [1, 0]);
-  const brandWidth = useTransform(smooth, [0, 0.3], ["110px", "0px"]);
-  const brandMargin = useTransform(smooth, [0, 0.3], ["12px", "0px"]);
-  const buttonPadding = useTransform(smooth, [0, 0.3], ["20px", "11px"]);
-  const contactTextWidth = useTransform(smooth, [0, 0.3], ["60px", "0px"]);
-  const contactMargin = useTransform(smooth, [0, 0.3], ["8px", "0px"]);
+  // On mobile: no scroll transforms — nav stays full-width and unchanged
+  const scaleX = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 0.5]);
+  const scaleY = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 0.75]);
+  const invScaleX = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 1 / 0.6]);
+  const invScaleY = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 1 / 0.75]);
+  const y = useTransform(smooth, [0, 1], [0, isMobile ? 0 : 16]);
+  const bgOpacity = useTransform(smooth, [0, 1], [0, isMobile ? 0.85 : 1]);
+  const radius = useTransform(smooth, [0, 1], ["0px", isMobile ? "0px" : "64px"]);
+  const textOpacity = useTransform(smooth, [0, 0.3], [1, isMobile ? 1 : 0]);
+  const brandWidth = useTransform(smooth, [0, 0.3], ["110px", isMobile ? "110px" : "0px"]);
+  const brandMargin = useTransform(smooth, [0, 0.3], ["12px", isMobile ? "12px" : "0px"]);
+  const buttonPadding = useTransform(smooth, [0, 0.3], ["20px", isMobile ? "20px" : "11px"]);
+  const contactTextWidth = useTransform(smooth, [0, 0.3], ["60px", isMobile ? "60px" : "0px"]);
+  const contactMargin = useTransform(smooth, [0, 0.3], ["8px", isMobile ? "8px" : "0px"]);
 
   const navLinks = [
     { name: "Services", href: "/services" },
@@ -71,30 +100,36 @@ const Header = () => {
           />
 
           {/* Logo */}
-          <motion.div
-            style={{ scaleX: invScaleX, scaleY: invScaleY, originX: 0 }}
+          <Link
+            href="/"
+            onClick={handleLogoClick}
             className="relative flex items-center z-10 shrink-0"
           >
-            <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full shrink-0">
-              <Image
-                src="/logo1.svg"
-                alt="logo"
-                width={48}
-                height={48}
-                className="brightness-200"
-              />
-            </div>
-            <motion.span
-              style={{
-                width: brandWidth,
-                opacity: textOpacity,
-                marginLeft: brandMargin,
-              }}
-              className="text-lg text-white font-semibold whitespace-nowrap overflow-hidden tracking-tight"
+            <motion.div
+              style={{ scaleX: invScaleX, scaleY: invScaleY, originX: 0 }}
+              className="flex items-center"
             >
-              Next Wave AI
-            </motion.span>
-          </motion.div>
+              <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full shrink-0">
+                <Image
+                  src="/logo1.svg"
+                  alt="logo"
+                  width={48}
+                  height={48}
+                  className="brightness-200"
+                />
+              </div>
+              <motion.span
+                style={{
+                  width: brandWidth,
+                  opacity: textOpacity,
+                  marginLeft: brandMargin,
+                }}
+                className="text-lg text-white font-semibold whitespace-nowrap overflow-hidden tracking-tight"
+              >
+                Next Wave AI
+              </motion.span>
+            </motion.div>
+          </Link>
 
           {/* Desktop nav links */}
           <motion.div
@@ -118,27 +153,33 @@ const Header = () => {
             className="relative z-10 flex items-center gap-3 shrink-0"
           >
             {/* Contact button — hidden on mobile */}
-            <motion.button
-              style={{
-                paddingLeft: buttonPadding,
-                paddingRight: buttonPadding,
-              }}
-              className="hidden sm:flex items-center justify-center h-10 bg-linear-to-b from-[#0ea5e9] to-[#0284c7] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
+            <Link
+              href="/#contact-form"
+              onClick={(e) => handleAnchorClick(e, "contact-form")}
+              className="hidden sm:block shrink-0"
             >
-              <div className="flex items-center justify-center whitespace-nowrap">
-                <Phone size={22} className="shrink-0" />
-                <motion.span
-                  style={{
-                    width: contactTextWidth,
-                    opacity: textOpacity,
-                    marginLeft: contactMargin,
-                  }}
-                  className="font-semibold text-sm overflow-hidden"
-                >
-                  Contact
-                </motion.span>
-              </div>
-            </motion.button>
+              <motion.button
+                style={{
+                  paddingLeft: buttonPadding,
+                  paddingRight: buttonPadding,
+                }}
+                className="flex items-center justify-center h-10 w-full bg-linear-to-b from-[#0ea5e9] to-[#0284c7] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
+              >
+                <div className="flex items-center justify-center whitespace-nowrap">
+                  <Phone size={22} className="shrink-0" />
+                  <motion.span
+                    style={{
+                      width: contactTextWidth,
+                      opacity: textOpacity,
+                      marginLeft: contactMargin,
+                    }}
+                    className="font-semibold text-sm overflow-hidden"
+                  >
+                    Contact
+                  </motion.span>
+                </div>
+              </motion.button>
+            </Link>
 
             {/* Hamburger — mobile only */}
             <button
@@ -230,8 +271,11 @@ const Header = () => {
                 className="mt-auto px-5 pb-8"
               >
                 <Link
-                  href="/contact"
-                  onClick={() => setMenuOpen(false)}
+                  href="/#contact-form"
+                  onClick={(e) => {
+                    handleAnchorClick(e, "contact-form");
+                    setMenuOpen(false);
+                  }}
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-linear-to-b from-[#0ea5e9] to-[#0284c7] text-white font-semibold text-sm shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:brightness-110 transition-all"
                 >
                   <Phone size={16} />

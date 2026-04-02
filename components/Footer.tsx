@@ -3,6 +3,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const makeFadeUp = (delay: number): Variants => ({
   hidden: { opacity: 0, y: 40 },
@@ -18,6 +19,26 @@ const makeFadeUp = (delay: number): Variants => ({
 });
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const handleScrollToTop = (e: React.MouseEvent) => {
+    const href = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
+    if (pathname === "/" && href === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleAnchorClick = (e: React.MouseEvent, id: string) => {
+    if (pathname === "/") {
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <footer className="relative w-full overflow-hidden bg-[#0D0D0D] font-[Urbanist,sans-serif]">
       {/* Top content */}
@@ -33,7 +54,11 @@ export default function Footer() {
           {/* LEFT — Logo + Socials */}
           <div className="flex flex-col gap-6 sm:gap-8 w-full lg:min-w-[214px]">
             {/* Logo */}
-            <div className="flex flex-row items-center gap-3 sm:gap-4">
+            <Link
+              href="/"
+              onClick={handleScrollToTop}
+              className="flex flex-row items-center gap-3 sm:gap-4"
+            >
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shrink-0 bg-gradient-to-r from-[#004E89] to-[#212121]">
                 <img
                   src="footer-logo.svg"
@@ -44,7 +69,7 @@ export default function Footer() {
               <span className="text-[#F2F2F2] text-[20px] sm:text-[24px] font-medium">
                 NextWave AI
               </span>
-            </div>
+            </Link>
 
             {/* Socials */}
             <div className="flex flex-row items-center gap-4">
@@ -100,17 +125,26 @@ export default function Footer() {
                 Quick Link
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
-                {["Services", "Industries", "Insights", "Contact"].map(
-                  (item) => (
-                    <a
-                      key={item}
-                      href="#"
-                      className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
-                    >
-                      {item}
-                    </a>
-                  ),
-                )}
+                {[
+                  { name: "Services", href: "/services" },
+                  { name: "Industries", href: "/industries-served" },
+                  { name: "Insights", href: "/insights" },
+                  { name: "Contact", href: "/#contact-form" },
+                ].map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      handleScrollToTop(e);
+                      if (item.href.includes("#")) {
+                        handleAnchorClick(e, item.href.split("#")[1]);
+                      }
+                    }}
+                    className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </div>
             </motion.div>
 
@@ -126,18 +160,26 @@ export default function Footer() {
                 Customer Service
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
-                <a
-                  href="#"
+                <Link
+                  href="/#contact-form"
+                  onClick={(e) => {
+                    handleScrollToTop(e);
+                    handleAnchorClick(e, "contact-form");
+                  }}
                   className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                 >
                   FAQs
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  href="/#contact-form"
+                  onClick={(e) => {
+                    handleScrollToTop(e);
+                    handleAnchorClick(e, "contact-form");
+                  }}
                   className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                 >
                   Privacy Policy
-                </a>
+                </Link>
                 <Link
                   href="/careers"
                   className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
