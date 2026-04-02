@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import {
   Brain,
   Cpu,
@@ -29,39 +24,28 @@ const ServicesSection = () => {
 
   const sectionRef = useRef(null);
 
-  React.useEffect(() => {
-    setMounted(true);
-    const checkDesktop = () => setIsDesktop(window.innerWidth > 1024);
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
-  }, []);
-
-  // 🔥 Scroll tracking
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Smooth scroll feel
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 20,
   });
 
-  // 🎯 Animations
-  const leftX = useTransform(smoothProgress, [0, 0.5, 1], [-120, 0, -120]);
+  const leftX = useTransform(smoothProgress, [0, 0.5, 1], [-80, 0, -80]);
   const leftOpacity = useTransform(
     smoothProgress,
     [0, 0.2, 0.8, 1],
-    [0, 1, 1, 0]
+    [0, 1, 1, 0],
   );
 
-  const rightX = useTransform(smoothProgress, [0, 0.5, 1], [120, 0, 120]);
+  const rightX = useTransform(smoothProgress, [0, 0.5, 1], [80, 0, 80]);
   const rightOpacity = useTransform(
     smoothProgress,
     [0, 0.2, 0.8, 1],
-    [0, 1, 1, 0]
+    [0, 1, 1, 0],
   );
 
   const topScale = useTransform(smoothProgress, [0, 0.2], [0.85, 1]);
@@ -89,8 +73,7 @@ const ServicesSection = () => {
     { name: "Entertainment & Media", icon: Wand2 },
   ];
 
-  const activeData =
-    activeTab === "services" ? services : industries;
+  const activeData = activeTab === "services" ? services : industries;
 
   const activeHeading =
     activeTab === "services"
@@ -100,25 +83,21 @@ const ServicesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen flex items-center bg-[#fafafa] py-6 md:py-12 px-4 md:px-12 overflow-hidden"
+      className="relative w-full flex items-center bg-[#fafafa] py-10 md:py-16 px-4 sm:px-6 md:px-10 lg:px-12 overflow-hidden"
     >
-      {/* Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:100px_100px] pointer-events-none z-0" />
+      {/* Grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-size-[60px_60px] sm:bg-size-[80px_80px] md:bg-size-[100px_100px] pointer-events-none z-0" />
 
-      <div className="relative z-10 max-w-8xl mx-auto flex flex-col items-center">
-
-        {/* 🔥 Toggle */}
+      <div className="relative z-10 w-full max-w-350 mx-auto flex flex-col items-center">
+        {/* Toggle */}
         <motion.div
           onViewportEnter={() => setExpanded(true)}
           viewport={{ once: true, margin: "-100px" }}
           initial={{ maxWidth: "52px" }}
-          animate={{ maxWidth: expanded ? "400px" : "52px" }}
+          animate={{ maxWidth: expanded ? "360px" : "52px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          style={{
-            scale: topScale,
-            opacity: topOpacity,
-          }}
-          className="relative flex p-1.5 bg-white rounded-full border border-gray-200 shadow-sm mb-6 overflow-hidden mx-auto h-[52px]"
+          style={{ scale: topScale, opacity: topOpacity }}
+          className="relative flex p-1.5 bg-white rounded-full border border-gray-200 shadow-sm mb-5 md:mb-8 overflow-hidden mx-auto h-12 sm:h-13"
         >
           {/* Active pill */}
           <motion.div
@@ -126,22 +105,18 @@ const ServicesSection = () => {
             animate={{
               width: expanded
                 ? activeTab === "services"
-                  ? "142px"
-                  : "180px"
+                  ? "130px"
+                  : "168px"
                 : "40px",
-              x: expanded
-                ? activeTab === "services"
-                  ? 0
-                  : 142
-                : 0,
+              x: expanded ? (activeTab === "services" ? 0 : 130) : 0,
             }}
             transition={{ type: "spring", stiffness: 60, damping: 14 }}
-            className="absolute left-1.5 h-[40px] bg-[#0f172a] rounded-full z-0 shadow-md"
+            className="absolute left-1.5 h-9 sm:h-10 bg-[#0f172a] rounded-full z-0 shadow-md"
           />
 
           <button
             onClick={() => expanded && setActiveTab("services")}
-            className={`relative flex items-center justify-center w-[142px] h-[40px] z-10 text-[15px] font-medium ${
+            className={`relative flex items-center justify-center w-32.5 h-9 sm:h-10 z-10 text-[13px] sm:text-[15px] font-medium whitespace-nowrap ${
               activeTab === "services"
                 ? "text-white"
                 : "text-gray-600 hover:text-black"
@@ -157,7 +132,7 @@ const ServicesSection = () => {
 
           <button
             onClick={() => expanded && setActiveTab("industries")}
-            className={`relative flex items-center justify-center w-[180px] h-[40px] z-10 text-[15px] font-medium ${
+            className={`relative flex items-center justify-center w-42 h-9 sm:h-10 z-10 text-[13px] sm:text-[15px] font-medium whitespace-nowrap ${
               activeTab === "industries"
                 ? "text-white"
                 : "text-gray-600 hover:text-black"
@@ -175,29 +150,27 @@ const ServicesSection = () => {
         {/* Heading */}
         <motion.h2
           key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#111] mb-8 md:mb-12 max-w-4xl"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#111] mb-6 md:mb-10 max-w-3xl px-2"
         >
           {activeHeading}
         </motion.h2>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full max-w-[1400px]">
-
+        {/* Cards grid — stacked on mobile/tablet, side-by-side on lg+ */}
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 w-full">
           {/* LEFT CARD */}
           <motion.div
-            style={{ 
-              x: isDesktop ? leftX : 0, 
-              opacity: leftOpacity 
-            }}
-            className="lg:col-span-5 relative rounded-[32px] overflow-hidden bg-[#050505] shadow-2xl min-h-[300px] lg:h-full"
+            style={{ x: leftX, opacity: leftOpacity }}
+            className="lg:col-span-5 relative rounded-3xl sm:rounded-[28px] lg:rounded-4xl overflow-hidden bg-[#050505] shadow-2xl min-h-55 sm:min-h-65 lg:min-h-115"
           >
+            {/* Radial glow */}
             <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-[radial-gradient(ellipse_at_top_left,rgba(37,99,235,0.45)_0%,rgba(0,0,0,0)_60%)] z-0" />
 
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:90px_90px]" />
+            {/* Inner grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-size-[70px_70px] sm:bg-size-[90px_90px]" />
 
-            {/* PULSE GRID ANIMATION */}
+            {/* Pulse SVG */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-70">
               <defs>
                 <linearGradient id="service-pulse-gradient">
@@ -210,65 +183,62 @@ const ServicesSection = () => {
               <ServicePulse d="M 180 0 V 600" delay={1.5} />
               <ServicePulse d="M 270 0 V 600" delay={3} />
               <ServicePulse d="M 360 0 V 600" delay={0.8} />
-              <ServicePulse d="M 450 0 V 600" delay={2.2} />
-
               <ServicePulse d="M 0 90 H 800" delay={0.5} />
               <ServicePulse d="M 0 180 H 800" delay={2} />
               <ServicePulse d="M 0 270 H 800" delay={3.5} />
               <ServicePulse d="M 0 360 H 800" delay={1.2} />
-              <ServicePulse d="M 0 450 H 800" delay={2.8} />
             </svg>
 
-            <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12 min-h-[300px]">
-              <p className="text-lg md:text-[22px] text-white/90">
-                Try Our AI Solutions that Power Modern Businesses with Cutting-Edge Technology.
+            <div className="relative z-10 flex flex-col justify-end h-full p-6 sm:p-8 md:p-10 lg:p-12">
+              <p className="text-base sm:text-lg md:text-[20px] lg:text-[22px] text-white/90 leading-snug">
+                Try Our AI Solutions that Power Modern Businesses with
+                Cutting-Edge Technology.
               </p>
             </div>
           </motion.div>
 
           {/* RIGHT CARD */}
           <motion.div
-            style={{ 
-              x: isDesktop ? rightX : 0, 
-              opacity: rightOpacity 
-            }}
-            className="lg:col-span-7 bg-[#111111] rounded-[32px] p-6 md:p-10 flex flex-col gap-8 shadow-2xl"
+            style={{ x: rightX, opacity: rightOpacity }}
+            className="lg:col-span-7 bg-[#111111] rounded-3xl sm:rounded-[28px] lg:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col gap-5 shadow-2xl"
           >
-            <div>
-              <p className="text-white/95 text-base md:text-lg mb-6 leading-relaxed">
-                We deliver tailored technology solutions across diverse industries, helping businesses adapt, innovate, and grow in a rapidly evolving digital landscape. Our expertise allows us to understand industry-specific challenges and build solutions that drive real impact.
+            {/* Description + CTA */}
+            <div className="flex flex-col gap-4">
+              <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
+                We deliver tailored technology solutions across diverse
+                industries, helping businesses adapt, innovate, and grow in a
+                rapidly evolving digital landscape. Our expertise allows us to
+                understand industry-specific challenges and build solutions that
+                drive real impact.
               </p>
-
-              <button className="px-8 py-3.5 rounded-full bg-[#0ea5e9] text-white font-semibold hover:bg-[#0284c7] transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(14,165,233,0.3)]">
-                Industries we've innovated
-              </button>
+              <div>
+                <button className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-[#0ea5e9] text-white text-sm sm:text-base font-medium hover:bg-[#0284c7] transition-colors">
+                  Industries we&apos;ve innovated
+                </button>
+              </div>
             </div>
 
-            {/* Tags */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
+            {/* Tags grid — 1 col on mobile, 2 cols on sm+ */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               {activeData.map((item, index) => (
                 <motion.div
                   key={item.name}
-                  style={{
-                    opacity: useTransform(
-                      smoothProgress,
-                      [0.3 + index * 0.03, 0.6],
-                      [0, 1]
-                    ),
-                  }}
-                  className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#1a1a1a] border border-[#2a2a2a] hover:bg-[#222] hover:border-[#334155] transition-all"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.3 }}
+                  className="flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-full bg-[#1a1a1a] border border-[#2a2a2a]"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-sky-500/10 flex items-center justify-center shrink-0">
-                    <item.icon size={18} className="text-[#0ea5e9]" />
-                  </div>
-                  <span className="text-gray-300 text-sm md:text-base font-medium">
+                  <item.icon
+                    size={14}
+                    className="text-[#0ea5e9] shrink-0 sm:w-4 sm:h-4"
+                  />
+                  <span className="text-gray-300 text-xs sm:text-sm truncate">
                     {item.name}
                   </span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-
         </div>
 
       </div>
@@ -286,19 +256,9 @@ const ServicePulse: React.FC<ServicePulseProps> = ({ d, delay = 0 }) => (
     <motion.g
       initial={{ opacity: 0 }}
       animate={{ opacity: [0, 1, 0] }}
-      transition={{
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay,
-      }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
     >
-      <ellipse
-        rx="15"
-        ry="5"
-        fill="url(#service-pulse-gradient)"
-        // style={{ filter: "blur(4px)" }}
-      >
+      <ellipse rx="15" ry="5" fill="url(#service-pulse-gradient)">
         <animateMotion
           dur="4s"
           repeatCount="indefinite"

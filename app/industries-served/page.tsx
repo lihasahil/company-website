@@ -71,7 +71,6 @@ const industries = [
   },
 ];
 
-// Reusable variants
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: (delay: number = 0) => ({
@@ -95,7 +94,7 @@ const fadeIn: Variants = {
 
 export default function IndustriesPage() {
   const [active, setActive] = useState(0);
-  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+  const [direction, setDirection] = useState(1);
 
   const goTo = (idx: number) => {
     if (idx === active) return;
@@ -117,12 +116,8 @@ export default function IndustriesPage() {
 
   const current = industries[active];
 
-  // Slide variants for card content
   const slideVariants: Variants = {
-    enter: (dir: number) => ({
-      x: dir * 40,
-      opacity: 0,
-    }),
+    enter: (dir: number) => ({ x: dir * 40, opacity: 0 }),
     center: {
       x: 0,
       opacity: 1,
@@ -149,23 +144,10 @@ export default function IndustriesPage() {
       <Header />
 
       {/* Ambient blobs */}
-      {/* <div
-        className="pointer-events-none absolute"
-        style={{
-          width: 1016,
-          height: 1016,
-          left: "calc(50% + 322px - 508px)",
-          top: -508,
-          background: "#21006D",
-          opacity: 0.25,
-          filter: "blur(257px)",
-          borderRadius: "50%",
-        }}
-      /> */}
       <div
         className="pointer-events-none absolute"
         style={{
-          width: 1159,
+          width: "min(1159px, 100vw)",
           height: 1254,
           left: "calc(50% - 783.5px - 579.5px)",
           top: -200,
@@ -178,7 +160,7 @@ export default function IndustriesPage() {
       <div
         className="pointer-events-none absolute"
         style={{
-          width: 1159,
+          width: "min(1159px, 100vw)",
           height: 1254,
           right: "calc(50% - 937.5px - 579.5px)",
           bottom: -300,
@@ -190,19 +172,19 @@ export default function IndustriesPage() {
       />
 
       {/* ── Hero section ── */}
-      <section className="relative z-10 flex flex-col items-center pt-20 pb-0 px-6 gap-6">
+      <section className="relative z-10 flex flex-col items-center pt-24 sm:pt-28 pb-0 px-4 sm:px-6 gap-4 sm:gap-6 w-full text-center">
         {/* Label pill */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0}
-          className="flex items-center justify-center px-5 py-1.5 rounded-full text-sm font-normal"
+          className="flex items-center justify-center px-4 sm:px-5 py-1.5 rounded-full"
           style={{
             background: "rgba(50,160,244,0.10)",
             border: "1px solid rgba(50,160,244,0.20)",
             color: "#32A0F4",
-            fontSize: 14,
+            fontSize: "clamp(12px, 2vw, 14px)",
             lineHeight: "20px",
           }}
         >
@@ -215,12 +197,12 @@ export default function IndustriesPage() {
           initial="hidden"
           animate="visible"
           custom={0.1}
-          className="text-center max-w-2xl"
+          className="max-w-xs sm:max-w-lg md:max-w-2xl"
           style={{
             fontFamily: "'Urbanist', sans-serif",
             fontWeight: 400,
-            fontSize: "clamp(32px, 6vw, 52px)",
-            lineHeight: "84%",
+            fontSize: "clamp(26px, 6vw, 52px)",
+            lineHeight: "110%",
             letterSpacing: "-0.04em",
             background:
               "linear-gradient(1.48deg, #000000 -4.77%, #8C8C8C 15.82%, #FFFFFF 94.85%)",
@@ -238,12 +220,12 @@ export default function IndustriesPage() {
           initial="hidden"
           animate="visible"
           custom={0.2}
-          className="text-center max-w-xl"
+          className="max-w-xs sm:max-w-sm md:max-w-xl"
           style={{
             fontFamily: "'Urbanist', sans-serif",
             fontWeight: 500,
-            fontSize: 18,
-            lineHeight: "22px",
+            fontSize: "clamp(13px, 2vw, 18px)",
+            lineHeight: "1.5",
             color: "rgba(255,255,255,0.5)",
           }}
         >
@@ -253,31 +235,29 @@ export default function IndustriesPage() {
       </section>
 
       {/* ── Card section ── */}
-      <section className="relative z-10 flex flex-col items-center px-6 pt-4 pb-12 gap-8 w-full max-w-7xl">
-        {/* Main card — entrance animation */}
+      <section className="relative z-10 flex flex-col items-center px-4 sm:px-6 pt-4 pb-12 gap-6 sm:gap-8 w-full">
+        {/* Main card */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.35}
-          className="flex flex-col md:flex-row items-stretch gap-0 w-full"
+          className="flex flex-col sm:flex-row items-stretch w-full max-w-4xl"
           style={{
             background: "rgba(0,0,0,0.20)",
             border: "1px solid rgba(255,255,255,0.21)",
             borderRadius: 22,
             padding: 12,
-            minHeight: "auto",
             overflow: "hidden",
             backdropFilter: "blur(10px)",
           }}
         >
-          {/* Image — AnimatePresence for cross-fade */}
+          {/* Image */}
           <div
-            className="relative shrink-0 overflow-hidden w-full md:w-[40%] lg:w-[45%]"
+            className="relative shrink-0 overflow-hidden w-full sm:w-[42%]"
             style={{
               borderRadius: 18,
-              aspectRatio: "1/1",
-              minHeight: 300,
+              height: "clamp(200px, 45vw, 340px)",
             }}
           >
             <AnimatePresence mode="wait">
@@ -300,7 +280,6 @@ export default function IndustriesPage() {
                 }}
               />
             </AnimatePresence>
-            {/* Dark overlay */}
             <div
               className="absolute inset-0"
               style={{
@@ -312,7 +291,7 @@ export default function IndustriesPage() {
             />
           </div>
 
-          {/* Content — slides in on change */}
+          {/* Content */}
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={active}
@@ -321,7 +300,7 @@ export default function IndustriesPage() {
               initial="enter"
               animate="center"
               exit="exit"
-              className="relative flex flex-col justify-center px-4 md:px-8 py-8 md:py-6 gap-6 flex-1"
+              className="relative flex flex-col justify-center px-4 sm:pl-6 sm:pr-2 py-5 sm:py-6 gap-4 sm:gap-5 flex-1"
             >
               {/* Glow blob */}
               <div
@@ -343,6 +322,8 @@ export default function IndustriesPage() {
                 className="text-3xl md:text-4xl font-bold"
                 style={{
                   fontFamily: "'Urbanist', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "clamp(22px, 4vw, 36px)",
                   lineHeight: 1,
                   color: current.accentColor,
                 }}
@@ -356,8 +337,9 @@ export default function IndustriesPage() {
                 style={{
                   fontFamily: "'Urbanist', sans-serif",
                   fontWeight: 400,
+                  fontSize: "clamp(13px, 1.8vw, 17px)",
+                  lineHeight: "1.55",
                   color: "rgba(255,255,255,0.70)",
-                  maxWidth: 500,
                 }}
               >
                 {current.description}
@@ -369,11 +351,17 @@ export default function IndustriesPage() {
                   className="text-sm md:text-base font-bold text-white mb-3 tracking-wider uppercase"
                   style={{
                     fontFamily: "'Urbanist', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "clamp(13px, 1.6vw, 16px)",
+                    lineHeight: "20px",
+                    color: "#FFFFFF",
+                    marginBottom: 6,
                   }}
                 >
                   Key Highlights:
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {/* 2-col on mobile, 1-col on sm+ */}
+                <ul className="grid grid-cols-2 sm:grid-cols-1 gap-x-3 gap-y-1">
                   {current.features.map((f, i) => (
                     <motion.div
                       key={f}
@@ -391,26 +379,30 @@ export default function IndustriesPage() {
                       style={{
                         fontFamily: "'Urbanist', sans-serif",
                         fontWeight: 400,
+                        fontSize: "clamp(12px, 1.6vw, 16px)",
+                        lineHeight: "20px",
+                        color: "rgba(255,255,255,0.70)",
                       }}
                     >
                       <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: current.accentColor }} />
                       {f}
                     </motion.div>
                   ))}
+                  </ul>
                 </div>
-              </div>
+
             </motion.div>
           </AnimatePresence>
+              {/* </div> */}
         </motion.div>
 
-
-        {/* Controls: prev / dots / next */}
+        {/* Controls */}
         <motion.div
           variants={fadeIn}
           initial="hidden"
           animate="visible"
           custom={0.55}
-          className="flex flex-row items-center justify-center gap-6"
+          className="flex flex-row items-center justify-center gap-4 sm:gap-6"
         >
           {/* Prev */}
           <motion.button
@@ -426,16 +418,15 @@ export default function IndustriesPage() {
               boxShadow: "inset 0px 5px 4.5px rgba(255,255,255,0.18)",
               border: "none",
               cursor: "pointer",
-              fontSize: 22,
               color: "#fff",
             }}
             aria-label="Previous"
           >
-            <MoveLeft />
+            <MoveLeft size={16} />
           </motion.button>
 
           {/* Dots */}
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-2 sm:gap-3">
             {industries.map((_, i) => (
               <motion.button
                 key={i}
@@ -448,8 +439,8 @@ export default function IndustriesPage() {
                 whileHover={{ scale: 1.3 }}
                 whileTap={{ scale: 0.9 }}
                 style={{
-                  width: 12,
-                  height: 12,
+                  width: 10,
+                  height: 10,
                   borderRadius: "50%",
                   border: "1px solid rgba(255,255,255,0.09)",
                   cursor: "pointer",
@@ -474,22 +465,18 @@ export default function IndustriesPage() {
               boxShadow: "inset 0px 5px 4.5px rgba(255,255,255,0.18)",
               border: "none",
               cursor: "pointer",
-              fontSize: 22,
               color: "#fff",
             }}
             aria-label="Next"
           >
-            <MoveRight />
+            <MoveRight size={16} />
           </motion.button>
         </motion.div>
       </section>
 
-      {/* ── CTA Section ── */}
       <CTASection />
-
       <Footer />
 
-      {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
       `}</style>
