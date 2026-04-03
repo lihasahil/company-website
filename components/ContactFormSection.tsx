@@ -199,7 +199,7 @@ export default function ContactFormSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1 flex-1">
-                    <label className="text-[#F2F2F2] font-light text-base lg:text-sm xl:text:lg">
+                    <label className="text-[#F2F2F2] font-light text-base lg:text-sm xl:text-lg">
                       Phone Number
                     </label>
                     <input
