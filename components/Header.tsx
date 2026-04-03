@@ -57,7 +57,7 @@ const Header = () => {
   // On mobile: no scroll transforms — nav stays full-width and unchanged
   const scaleX = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 0.5]);
   const scaleY = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 0.75]);
-  const invScaleX = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 1 / 0.6]);
+  const invScaleX = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 1 / 0.5]);
   const invScaleY = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 1 / 0.75]);
   const y = useTransform(smooth, [0, 1], [0, isMobile ? 0 : 16]);
   const bgOpacity = useTransform(smooth, [0, 1], [0, isMobile ? 0.85 : 1]);
@@ -190,7 +190,7 @@ const Header = () => {
                 className="flex items-center justify-center h-10 w-full bg-linear-to-b from-[#0091FF] to-[#005799] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
               >
                 <div className="flex items-center justify-center whitespace-nowrap">
-                  <Phone size={20} className="shrink-0" fill="#fff" />
+                  <Phone size={20} className="shrink-0" />
                   <motion.span
                     style={{
                       width: contactTextWidth,
