@@ -81,9 +81,9 @@ export default function ToolsAndTechnologies() {
 
       <Header />
 
-      <section className="nw-tools-section relative flex w-full flex-col items-center pt-10 pb-16 sm:pb-20 lg:pb-25">
+      <section className="nw-tools-section relative flex w-full flex-col items-center pt-4 pb-8 sm:pb-8 lg:pb-10">
         {/* Section heading */}
-        <h2 className="nw-section-title relative z-10 pt-10 sm:pt-16 px-4 text-center text-[clamp(32px,5vw,64px)] font-normal leading-tight tracking-[-0.04em]">
+        <h2 className="nw-section-title relative z-10 pt-6 sm:pt-12 px-4 text-center text-[clamp(32px,5vw,64px)] font-normal leading-tight tracking-[-0.04em]">
           Tools &amp; Technologies
         </h2>
 
