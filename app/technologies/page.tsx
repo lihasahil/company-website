@@ -91,7 +91,14 @@ export default function ToolsAndTechnologies() {
         <Tool />
 
         {/* Technologies We Work With */}
-        <h3 className="relative z-10 mb-6 sm:mb-8 mt-3 px-4 text-center text-[clamp(22px,4vw,36px)] font-bold text-white">
+        <h3
+          className="text-3xl md:text-4xl font-medium tracking-tight my-4"
+          style={{
+            background: "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
           Technologies We Work With
         </h3>
 

@@ -183,7 +183,7 @@ const HeroAI = () => {
           </div>
         </div>
 
-        <p className="relative z-30 max-w-2xl text[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-2 px-4 -mt-40 md:mt-0">
+        <p className="relative z-30 max-w-2xl text[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-5 px-4 -mt-40 md:mt-5">
           From customer support to complex business workflows, our technology{" "}
           <br className="hidden md:block" />
           helps you reduce costs, increase efficiency, and scale without limits.

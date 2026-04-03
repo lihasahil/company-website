@@ -48,9 +48,9 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
           x: step >= 2 ? -45 : 20, // slide in closer and left
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="text-2xl font-semibold text-black"
+        className="text-3xl font-semibold text-[#10226B]"
       >
-        NextWave AI
+        Next Wave AI
       </motion.div>
     </motion.div>
   );

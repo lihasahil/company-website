@@ -28,7 +28,6 @@ export default function UnleashPage() {
   const rightX = useTransform(entranceProgress, [0, 1], ["80px", "0px"]);
   const rightOpacity = useTransform(entranceProgress, [0, 0.5], [0, 1]);
 
-  // Shared animation config
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: (delay: number = 0) => ({
@@ -60,7 +59,6 @@ export default function UnleashPage() {
     <>
       {/* ── MOBILE / TABLET layout (hidden on lg+) ── */}
       <section className="flex lg:hidden flex-col items-center justify-start bg-black text-white py-10 px-5 gap-6 overflow-hidden">
-        {/* Heading — fades up from bottom */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -72,7 +70,6 @@ export default function UnleashPage() {
           <h1 className="text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
             Unleash your full Potential
           </h1>
-          
           <div className="flex items-center justify-left gap-3 mt-1">
             <h2 className="text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
               with Next Wave AI
@@ -81,9 +78,7 @@ export default function UnleashPage() {
           </div>
         </motion.div>
 
-        {/* Cards */}
         <div className="w-full flex flex-col items-center gap-4">
-          {/* Card 1 — slides in from LEFT */}
           <motion.div
             variants={slideLeft}
             initial="hidden"
@@ -112,7 +107,7 @@ export default function UnleashPage() {
               <div className="flex justify-center items-end gap-2">
                 <img src="/stars.svg" alt="" className="w-full" />
               </div>
-              <span className="text-sm font-light  text-[#F2F2F2]">
+              <span className="text-sm font-light text-[#F2F2F2]">
                 Trusted by 99+ partners, we transform complex data into
                 measurable ROI. Join the leaders scaling their future with our
                 precision AI solutions.
@@ -120,7 +115,6 @@ export default function UnleashPage() {
             </div>
           </motion.div>
 
-          {/* Card 2 — slides in from RIGHT */}
           <motion.div
             variants={slideRight}
             initial="hidden"
@@ -160,7 +154,6 @@ export default function UnleashPage() {
             </button>
           </motion.div>
 
-          {/* Card 3 — slides in from LEFT */}
           <motion.div
             variants={slideLeft}
             initial="hidden"
@@ -183,7 +176,6 @@ export default function UnleashPage() {
             </span>
           </motion.div>
 
-          {/* Card 4 — slides in from RIGHT */}
           <motion.div
             variants={slideRight}
             initial="hidden"
@@ -220,6 +212,7 @@ export default function UnleashPage() {
             </div>
           </motion.div>
         </div>
+
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -272,17 +265,18 @@ export default function UnleashPage() {
             />
           </motion.div>
 
-          {/* Desktop 3-col layout */}
+          {/* Desktop 3-col layout — FIXED: h-full + px-4 instead of mt-10 + ml/mr-10 */}
           <div
-            className="hidden lg:flex justify-around items-center gap-2 mt-10"
+            className="hidden lg:flex justify-around items-center h-full px-4 gap-2"
             style={{ position: "relative", zIndex: 2, color: "white" }}
           >
             {/* Left */}
             <motion.div
               style={{ x: leftX, opacity: leftOpacity }}
-              className="flex flex-col ml-10 gap-6"
+              className="flex flex-col gap-3"
             >
-              <div className="p-4 w-52 xl:w-56 h-96 rounded-3xl border border-[#F2F2F2] relative overflow-hidden">
+              {/* Card 1 — Satisfied Clients */}
+              <div className="p-4 lg:w-44 xl:w-56 lg:h-72 xl:h-96 rounded-3xl border border-[#F2F2F2] relative overflow-hidden">
                 <div
                   className="absolute inset-0 rounded-3xl"
                   style={{
@@ -303,7 +297,7 @@ export default function UnleashPage() {
                   <div className="flex justify-center items-end gap-2">
                     <img src="/stars.svg" alt="" />
                   </div>
-                  <span className="text-[0.9rem] font-light text-[#F2F2F2]">
+                  <span className="text-[0.8rem] font-light text-[#F2F2F2]">
                     Trusted by 99+ partners, we transform complex data into
                     measurable ROI. Join the leaders scaling their future with
                     our precision AI solutions.
@@ -311,33 +305,34 @@ export default function UnleashPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center justify-between p-4 border border-[#F2F2F2] rounded-3xl w-52 xl:w-56 h-64">
+              {/* Card 2 — Stats */}
+              <div className="flex flex-col items-center justify-between p-4 border border-[#F2F2F2] rounded-3xl lg:w-44 xl:w-56 lg:h-48 xl:h-64">
                 <div className="flex flex-col gap-2 w-full">
                   <div className="flex justify-between items-start">
-                    <span className="text-[1rem] font-light text-[#F2F2F2]">
+                    <span className="text-[0.8rem] font-light text-[#F2F2F2]">
                       Projects
                       <br />
                       Completed
                     </span>
-                    <span className="text-[1.5rem] text-[#F2F2F2] leading-none">
+                    <span className="text-[1.4rem] text-[#F2F2F2] leading-none">
                       50<sup className="text-[0.6rem] align-super">+</sup>
                     </span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-[1rem] font-light text-[#F2F2F2]">
+                    <span className="text-[0.8rem] font-light text-[#F2F2F2]">
                       Dedicated
                       <br />
                       Support
                     </span>
-                    <span className="text-[1.5rem] text-[#F2F2F2]">24/7</span>
+                    <span className="text-[1.4rem] text-[#F2F2F2]">24/7</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-[1rem] font-light text-[#F2F2F2]">
+                    <span className="text-[0.8rem] font-light text-[#F2F2F2]">
                       Client
                       <br />
                       Retention
                     </span>
-                    <span className="text-[1.5rem] text-[#F2F2F2] leading-none">
+                    <span className="text-[1.4rem] text-[#F2F2F2] leading-none">
                       92<sup className="text-[0.6rem] align-super">%</sup>
                     </span>
                   </div>
@@ -375,44 +370,46 @@ export default function UnleashPage() {
             {/* Right */}
             <motion.div
               style={{ x: rightX, opacity: rightOpacity }}
-              className="flex flex-col gap-6 mr-10"
+              className="flex flex-col gap-3"
             >
-              <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-3xl w-52 xl:w-56 h-96">
-                <span className="text-2xl">
+              {/* Card 3 — Insights */}
+              <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-3xl lg:w-44 xl:w-56 lg:h-72 xl:h-96">
+                <span className="text-xl xl:text-2xl">
                   Insights &<br />
                   Stories
                 </span>
                 <img src="/design1.gif" alt="" className="w-full h-auto" />
-                <span className="text-[0.8rem]">
+                <span className="text-[0.75rem] xl:text-[0.8rem]">
                   How our services shape industries.
                 </span>
               </div>
 
-              <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-2xl w-52 xl:w-56 h-64">
-                <h1 className="text-2xl">
+              {/* Card 4 — Agentic AI */}
+              <div className="flex flex-col items-start justify-between p-4 border border-[#F2F2F2] rounded-2xl lg:w-44 xl:w-56 lg:h-48 xl:h-64">
+                <h1 className="text-xl xl:text-2xl">
                   Masters of <br />
                   Agentic AI
                 </h1>
-                <div className="grid grid-cols-2 gap-4 items-center mt-4 mx-auto">
+                <div className="grid grid-cols-2 lg:gap-2 xl:gap-4 items-center mt-2 xl:mt-4 mx-auto">
                   <img
                     src="/view.svg"
                     alt=""
-                    className="bg-[#3798E3] rounded-full p-5"
+                    className="bg-[#3798E3] rounded-full lg:p-3 xl:p-5"
                   />
                   <img
                     src="/robot.svg"
                     alt=""
-                    className="rounded-full border border-[#FFFFFF] p-5"
+                    className="rounded-full border border-[#FFFFFF] lg:p-3 xl:p-5"
                   />
                   <img
                     src="/roarm.svg"
                     alt=""
-                    className="rounded-full border border-[#FFFFFF] p-5"
+                    className="rounded-full border border-[#FFFFFF] lg:p-3 xl:p-5"
                   />
                   <img
                     src="/editing.svg"
                     alt=""
-                    className="rounded-full border border-[#FFFFFF] p-5"
+                    className="rounded-full border border-[#FFFFFF] lg:p-3 xl:p-5"
                   />
                 </div>
               </div>

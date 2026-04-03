@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, User, MapPin, Clock, DollarSign } from "lucide-react";
+import { ArrowRight, Target } from "lucide-react";
 import { CTASection } from "./CTAButton";
 
 const CareersSection = () => {
@@ -102,7 +101,50 @@ const CareersSection = () => {
 
   return (
     <>
-      <section className="bg-[#020202] text-white pt-24 pb-10 px-6 md:px-12 font-sans overflow-hidden">
+      <section className="relative bg-[#020202] text-white pt-24 pb-10 px-6 md:px-12 font-sans overflow-hidden">
+        {/* Background blur ellipses */}
+        <div
+          className="pointer-events-none absolute"
+          style={{
+            width: "1016px",
+            height: "1016px",
+            left: "calc(50% + 537px - 508px)",
+            top: "-468px",
+            background: "#3C0071",
+            opacity: 0.25,
+            filter: "blur(257px)",
+            borderRadius: "50%",
+            zIndex: 0,
+          }}
+        />
+        <div
+          className="pointer-events-none absolute"
+          style={{
+            width: "1159px",
+            height: "1254px",
+            left: "calc(50% - 783.5px - 579.5px)",
+            top: "-482px",
+            background: "#0048FF",
+            opacity: 0.12,
+            filter: "blur(257px)",
+            borderRadius: "50%",
+            zIndex: 0,
+          }}
+        />
+        <div
+          className="pointer-events-none absolute"
+          style={{
+            width: "1159px",
+            height: "1254px",
+            left: "calc(50% + 937.5px - 579.5px)",
+            top: "712px",
+            background: "#4D00FF",
+            opacity: 0.12,
+            filter: "blur(257px)",
+            borderRadius: "50%",
+            zIndex: 0,
+          }}
+        />
         <div className="max-w-[90%] mx-auto">
           {/* HERO */}
           <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
@@ -110,14 +152,20 @@ const CareersSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-[64px] font-bold tracking-tighter leading-[0.9] max-w-3xl"
+              className="text-4xl md:text-[64px] font-medium tracking-tighter leading-[0.9] max-w-3xl"
             >
               <span
                 style={{
+                  fontFamily: "'Urbanist', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "clamp(26px, 6vw, 52px)",
+                  lineHeight: "110%",
+                  letterSpacing: "-0.04em",
                   background:
-                    "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
+                    "linear-gradient(1.48deg, #000000 -4.77%, #8C8C8C 15.82%, #FFFFFF 94.85%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                 }}
               >
                 Join our team and reshape the future.
@@ -178,21 +226,18 @@ const CareersSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group p-6 rounded-[32px] bg-[#000000] border border-white/5 hover:border-blue-500/40 transition-all duration-500"
+                  className="group p-6 rounded-xl bg-[#00000080] border border-[#32A0F447] hover:border-[#32A0F447]/40 transition-all duration-500"
                 >
                   <div className="flex justify-between items-start mb-6">
                     <span className="text-4xl font-bold text-[#32A0F4] tracking-tighter">
                       {benefit.id}
                     </span>
-                    <div className="w-10 h-10 rounded-full bg-[#111] border border-blue-500/20 flex items-center justify-center text-blue-500 shadow-[0_0_20px_rgba(0,112,243,0.1)]">
-                      <ArrowRight
-                        size={18}
-                        className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 -rotate-45"
-                      />
+                    <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/10 group-hover:border-blue-500/30 transition-all">
+                      <Target className="w-6 h-6 text-blue-400" />
                     </div>
                   </div>
                   <h4 className="text-2xl font-bold mb-4">{benefit.title}</h4>
-                  <p className="text-gray-500 text-lg leading-relaxed">
+                  <p className="text-[#FFFFFF80] text-lg leading-relaxed">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -228,30 +273,30 @@ const CareersSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="p-6 rounded-[20px] bg-[#000000] border border-white/5 hover:bg-[#111] transition-all flex flex-col min-h-[320px]"
+                  className="p-6 rounded-[20px] bg-[#111111] border border-white/5 hover:bg-[#111] transition-all flex flex-col min-h-[320px]"
                 >
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF7E7E]/10 flex items-center justify-center text-[#FF7E7E]">
-                      <div className="w-7 h-7 bg-[#FF7E7E]/40 rounded-sm" />
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-[#FF7E7E]">
+                      <div className="w-10 h-10 bg-[#FF9999] rounded-sm" />
                     </div>
-                    <div className="px-3 py-1 rounded-full bg-white text-black text-[14px] font-bold tracking-tight">
+                    <div className="px-3 py-1 rounded-full bg-[#FFDBDB] text-black text-[14px] font-bold tracking-tight">
                       {job.salary}
                     </div>
                   </div>
                   <h4 className="text-xl font-bold mb-3 tracking-tight">
                     {job.title}
                   </h4>
-                  <p className="text-gray-500 text-lg mb-auto leading-relaxed opacity-80">
+                  <p className="text-[#FFFFFFB2] text-base mb-auto leading-relaxed opacity-80">
                     {job.description}
                   </p>
 
                   <div className="flex items-center gap-4 pt-4 mt-auto">
                     <div className="flex items-center gap-2 text-[15px] font-medium text-white/90">
-                      <div className="w-3 h-3 rounded-full bg-green-500" />
+                      <div className="w-2 h-2 rounded-full bg-green-500" />
                       {job.type}
                     </div>
                     <div className="flex items-center gap-2 text-[15px] font-medium text-white/90">
-                      <div className="w-3 h-3 rounded-full bg-green-500" />
+                      <div className="w-2 h-2 rounded-full bg-green-500" />
                       {job.location}
                     </div>
                   </div>

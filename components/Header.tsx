@@ -61,13 +61,37 @@ const Header = () => {
   const invScaleY = useTransform(smooth, [0, 1], [1, isMobile ? 1 : 1 / 0.75]);
   const y = useTransform(smooth, [0, 1], [0, isMobile ? 0 : 16]);
   const bgOpacity = useTransform(smooth, [0, 1], [0, isMobile ? 0.85 : 1]);
-  const radius = useTransform(smooth, [0, 1], ["0px", isMobile ? "0px" : "64px"]);
+  const radius = useTransform(
+    smooth,
+    [0, 1],
+    ["0px", isMobile ? "0px" : "64px"],
+  );
   const textOpacity = useTransform(smooth, [0, 0.3], [1, isMobile ? 1 : 0]);
-  const brandWidth = useTransform(smooth, [0, 0.3], ["110px", isMobile ? "110px" : "0px"]);
-  const brandMargin = useTransform(smooth, [0, 0.3], ["12px", isMobile ? "12px" : "0px"]);
-  const buttonPadding = useTransform(smooth, [0, 0.3], ["20px", isMobile ? "20px" : "11px"]);
-  const contactTextWidth = useTransform(smooth, [0, 0.3], ["60px", isMobile ? "60px" : "0px"]);
-  const contactMargin = useTransform(smooth, [0, 0.3], ["8px", isMobile ? "8px" : "0px"]);
+  const brandWidth = useTransform(
+    smooth,
+    [0, 0.3],
+    ["110px", isMobile ? "110px" : "0px"],
+  );
+  const brandMargin = useTransform(
+    smooth,
+    [0, 0.3],
+    ["12px", isMobile ? "12px" : "0px"],
+  );
+  const buttonPadding = useTransform(
+    smooth,
+    [0, 0.3],
+    ["20px", isMobile ? "20px" : "11px"],
+  );
+  const contactTextWidth = useTransform(
+    smooth,
+    [0, 0.3],
+    ["60px", isMobile ? "60px" : "0px"],
+  );
+  const contactMargin = useTransform(
+    smooth,
+    [0, 0.3],
+    ["8px", isMobile ? "8px" : "0px"],
+  );
 
   const navLinks = [
     { name: "Services", href: "/services" },
@@ -109,7 +133,10 @@ const Header = () => {
               style={{ scaleX: invScaleX, scaleY: invScaleY, originX: 0 }}
               className="flex items-center"
             >
-              <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full shrink-0">
+              <Link
+                href="/"
+                className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full shrink-0"
+              >
                 <Image
                   src="/logo1.svg"
                   alt="logo"
@@ -117,7 +144,7 @@ const Header = () => {
                   height={48}
                   className="brightness-200"
                 />
-              </div>
+              </Link>
               <motion.span
                 style={{
                   width: brandWidth,
@@ -163,10 +190,10 @@ const Header = () => {
                   paddingLeft: buttonPadding,
                   paddingRight: buttonPadding,
                 }}
-                className="flex items-center justify-center h-10 w-full bg-linear-to-b from-[#0ea5e9] to-[#0284c7] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
+                className="flex items-center justify-center h-10 w-full bg-linear-to-b from-[#0091FF] to-[#005799] hover:brightness-110 transition-all text-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]"
               >
                 <div className="flex items-center justify-center whitespace-nowrap">
-                  <Phone size={22} className="shrink-0" />
+                  <Phone size={20} className="shrink-0" fill="#fff" />
                   <motion.span
                     style={{
                       width: contactTextWidth,
@@ -276,9 +303,9 @@ const Header = () => {
                     handleAnchorClick(e, "contact-form");
                     setMenuOpen(false);
                   }}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-linear-to-b from-[#0ea5e9] to-[#0284c7] text-white font-semibold text-sm shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:brightness-110 transition-all"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-linear-to-b from-[#0091FF] to-[#005799] text-white font-semibold text-sm shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:brightness-110 transition-all"
                 >
-                  <Phone size={16} />
+                  <Phone size={16} fill="#fff" />
                   Contact Us
                 </Link>
               </motion.div>

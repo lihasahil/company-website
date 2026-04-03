@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -30,6 +30,19 @@ const relatedArticles = [
       "AI-powered tools are helping doctors diagnose diseases faster and more accurately.",
   },
 ];
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (delay: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      delay,
+    },
+  }),
+};
 
 export default function InsightsPage() {
   const [activeCategory, setActiveCategory] = useState("Introduction");
@@ -60,6 +73,23 @@ export default function InsightsPage() {
               Insights and Stories
             </span>
           </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.2}
+            className="max-w-xs sm:max-w-sm md:max-w-2xl text-[#FFFFFF80] font-thin"
+            style={{
+              fontFamily: "'Urbanist', sans-serif",
+              fontSize: "clamp(13px, 2vw, 18px)",
+              lineHeight: "1.5",
+            }}
+          >
+            Explore our collection of insights and stories, where we dissect the
+            latest trends, share innovative strategies, and explore the future
+            of AI-driven solutions.
+          </motion.p>
           <div
             className="absolute top-0 left-0 w-64 h-64 
                   bg-[#32A0F4]/40 
@@ -148,7 +178,7 @@ export default function InsightsPage() {
             {/* FEATURE IMAGE */}
             <div className="md:w-1/2 relative min-h-[250px] md:min-h-[450px]">
               <Image
-                src="https://images.unsplash.com/photo-1522071823991-b1ae5e6a3048?q=80&w=2070&auto=format&fit=crop"
+                src="/insights.svg"
                 alt="Intelligent Solutions"
                 fill
                 className="object-cover"
@@ -180,14 +210,14 @@ export default function InsightsPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group relative rounded-[2rem] bg-[#0A0A0A] border border-white/5 p-6 flex flex-col justify-between hover:border-blue-500/30 transition-all shadow-xl"
+                className="group relative rounded-xl bg-[#0A0A0A] border border-white/5 p-6 flex flex-col justify-between hover:border-blue-500/30 transition-all shadow-xl"
               >
                 <div>
                   <div className="flex justify-between items-start mb-4">
-                    <span className="text-4xl font-bold text-blue-500 tracking-tighter opacity-80">
+                    <span className="text-4xl font-bold text-[#32A0F4] tracking-tighter opacity-80">
                       {article.id}
                     </span>
-                    <button className="text-blue-400 group-hover:text-blue-300 transition-colors text-sm font-bold flex items-center gap-1 group-hover:underline">
+                    <button className="text-[#32A0F4] group-hover:text-blue-300 transition-colors text-sm font-bold flex items-center gap-1 group-hover:underline">
                       Read More <ChevronRight size={14} />
                     </button>
                   </div>

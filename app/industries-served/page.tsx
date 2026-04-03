@@ -220,13 +220,11 @@ export default function IndustriesPage() {
           initial="hidden"
           animate="visible"
           custom={0.2}
-          className="max-w-xs sm:max-w-sm md:max-w-xl"
+          className="max-w-xs sm:max-w-sm md:max-w-xl text-[#FFFFFF80] font-thin"
           style={{
             fontFamily: "'Urbanist', sans-serif",
-            fontWeight: 500,
             fontSize: "clamp(13px, 2vw, 18px)",
             lineHeight: "1.5",
-            color: "rgba(255,255,255,0.5)",
           }}
         >
           Specialized technical solutions and power modern businesses with
@@ -384,16 +382,18 @@ export default function IndustriesPage() {
                         color: "rgba(255,255,255,0.70)",
                       }}
                     >
-                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: current.accentColor }} />
+                      <div
+                        className="w-1.5 h-1.5 rounded-full"
+                        style={{ backgroundColor: current.accentColor }}
+                      />
                       {f}
                     </motion.div>
                   ))}
-                  </ul>
-                </div>
-
+                </ul>
+              </div>
             </motion.div>
           </AnimatePresence>
-              {/* </div> */}
+          {/* </div> */}
         </motion.div>
 
         {/* Controls */}
