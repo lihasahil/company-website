@@ -2,7 +2,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -43,10 +43,29 @@ function mix(t: number, a: number, b: number) {
   return a + (b - a) * t;
 }
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
+function FAQItem({
+  question,
+  answer,
+  index,
+}: {
+  question: string;
+  answer: string;
+  index: number;
+}) {
   const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" });
+
   return (
-    <div
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       onClick={() => setOpen(!open)}
       className="cursor-pointer border border-white/10 rounded-xl px-4 sm:px-6 py-4 sm:py-5 hover:border-white/20 bg-white/5 transition-colors"
       style={{ pointerEvents: "auto" }}
@@ -73,7 +92,52 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
           {answer}
         </p>
       </motion.div>
-    </div>
+    </motion.div>
+  );
+}
+
+function FadeUpBlock({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function MobileGlobe() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.85 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <img
+        src="/globe.gif"
+        alt="Globe"
+        className="w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] object-cover rounded-full"
+      />
+    </motion.div>
   );
 }
 
@@ -144,39 +208,57 @@ export default function ServingClientPage() {
     return (
       <section
         ref={sectionRef}
-        className="relative w-full bg-black text-white py-16 px-5 flex flex-col items-center gap-16"
+        className="relative w-full bg-black text-white py-20 px-5 flex flex-col items-center gap-20"
       >
+        {/* Hero block */}
         <div className="flex flex-col items-center text-center gap-6 w-full">
-          <h1 className="text-3xl sm:text-4xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
-            Serving Clients Globally
-          </h1>
-          <p className="text-white/80 font-light text-sm sm:text-base">
-            Building solutions for a connected world.
-            <br />
-            Delivering scalable technology that adapts across borders and
-            markets.
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
-            10+ Countries
-          </h2>
-          <img
-            src="/globe.gif"
-            alt="Globe"
-            className="w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] object-cover rounded-full"
-          />
+          <FadeUpBlock delay={0}>
+            <h1 className="text-3xl sm:text-4xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
+              Serving Clients Globally
+            </h1>
+          </FadeUpBlock>
+
+          <FadeUpBlock delay={0.1}>
+            <p className="text-white/80 font-light text-sm sm:text-base">
+              Building solutions for a connected world.
+              <br />
+              Delivering scalable technology that adapts across borders and
+              markets.
+            </p>
+          </FadeUpBlock>
+
+          <FadeUpBlock delay={0.18}>
+            <h2 className="text-3xl sm:text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+              10+ Countries
+            </h2>
+          </FadeUpBlock>
+
+          <MobileGlobe />
         </div>
 
-        <div className="flex flex-col items-center text-center gap-6 w-full max-w-2xl">
-          <h2 className="text-2xl sm:text-3xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-white/60 font-thin text-xs sm:text-sm">
-            Find answers to common questions about NextWaveAI, our services, and
-            how we can help your business grow.
-          </p>
+        {/* FAQ block */}
+        <div className="flex flex-col items-center text-center gap-8 w-full max-w-2xl">
+          <FadeUpBlock delay={0}>
+            <h2 className="text-2xl sm:text-3xl font-medium bg-gradient-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
+              Frequently Asked Questions
+            </h2>
+          </FadeUpBlock>
+
+          <FadeUpBlock delay={0.1}>
+            <p className="text-white/60 font-thin text-xs sm:text-sm">
+              Find answers to common questions about NextWaveAI, our services,
+              and how we can help your business grow.
+            </p>
+          </FadeUpBlock>
+
           <div className="w-full flex flex-col gap-3">
             {faqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.question} answer={faq.answer} />
+              <FAQItem
+                key={i}
+                index={i}
+                question={faq.question}
+                answer={faq.answer}
+              />
             ))}
           </div>
         </div>
@@ -207,7 +289,7 @@ export default function ServingClientPage() {
             transform: `translateY(${s.textY}px)`,
           }}
         >
-          <h1 className="text-4xl xl:text-6xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent pb-8 leading-tight">
+          <h1 className="text-4xl xl:text-6xl font-medium bg-gradient-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent pb-8 leading-tight">
             Serving Clients Globally
           </h1>
           <p className="text-[#FFFFFF] font-light mb-1 text-sm xl:text-base">
@@ -217,7 +299,7 @@ export default function ServingClientPage() {
             Delivering scalable technology that adapts across borders and
             markets.
           </p>
-          <h2 className="text-3xl xl:text-4xl font-light bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+          <h2 className="text-3xl xl:text-4xl font-light bg-gradient-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
             10+ Countries
           </h2>
         </div>
@@ -243,21 +325,16 @@ export default function ServingClientPage() {
           />
         </div>
 
-        {/* SCREEN 2 → 3: Unified FAQ — title animates from below up to above accordion */}
+        {/* SCREEN 2 → 3: FAQ */}
         <div
           className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 lg:px-8 xl:px-12 pointer-events-none"
           style={{ opacity: s.faqTitleOpacity }}
         >
-          {/* Black overlay fades in as accordion appears */}
           <div
             className="absolute inset-0"
-            style={{
-              backgroundColor: "#000",
-              opacity: s.faqAccOpacity,
-            }}
+            style={{ backgroundColor: "#000", opacity: s.faqAccOpacity }}
           />
 
-          {/* Title + subtitle: starts large and from below globe, shrinks and moves up */}
           <div
             className="relative z-10 flex flex-col items-center w-full transition-none"
             style={{
@@ -265,7 +342,7 @@ export default function ServingClientPage() {
             }}
           >
             <h2
-              className="bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent font-medium text-center mb-3 leading-tight"
+              className="bg-gradient-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent font-medium text-center mb-3 leading-tight"
               style={{
                 fontSize: `clamp(1.8rem, ${mix(norm(s.faqTitleScale, 1, 1.4), 3.5, 5.5)}vw, ${mix(norm(s.faqTitleScale, 1, 1.4), 3.75, 6)}rem)`,
               }}
@@ -274,16 +351,13 @@ export default function ServingClientPage() {
             </h2>
             <p
               className="text-[#FFFFFF] font-thin text-xs xl:text-sm max-w-2xl text-center"
-              style={{
-                opacity: norm(s.faqTitleScale, 1.15, 1.0),
-              }}
+              style={{ opacity: norm(s.faqTitleScale, 1.15, 1.0) }}
             >
               Find answers to common questions about NextWaveAI, our services,
               and how we can help your business grow.
             </p>
           </div>
 
-          {/* Accordion: fades in below the title */}
           <div
             className="relative z-10 w-full max-w-3xl xl:max-w-5xl flex flex-col gap-3 mt-8"
             style={{
@@ -293,7 +367,12 @@ export default function ServingClientPage() {
             }}
           >
             {faqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.question} answer={faq.answer} />
+              <FAQItem
+                key={i}
+                index={i}
+                question={faq.question}
+                answer={faq.answer}
+              />
             ))}
           </div>
         </div>

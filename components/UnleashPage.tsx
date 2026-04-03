@@ -67,25 +67,21 @@ export default function UnleashPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           custom={0}
-          className="text-center w-full pt-10"
+          className="text-left w-full pt-10"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
+          <h1 className="text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
             Unleash your full Potential
           </h1>
-          <div className="flex items-center justify-center gap-3 mt-1">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
+          <div className="flex items-center justify-left gap-3 mt-1">
+            <h2 className="text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
               with Next Wave AI
             </h2>
             <img src="/nxt.svg" className="w-7 sm:w-9" alt="" />
           </div>
-          <p className="text-sm sm:text-base font-light text-white/80 mt-4 leading-relaxed">
-            NextWaveAI builds AI-powered chatbots, scalable backend systems, and
-            automation solutions for businesses across industries.
-          </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="w-full flex flex-col items-center gap-4 pb-20">
+        <div className="w-full flex flex-col items-center gap-4">
           {/* Card 1 — slides in from LEFT */}
           <motion.div
             variants={slideLeft}
@@ -93,7 +89,7 @@ export default function UnleashPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             custom={0}
-            className="p-5 w-full max-w-md h-80 rounded-3xl border border-[#F2F2F2] relative overflow-hidden"
+            className="p-5 w-full max-w-md h-150 rounded-3xl border border-[#F2F2F2] relative overflow-hidden"
           >
             <div
               className="absolute inset-0 rounded-3xl"
@@ -113,9 +109,9 @@ export default function UnleashPage() {
                 <span className="text-2xl text-[#F2F2F2]">50+</span>
               </div>
               <div className="flex justify-center items-end gap-2">
-                <img src="/stars.svg" alt="" />
+                <img src="/stars.svg" alt="" className="w-full" />
               </div>
-              <span className="text-sm font-light text-[#F2F2F2]">
+              <span className="text-sm font-light  text-[#F2F2F2]">
                 Trusted by 99+ partners, we transform complex data into
                 measurable ROI. Join the leaders scaling their future with our
                 precision AI solutions.
@@ -170,7 +166,7 @@ export default function UnleashPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             custom={0.05}
-            className="flex flex-col items-start justify-between p-5 border border-[#F2F2F2] rounded-3xl w-full max-w-md h-80"
+            className="flex flex-col items-start justify-between p-5 border border-[#F2F2F2] rounded-3xl w-full max-w-md h-150"
           >
             <span className="text-xl">
               Insights &<br />
@@ -179,7 +175,7 @@ export default function UnleashPage() {
             <img
               src="/design1.gif"
               alt=""
-              className="w-50 h-auto rounded-xl flex items-center justify-center ml-18"
+              className="w-full h-auto rounded-xl flex items-center justify-center"
             />
             <span className="text-sm text-white/70">
               How our services shape industries.
@@ -223,6 +219,19 @@ export default function UnleashPage() {
             </div>
           </motion.div>
         </div>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          custom={0}
+          className="text-center w-full pt-10"
+        >
+          <p className="text-base font-light text-white/80 mt-4 leading-relaxed">
+            NextWaveAI builds AI-powered chatbots, scalable backend systems, and
+            automation solutions for businesses across industries.
+          </p>
+        </motion.div>
       </section>
 
       {/* ── DESKTOP layout (lg+) ── */}

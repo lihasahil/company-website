@@ -158,7 +158,7 @@ const HeroAI = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-5xl  md:text-7xl font-bold tracking-tighter mb-12 md:mb-0 bg-clip-text text-transparent leading-[1.1]"
+          className="text-5xl mt-10 sm:mt-0  md:text-7xl font-bold tracking-tighter mb-12 md:mb-0 bg-clip-text text-transparent leading-[1.1]"
          
         >
           <span
@@ -183,7 +183,7 @@ const HeroAI = () => {
           </div>
         </div>
 
-        <p className="relative z-30 max-w-2xl text[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-2 px-4 -mt-32 md:mt-0">
+        <p className="relative z-30 max-w-2xl text[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-2 px-4 -mt-40 md:mt-0">
           From customer support to complex business workflows, our technology{" "}
           <br className="hidden md:block" />
           helps you reduce costs, increase efficiency, and scale without limits.
