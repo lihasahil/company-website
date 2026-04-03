@@ -75,6 +75,16 @@ export default function ContactFormSection() {
           transform: translateY(-1px);
         }
 
+        .underline-input:-webkit-autofill,
+.underline-input:-webkit-autofill:hover,
+.underline-input:-webkit-autofill:focus,
+.underline-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #F2F2F2 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
         @media (max-width: 640px) {
           .submit-btn { max-width: 100%; }
         }
@@ -246,7 +256,7 @@ export default function ContactFormSection() {
                 {/* Phone */}
                 <div className="flex flex-row items-center gap-3">
                   <div className="shrink-0">
-                    <img src="/contact.svg" alt="contact"/>
+                    <img src="/contact.svg" alt="contact" />
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[#F2F2F2] font-semibold text-sm md:text-base">
@@ -264,7 +274,7 @@ export default function ContactFormSection() {
                 {/* Email */}
                 <div className="flex flex-row items-center gap-3">
                   <div className="shrink-0">
-                     <img src="/email.svg" alt="email" className="h-12"/>
+                    <img src="/email.svg" alt="email" className="h-12" />
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[#F2F2F2] font-semibold text-sm md:text-base">
