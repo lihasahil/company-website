@@ -72,6 +72,7 @@ export default function UnleashPage() {
           <h1 className="text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
             Unleash your full Potential
           </h1>
+          
           <div className="flex items-center justify-left gap-3 mt-1">
             <h2 className="text-4xl md:text-5xl font-medium bg-linear-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent">
               with Next Wave AI

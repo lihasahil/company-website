@@ -235,6 +235,7 @@ export default function ServingClientPage() {
 
           <MobileGlobe />
         </div>
+        
 
         {/* FAQ block */}
         <div className="flex flex-col items-center text-center gap-8 w-full max-w-2xl">

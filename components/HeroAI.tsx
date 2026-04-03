@@ -245,6 +245,7 @@ const HeroAI = () => {
                 />
               </div>
 
+
               {/* AI CENTER CHIP */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-28 h-28 rounded-2xl bg-[#181818] border-[2px] border-[#f2f2f2] flex items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.3)] pointer-events-auto shrink-0">
                 <div className="absolute -left-3 inset-y-0 h-full w-1.5 flex flex-col items-center">
