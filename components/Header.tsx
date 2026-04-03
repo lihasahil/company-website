@@ -133,10 +133,7 @@ const Header = () => {
               style={{ scaleX: invScaleX, scaleY: invScaleY, originX: 0 }}
               className="flex items-center"
             >
-              <Link
-                href="/"
-                className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full shrink-0"
-              >
+              <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full shrink-0">
                 <Image
                   src="/logo1.svg"
                   alt="logo"
@@ -144,7 +141,7 @@ const Header = () => {
                   height={48}
                   className="brightness-200"
                 />
-              </Link>
+              </div>
               <motion.span
                 style={{
                   width: brandWidth,

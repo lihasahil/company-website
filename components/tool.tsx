@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { motion } from "framer-motion";
@@ -5,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const INITIAL_OUTER_ICONS = [
   { id: "outer1", name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
-  { id: "outer2", name: "OpenCart", icon: "https://cdn.simpleicons.org/opencart/24D0FD" },
+  { id: "outer2", name: "OpenCart", icon: "/opencart.svg" },
   { id: "outer3", name: "Shopify", icon: "https://cdn.simpleicons.org/shopify/95BF47" },
   { id: "outer4", name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
   { id: "outer5", name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/FF2D20" },
@@ -21,7 +22,7 @@ const INITIAL_OUTER_ICONS = [
 const INITIAL_INNER_ICONS = [
   { id: "inner1", name: "WordPress", icon: "https://cdn.simpleicons.org/wordpress/21759B" },
   { id: "inner2", name: "CodeIgniter", icon: "https://cdn.simpleicons.org/codeigniter/EE4323" },
-  { id: "inner3", name: "AWS", icon: "https://cdn.simpleicons.org/amazonwebservices/232F3E" },
+  { id: "inner3", name: "AWS", icon: "/aws.svg" },
   { id: "inner4", name: "Android", icon: "https://cdn.simpleicons.org/android/3DDC84" },
   { id: "inner5", name: "Apple", icon: "https://cdn.simpleicons.org/apple/000000" },
 ];
