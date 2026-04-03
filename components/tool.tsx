@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const INITIAL_OUTER_ICONS = [
   { id: "outer1", name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
@@ -70,16 +70,16 @@ export default function Tool() {
         <img 
           src="/techround.svg" 
           alt="" 
-          className="w-[85%] h-[85%] object-contain scale-[0.7] opacity-60"
+          className="object-contain scale-[0.6] md:scale-[0.8] opacity-60"
         />
       </div>
 
       {/* Central Logo */}
-      <div className="z-30 relative w-[22%] h-[22%] rounded-full bg-black flex items-center justify-center shadow-[0_0_60px_rgba(40,119,178,0.4)] border border-white/5">
+      <div className="z-10 relative w-[30%] h-[35%] md:w-[40%] md:h-[50%] rounded-full bg-black flex items-center justify-center shadow-[0_0_60px_rgba(40,119,178,0.4)] border border-white/5">
         <img 
           src="/logo1.svg" 
           alt="NextWave Logo" 
-          className="w-[80%] h-[80%] object-contain"
+          className="w-[40%] h-[40%] object-contain"
           style={{ transform: 'translateY(-5%)' }}
         />
       </div>
