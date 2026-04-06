@@ -3,6 +3,7 @@
 import React from "react";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const HeroAI = () => {
   return (
@@ -159,31 +160,33 @@ const HeroAI = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-5xl mt-10 sm:mt-0  md:text-7xl font-bold tracking-tighter mb-12 md:mb-0 bg-clip-text text-transparent leading-[1.1]"
-         
         >
           <span
-           style={{
-            background: "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
+            style={{
+              background:
+                "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
-          Next-Gen AI and Automation
+            Next-Gen AI and Automation
           </span>
         </motion.h1>
 
         {/* MOBILE AI NETWORK VISUALIZATION - Only visible on small screens */}
         <div className="md:hidden relative w-full h-[350px] flex items-center justify-center overflow-hidden">
           <div className="scale-[3.0] sm:scale-[3.8] transition-transform duration-500 flex items-center justify-center w-full h-full">
-            <img 
-              src="/Circuit.svg" 
-              alt="AI Circuit Visualization" 
-              className="w-[1445px] h-[595px] object-contain shrink-0" 
+            <Image
+              src="/Circuit.svg"
+              alt="AI Circuit Visualization"
+              width={0}
+              height={0}
+              className="w-[1445px] h-[595px] object-contain shrink-0"
             />
           </div>
         </div>
 
-        <p className="relative z-30 max-w-2xl text[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-5 px-4 -mt-40 md:mt-5">
+        <p className="relative z-30 max-w-2xl text-[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-5 px-4 -mt-40 md:mt-5">
           From customer support to complex business workflows, our technology{" "}
           <br className="hidden md:block" />
           helps you reduce costs, increase efficiency, and scale without limits.
@@ -226,25 +229,29 @@ const HeroAI = () => {
               <div className="absolute top-[20px] left-[100px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/cloud.svg" alt="Cloud" width={30} height={24} />
+                    <Image
+                      src="/cloud.svg"
+                      alt="Cloud"
+                      width={30}
+                      height={24}
+                    />
                   }
                 />
               </div>
               <div className="absolute top-[250px] left-[230px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/mag.svg" alt="Cloud" width={24} height={24} />
+                    <Image src="/mag.svg" alt="Cloud" width={24} height={24} />
                   }
                 />
               </div>
               <div className="absolute top-[400px] left-[130px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/mob.svg" alt="Cloud" width={24} height={24} />
+                    <Image src="/mob.svg" alt="Cloud" width={24} height={24} />
                   }
                 />
               </div>
-
 
               {/* AI CENTER CHIP */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-28 h-28 rounded-2xl bg-[#181818] border-[2px] border-[#f2f2f2] flex items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.3)] pointer-events-auto shrink-0">
@@ -291,21 +298,21 @@ const HeroAI = () => {
               <div className="absolute top-[20px] right-[100px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/chip.svg" alt="Cloud" width={35} height={24} />
+                    <Image src="/chip.svg" alt="Cloud" width={35} height={24} />
                   }
                 />
               </div>
               <div className="absolute top-[250px] right-[230px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/pc.svg" alt="Cloud" width={35} height={24} />
+                    <Image src="/pc.svg" alt="Cloud" width={35} height={24} />
                   }
                 />
               </div>
               <div className="absolute top-[400px] right-[130px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/sim.svg" alt="Cloud" width={24} height={24} />
+                    <Image src="/sim.svg" alt="Cloud" width={24} height={24} />
                   }
                 />
               </div>
