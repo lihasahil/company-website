@@ -3,6 +3,12 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
+let lenisInstance: Lenis | null = null;
+
+export function getLenis() {
+  return lenisInstance;
+}
+
 export default function LenisProvider({
   children,
 }: {
@@ -13,15 +19,15 @@ export default function LenisProvider({
       duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1, 
+      wheelMultiplier: 1,
       touchMultiplier: 2,
       infinite: false,
       syncTouch: true,
     });
 
-    // Sync lenis scroll position with framer-motion's scroll tracking
+    lenisInstance = lenis;
+
     lenis.on("scroll", () => {
-      // This keeps Framer Motion's useScroll in sync with Lenis
       window.dispatchEvent(new Event("scroll"));
     });
 
@@ -34,6 +40,7 @@ export default function LenisProvider({
 
     return () => {
       lenis.destroy();
+      lenisInstance = null;
     };
   }, []);
 

@@ -39,6 +39,13 @@ export default function Footer() {
     }
   };
 
+  const handleLinkClick = (e: React.MouseEvent, href: string) => {
+    if (href.includes("#")) {
+      handleAnchorClick(e, href.split("#")[1]);
+    }
+    // ScrollToTop component in layout handles scrolling to top on route change
+  };
+
   return (
     <footer className="relative w-full overflow-hidden bg-[#0D0D0D] font-[Urbanist,sans-serif]">
       {/* Top content */}
@@ -74,19 +81,31 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex flex-row items-center gap-4">
               {/* Twitter */}
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+              <Link
+                href="https://x.com/Nxtwaveai25"
+                target="_blank"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+              >
                 <svg width="14" height="12" viewBox="0 0 14 12" fill="white">
                   <path d="M13.5 1.2a5.6 5.6 0 01-1.6.4A2.8 2.8 0 0013.1 0a5.5 5.5 0 01-1.8.7A2.8 2.8 0 006.8 3c0 .2 0 .4.1.6A7.9 7.9 0 011 .5 2.8 2.8 0 001.9 4.3a2.8 2.8 0 01-1.3-.3v.03a2.8 2.8 0 002.2 2.7 2.8 2.8 0 01-1.2.05 2.8 2.8 0 002.6 1.9A5.6 5.6 0 010 9.8a7.9 7.9 0 004.3 1.3c5.1 0 7.9-4.2 7.9-7.9v-.4a5.6 5.6 0 001.3-1.6z" />
                 </svg>
-              </div>
+              </Link>
               {/* Facebook */}
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#3757CB] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+              <Link
+                href="https://www.facebook.com/profile.php?id=61586482861378"
+                target="_blank"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#3757CB] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+              >
                 <svg width="8" height="16" viewBox="0 0 8 16" fill="white">
                   <path d="M5.2 3H7V0H5C3 0 2 1.2 2 3v1H0v3h2v9h3V7h2l.5-3H5V3.5c0-.3.1-.5.2-.5z" />
                 </svg>
-              </div>
+              </Link>
               {/* Instagram */}
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+              <Link
+                href="https://www.instagram.com/nxtwaveai25/"
+                target="_blank"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+              >
                 <svg
                   width="17"
                   height="17"
@@ -101,13 +120,23 @@ export default function Footer() {
                   <circle cx="12" cy="12" r="4" />
                   <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none" />
                 </svg>
-              </div>
+              </Link>
               {/* GitHub */}
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#4B4B4B] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z" />
                 </svg>
               </div>
+              {/* LinkedIn */}
+              <Link
+                href="https://www.linkedin.com/company/nxt-wave-ai"
+                target="_blank"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0077B5] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </Link>
             </div>
           </div>
 
@@ -134,12 +163,7 @@ export default function Footer() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => {
-                      handleScrollToTop(e);
-                      if (item.href.includes("#")) {
-                        handleAnchorClick(e, item.href.split("#")[1]);
-                      }
-                    }}
+                    onClick={(e) => handleLinkClick(e, item.href)}
                     className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                   >
                     {item.name}
@@ -148,7 +172,7 @@ export default function Footer() {
               </div>
             </motion.div>
 
-            {/* Support */}
+            {/* Customer Service */}
             <motion.div
               variants={makeFadeUp(0.15)}
               initial="hidden"
@@ -161,11 +185,8 @@ export default function Footer() {
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
                 <Link
-                  href="/#contact-form"
-                  onClick={(e) => {
-                    handleScrollToTop(e);
-                    handleAnchorClick(e, "contact-form");
-                  }}
+                  href="/#faq"
+                  onClick={(e) => handleLinkClick(e, "/#faq")}
                   className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                 >
                   FAQs
@@ -230,7 +251,7 @@ export default function Footer() {
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   <span className="text-[#B9B3B3] text-[16px] leading-[140%] whitespace-nowrap">
-                    123 Street, Kathmandu Nepal
+                    Kaldhara, Kathmandu Nepal
                   </span>
                 </div>
                 {/* Phone */}
@@ -287,7 +308,8 @@ export default function Footer() {
         >
           <div className="w-full h-px bg-[#F9F9FB]" />
           <p className="text-center text-[#F9F9FB] text-[14px] sm:text-[16px] tracking-[0.04em] px-4">
-            Privacy and policy © Copyright 2025. NEXTWAVEAI
+            Privacy and policy © Copyright {new Date().getFullYear()}.
+            NEXTWAVEAI
           </p>
         </motion.div>
       </div>

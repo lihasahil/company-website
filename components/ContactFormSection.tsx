@@ -158,15 +158,31 @@ export default function ContactFormSection() {
               className="w-full lg:w-[380px] xl:w-[480px] shrink-0 rounded-3xl overflow-hidden"
               style={{ height: "clamp(200px, 36vw, 480px)" }}
             >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.31!2d85.2910!3d27.7172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2C%20Nepal!5e0!3m2!1sen!2snp!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0, borderRadius: "24px", display: "block" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              <div
+                className="w-full lg:w-[380px] xl:w-[480px] shrink-0 rounded-3xl overflow-hidden relative cursor-pointer"
+                style={{ height: "clamp(200px, 36vw, 480px)" }}
+                onClick={() =>
+                  window.open(
+                    "https://www.google.com/maps?q=27.716063,85.307331",
+                    "_blank",
+                  )
+                }
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3532.03961877247!2d85.30733099999999!3d27.716063000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDQyJzU3LjgiTiA4NcKwMTgnMjYuNCJF!5e0!3m2!1sen!2snp!4v1775210605173!5m2!1sen!2snp"
+                  width="100%"
+                  height="100%"
+                  style={{
+                    border: 0,
+                    borderRadius: "24px",
+                    display: "block",
+                    pointerEvents: "none",
+                  }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </motion.div>
 
             {/* RIGHT — Form + Contact Info */}

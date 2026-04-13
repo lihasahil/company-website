@@ -235,10 +235,12 @@ export default function ServingClientPage() {
 
           <MobileGlobe />
         </div>
-        
 
         {/* FAQ block */}
-        <div className="flex flex-col items-center text-center gap-8 w-full max-w-2xl">
+        <div
+          id="faq"
+          className="flex flex-col items-center text-center gap-8 w-full max-w-2xl"
+        >
           <FadeUpBlock delay={0}>
             <h2 className="text-2xl sm:text-3xl font-medium bg-gradient-to-t from-[#8C8C8C] to-[#FFFFFF] bg-clip-text text-transparent leading-tight">
               Frequently Asked Questions
@@ -328,6 +330,7 @@ export default function ServingClientPage() {
 
         {/* SCREEN 2 → 3: FAQ */}
         <div
+          id="faq"
           className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 lg:px-8 xl:px-12 pointer-events-none"
           style={{ opacity: s.faqTitleOpacity }}
         >

@@ -3,6 +3,7 @@
 import React from "react";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const HeroAI = () => {
   return (
@@ -183,7 +184,7 @@ const HeroAI = () => {
           </div>
         </div>
 
-        <p className="relative z-30 max-w-2xl text[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-5 px-4 -mt-40 md:mt-5">
+        <p className="relative z-30 max-w-2xl text-[#f2f2f2] text-xl md:text-base font-light leading-relaxed mb-6 md:mb-5 px-4 -mt-40 md:mt-5">
           From customer support to complex business workflows, our technology{" "}
           <br className="hidden md:block" />
           helps you reduce costs, increase efficiency, and scale without limits.
@@ -226,21 +227,26 @@ const HeroAI = () => {
               <div className="absolute top-[20px] left-[100px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/cloud.svg" alt="Cloud" width={30} height={24} />
+                    <Image
+                      src="/cloud.svg"
+                      alt="Cloud"
+                      width={30}
+                      height={24}
+                    />
                   }
                 />
               </div>
               <div className="absolute top-[250px] left-[230px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/mag.svg" alt="Cloud" width={24} height={24} />
+                    <Image src="/mag.svg" alt="Cloud" width={24} height={24} />
                   }
                 />
               </div>
               <div className="absolute top-[400px] left-[130px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/mob.svg" alt="Cloud" width={24} height={24} />
+                    <Image src="/mob.svg" alt="Cloud" width={24} height={24} />
                   }
                 />
               </div>
@@ -290,21 +296,21 @@ const HeroAI = () => {
               <div className="absolute top-[20px] right-[100px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/chip.svg" alt="Cloud" width={35} height={24} />
+                    <Image src="/chip.svg" alt="Cloud" width={35} height={24} />
                   }
                 />
               </div>
               <div className="absolute top-[250px] right-[230px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/pc.svg" alt="Cloud" width={35} height={24} />
+                    <Image src="/pc.svg" alt="Cloud" width={35} height={24} />
                   }
                 />
               </div>
               <div className="absolute top-[400px] right-[130px] pointer-events-auto">
                 <Node
                   icon={
-                    <img src="/sim.svg" alt="Cloud" width={24} height={24} />
+                    <Image src="/sim.svg" alt="Cloud" width={24} height={24} />
                   }
                 />
               </div>
