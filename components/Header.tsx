@@ -64,7 +64,7 @@ const Header = () => {
   const radius = useTransform(
     smooth,
     [0, 1],
-    ["0px", isMobile ? "0px" : "64px"],
+    ["0px", isMobile ? "0px" : "72px"],
   );
   const textOpacity = useTransform(smooth, [0, 0.3], [1, isMobile ? 1 : 0]);
   const brandWidth = useTransform(
@@ -115,12 +115,12 @@ const Header = () => {
       >
         <motion.nav
           style={{ scaleX, scaleY, y, borderRadius: radius }}
-          className="w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between origin-center"
+          className="w-full max-w-[1600px] px-4 sm:px-6 lg:px-4 py-4 flex items-center justify-between origin-center"
         >
           {/* Background layer */}
           <motion.div
             style={{ opacity: bgOpacity }}
-            className="absolute inset-0 bg-[#0a0a0a]/90 rounded-[inherit] border border-white/10"
+            className="absolute inset-0 bg-[#0a0a0a]/90 border rounded-full border-white/10"
           />
 
           {/* Logo */}

@@ -26,7 +26,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
       animate={{
         backgroundColor: step >= 1 ? "#ffffff" : "#000000",
       }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8 }}
     >
       <motion.img
         src="/logo1.svg"
@@ -38,7 +38,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
           scale: 1,
           x: step >= 2 ? -60 : 0, // slide further left
         }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
       />
 
       <motion.div
@@ -47,7 +47,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
           opacity: step >= 2 ? 1 : 0,
           x: step >= 2 ? -45 : 20, // slide in closer and left
         }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         className="text-3xl font-semibold text-[#10226B]"
       >
         Next Wave AI

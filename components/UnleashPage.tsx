@@ -378,7 +378,11 @@ export default function UnleashPage() {
                   Insights &<br />
                   Stories
                 </span>
-                <img src="/design1.gif" alt="" className="w-full h-auto" />
+                <img
+                  src="/design1.gif"
+                  alt=""
+                  className="w-full h-[340px] xl:h-[460px] object-cover rounded-xl"
+                />
                 <span className="text-[0.75rem] xl:text-[0.8rem]">
                   How our services shape industries.
                 </span>

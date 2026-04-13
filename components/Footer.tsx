@@ -171,14 +171,26 @@ export default function Footer() {
                   FAQs
                 </Link>
                 <Link
-                  href="/#contact-form"
+                  href="/#privacy-policy"
                   onClick={(e) => {
                     handleScrollToTop(e);
-                    handleAnchorClick(e, "contact-form");
+                    handleAnchorClick(e, "privacy-policy");
                   }}
                   className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                 >
                   Privacy Policy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
+                >
+                  Terms
+                </Link>
+                <Link
+                  href="/terms-of-service"
+                  className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
+                >
+                  Teams of Service
                 </Link>
                 <Link
                   href="/careers"

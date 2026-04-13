@@ -159,26 +159,26 @@ const HeroAI = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-5xl mt-10 sm:mt-0  md:text-7xl font-bold tracking-tighter mb-12 md:mb-0 bg-clip-text text-transparent leading-[1.1]"
-         
         >
           <span
-           style={{
-            background: "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
+            style={{
+              background:
+                "linear-gradient(0deg, #F2F2F2 21.43%, #8C8C8C 80.36%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
-          Next-Gen AI and Automation
+            Next-Gen AI and Automation
           </span>
         </motion.h1>
 
         {/* MOBILE AI NETWORK VISUALIZATION - Only visible on small screens */}
         <div className="md:hidden relative w-full h-[350px] flex items-center justify-center overflow-hidden">
           <div className="scale-[3.0] sm:scale-[3.8] transition-transform duration-500 flex items-center justify-center w-full h-full">
-            <img 
-              src="/Circuit.svg" 
-              alt="AI Circuit Visualization" 
-              className="w-[1445px] h-[595px] object-contain shrink-0" 
+            <img
+              src="/Circuit.svg"
+              alt="AI Circuit Visualization"
+              className="w-[1445px] h-[595px] object-contain shrink-0"
             />
           </div>
         </div>
@@ -244,7 +244,6 @@ const HeroAI = () => {
                   }
                 />
               </div>
-
 
               {/* AI CENTER CHIP */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-28 h-28 rounded-2xl bg-[#181818] border-[2px] border-[#f2f2f2] flex items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.3)] pointer-events-auto shrink-0">
