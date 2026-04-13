@@ -267,7 +267,7 @@ export default function UnleashPage() {
 
           {/* Desktop 3-col layout — FIXED: h-full + px-4 instead of mt-10 + ml/mr-10 */}
           <div
-            className="hidden lg:flex justify-around items-center h-full px-4 gap-2"
+            className="hidden lg:flex justify-around w-[90%] mx-auto items-center h-full px-4 gap-2"
             style={{ position: "relative", zIndex: 2, color: "white" }}
           >
             {/* Left */}
