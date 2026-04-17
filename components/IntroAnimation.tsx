@@ -9,11 +9,11 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setStep(1), 1000), // bg change
-      setTimeout(() => setStep(2), 1500), // text slide
+      setTimeout(() => setStep(1), 800), // bg change
+      setTimeout(() => setStep(2), 1200), // text slide
       setTimeout(() => {
         onFinish();
-      }, 3000),
+      }, 2000),
     ];
 
     return () => timers.forEach(clearTimeout);
