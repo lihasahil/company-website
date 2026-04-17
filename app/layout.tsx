@@ -24,7 +24,7 @@ export default function RootLayout({
       lang="en"
       className={`${urbanist.variable} font-sans min-h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="relative min-h-full flex flex-col">
         <LenisProvider>
           <ScrollToTop /> {children}
         </LenisProvider>

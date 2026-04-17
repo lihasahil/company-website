@@ -232,6 +232,7 @@ const HeroAI = () => {
                       alt="Cloud"
                       width={30}
                       height={24}
+                      style={{ width: "auto", height: "auto" }}
                     />
                   }
                 />
@@ -239,14 +240,26 @@ const HeroAI = () => {
               <div className="absolute top-[250px] left-[230px] pointer-events-auto">
                 <Node
                   icon={
-                    <Image src="/mag.svg" alt="Cloud" width={24} height={24} />
+                    <Image
+                      src="/mag.svg"
+                      alt="Cloud"
+                      width={24}
+                      height={24}
+                      style={{ width: "auto", height: "auto" }}
+                    />
                   }
                 />
               </div>
               <div className="absolute top-[400px] left-[130px] pointer-events-auto">
                 <Node
                   icon={
-                    <Image src="/mob.svg" alt="Cloud" width={24} height={24} />
+                    <Image
+                      src="/mob.svg"
+                      alt="Cloud"
+                      width={24}
+                      height={24}
+                      style={{ width: "auto", height: "auto" }}
+                    />
                   }
                 />
               </div>
@@ -296,21 +309,39 @@ const HeroAI = () => {
               <div className="absolute top-[20px] right-[100px] pointer-events-auto">
                 <Node
                   icon={
-                    <Image src="/chip.svg" alt="Cloud" width={35} height={24} />
+                    <Image
+                      src="/chip.svg"
+                      alt="Cloud"
+                      width={35}
+                      height={24}
+                      style={{ width: "auto", height: "auto" }}
+                    />
                   }
                 />
               </div>
               <div className="absolute top-[250px] right-[230px] pointer-events-auto">
                 <Node
                   icon={
-                    <Image src="/pc.svg" alt="Cloud" width={35} height={24} />
+                    <Image
+                      src="/pc.svg"
+                      alt="Cloud"
+                      width={35}
+                      height={24}
+                      style={{ width: "auto", height: "auto" }}
+                    />
                   }
                 />
               </div>
               <div className="absolute top-[400px] right-[130px] pointer-events-auto">
                 <Node
                   icon={
-                    <Image src="/sim.svg" alt="Cloud" width={24} height={24} />
+                    <Image
+                      src="/sim.svg"
+                      alt="Cloud"
+                      width={24}
+                      height={24}
+                      style={{ width: "auto", height: "auto" }}
+                    />
                   }
                 />
               </div>

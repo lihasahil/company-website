@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { useState, useActionState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
+import { submitContactForm } from "@/app/actions/contact";
 
 const makeFadeUp = (delay: number): Variants => ({
   hidden: { opacity: 0, y: 50 },
@@ -17,6 +18,11 @@ const makeFadeUp = (delay: number): Variants => ({
   },
 });
 
+const initialState = {
+  success: false,
+  message: "",
+};
+
 export default function ContactFormSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -24,6 +30,22 @@ export default function ContactFormSection() {
     phone: "",
     service: "",
   });
+
+  const [state, formAction, isPending] = useActionState(
+    submitContactForm,
+    initialState,
+  );
+
+  useEffect(() => {
+    if (state?.success) {
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+      });
+    }
+  }, [state]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -68,11 +90,19 @@ export default function ContactFormSection() {
           font-weight: 400;
           cursor: pointer;
           transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
         }
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
           background: #0560a8;
           box-shadow: 0 0 30px rgba(5,109,188,0.5);
           transform: translateY(-1px);
+        }
+        .submit-btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
 
         .underline-input:-webkit-autofill,
@@ -87,6 +117,24 @@ export default function ContactFormSection() {
 
         @media (max-width: 640px) {
           .submit-btn { max-width: 100%; }
+        }
+
+        .status-message {
+          margin-top: 1rem;
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          font-size: 14px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #F2F2F2;
+        }
+        .status-success {
+          border-color: #22c55e;
+          color: #22c55e;
+        }
+        .status-error {
+          border-color: #ef4444;
+          color: #ef4444;
         }
       `}</style>
 
@@ -188,7 +236,8 @@ export default function ContactFormSection() {
             {/* RIGHT — Form + Contact Info */}
             <div className="flex flex-col gap-5 lg:gap-4 w-full">
               {/* Form fields */}
-              <motion.div
+              <motion.form
+                action={formAction}
                 variants={makeFadeUp(0.15)}
                 initial="hidden"
                 whileInView="visible"
@@ -203,6 +252,7 @@ export default function ContactFormSection() {
                   <input
                     className="underline-input"
                     name="name"
+                    required
                     placeholder="Enter your full name"
                     value={formData.name}
                     onChange={handleChange}
@@ -219,6 +269,7 @@ export default function ContactFormSection() {
                       className="underline-input"
                       name="email"
                       type="email"
+                      required
                       placeholder="Enter your email address"
                       value={formData.email}
                       onChange={handleChange}
@@ -231,6 +282,7 @@ export default function ContactFormSection() {
                     <input
                       className="underline-input"
                       name="phone"
+                      required
                       placeholder="Enter your phone number"
                       value={formData.phone}
                       onChange={handleChange}
@@ -246,6 +298,7 @@ export default function ContactFormSection() {
                   <select
                     className="underline-input"
                     name="service"
+                    required
                     value={formData.service}
                     onChange={handleChange}
                   >
@@ -258,8 +311,31 @@ export default function ContactFormSection() {
                 </div>
 
                 {/* Submit */}
-                <button className="submit-btn">Submit</button>
-              </motion.div>
+                <div className="flex flex-col gap-2">
+                  <button
+                    type="submit"
+                    className="submit-btn"
+                    disabled={isPending}
+                  >
+                    {isPending ? (
+                      <>
+                        <span className="animate-spin h-4 w-4 border-2 border-white/30 border-t-white rounded-full"></span>
+                        Sending...
+                      </>
+                    ) : (
+                      "Submit"
+                    )}
+                  </button>
+
+                  {state?.message && (
+                    <div
+                      className={`status-message ${state.success ? "status-success" : "status-error"}`}
+                    >
+                      {state.message}
+                    </div>
+                  )}
+                </div>
+              </motion.form>
 
               {/* Contact info */}
               <motion.div

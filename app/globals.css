@@ -10,7 +10,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-urbanist);
 }
-
+button {
+  cursor: pointer;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

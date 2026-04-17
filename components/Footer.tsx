@@ -192,7 +192,7 @@ export default function Footer() {
                   FAQs
                 </Link>
                 <Link
-                  href="/#privacy-policy"
+                  href="/privacy-policy"
                   onClick={(e) => {
                     handleScrollToTop(e);
                     handleAnchorClick(e, "privacy-policy");

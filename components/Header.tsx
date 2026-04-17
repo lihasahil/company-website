@@ -139,6 +139,7 @@ const Header = () => {
                   alt="logo"
                   width={48}
                   height={48}
+                  loading="eager"
                   className="brightness-200"
                 />
               </div>

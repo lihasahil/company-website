@@ -33,7 +33,7 @@ export default function UnleashPage() {
     visible: (delay: number = 0) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
+      transition: { duration: 0.5, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
     }),
   };
 
@@ -42,7 +42,7 @@ export default function UnleashPage() {
     visible: (delay: number = 0) => ({
       opacity: 1,
       x: 0,
-      transition: { duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
+      transition: { duration: 0.5, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
     }),
   };
 
@@ -51,8 +51,15 @@ export default function UnleashPage() {
     visible: (delay: number = 0) => ({
       opacity: 1,
       x: 0,
-      transition: { duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
+      transition: { duration: 0.5, ease: cubicBezier(0.22, 1, 0.36, 1), delay },
     }),
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact-form");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -219,12 +226,19 @@ export default function UnleashPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           custom={0}
-          className="text-center w-full pt-10"
+          className="text-center w-full pt-8"
         >
           <p className="text-base font-light text-white/80 mt-4 leading-relaxed">
             NextWaveAI builds AI-powered chatbots, scalable backend systems, and
             automation solutions for businesses across industries.
           </p>
+          <button
+            type="button"
+            onClick={scrollToContact}
+            className="mt-12 pt-1 inline-flex items-center justify-center rounded-full bg-[#056DBC] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#0a82d1]"
+          >
+            Contact Us for Your Project
+          </button>
         </motion.div>
       </section>
 
@@ -234,7 +248,7 @@ export default function UnleashPage() {
         className="hidden lg:block relative lg:h-[200vh]"
       >
         <div
-          className="sticky top-0 overflow-hidden"
+          className="sticky top-0 overflow-hidden relative"
           style={{ height: "100vh" }}
         >
           {/* Background */}
@@ -364,6 +378,13 @@ export default function UnleashPage() {
                   <br className="hidden xl:block" /> solutions for businesses
                   across industries.
                 </p>
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className="mt-12 inline-flex items-center justify-center rounded-full bg-[#056DBC] px-8 py-4 text-lg font-medium text-white transition hover:bg-[#0a82d1]"
+                >
+                  Contact Us for Your Project
+                </button>
               </div>
             </motion.div>
 

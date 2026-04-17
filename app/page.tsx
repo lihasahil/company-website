@@ -46,7 +46,7 @@ export default function Home() {
           <motion.div
             key="intro"
             exit={{ y: "-100%" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.2, 1] }}
             className="fixed inset-0 z-[200]"
           >
             <IntroAnimation onFinish={handleFinish} />
@@ -57,7 +57,7 @@ export default function Home() {
       <motion.div
         initial={isFinished ? false : { y: "100vh" }}
         animate={showIntro ? { y: "100vh" } : { y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.2, ease: [0.16, 1, 0.2, 1] }}
         onAnimationComplete={() => {
           if (!showIntro) setIsFinished(true);
         }}
