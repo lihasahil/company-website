@@ -22,53 +22,69 @@ const industries = [
       "Software support",
     ],
     image:
-      "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=600&q=80",
+      "/technology.jpg",
   },
   {
     id: 1,
     title: "Healthcare",
-    accentColor: "#32F4A0",
+    accentColor: "#32A0F4",
     description:
-      "Cutting-edge AI and data solutions tailored for healthcare providers, enabling smarter diagnostics, streamlined operations, and improved patient outcomes at scale.",
+      "An integrated digital healthcare ecosystem that leverages technology to improve diagnosis, streamline patient care, and enhance accessibility through intelligent systems and remote solutions.",
     features: [
-      "AI diagnostics",
-      "EHR integration",
-      "Compliance automation",
-      "Telehealth platforms",
+      "Healthcare",
+      "Medical image analysis",
+      "Predictive healthcare",
+      "Patient data management",
     ],
     image:
-      "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=600&q=80",
+      "/health.jpg",
   },
   {
     id: 2,
-    title: "Finance",
-    accentColor: "#F4A032",
+    title: "Financial Service",
+    accentColor: "#32A0F4",
     description:
-      "Robust financial technology solutions that drive efficiency, reduce risk, and unlock new growth opportunities for banks, fintechs, and investment firms alike.",
+      "A smart financial ecosystem that leverages AI and data analytics to enhance security, improve decision-making, and deliver personalized customer experiences in modern finance.",
     features: [
-      "Risk modeling",
       "Fraud detection",
-      "Algorithmic trading",
-      "Regulatory reporting",
+      "AI-driven risk assessment",
+      "Personalized financial insights",
+      "Automated customer support",
     ],
     image:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80",
+      "/finance.jpg",
+  },
+   {
+    id: 3,
+    title: "Manufacturing",
+    accentColor: "#32A0F4",
+    description:
+      "A modern manufacturing framework that integrates automation, data analytics, and intelligent monitoring to enhance efficiency, reduce downtime, and optimize overall production processes.",
+    features: [
+      "Predictive maintenance",
+      "Quality automation",
+      "Supply chain optimization",
+      "Production planning",
+    ],
+    image:
+      "/manufacture.jpg",
   },
   {
-    id: 3,
+    id: 4,
     title: "Education",
-    accentColor: "#A032F4",
+    accentColor: "#32A0F4",
     description:
-      "Intelligent learning platforms and automation tools that help educational institutions personalize learning, reduce administrative burden, and improve student success rates.",
+      "A digitally enhanced learning ecosystem that combines interactive platforms, intelligent analytics, and personalized tools to improve learning experiences and educational outcomes.",
     features: [
-      "Adaptive learning",
-      "LMS integration",
-      "Analytics dashboards",
+      "E-learning platforms",
       "Virtual classrooms",
+      "Smart assessments",
+      "Course recommendation engines",
     ],
     image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80",
+      "/education.jpg",
   },
+
 ];
 
 const fadeUp: Variants = {

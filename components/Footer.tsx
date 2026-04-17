@@ -68,7 +68,7 @@ export default function Footer() {
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shrink-0 bg-gradient-to-r from-[#004E89] to-[#212121]">
                 <img
-                  src="footer-logo.svg"
+                  src="/footer-logo.svg"
                   alt="Logo"
                   className="w-6 h-6 sm:w-auto sm:h-auto"
                 />
@@ -184,6 +184,12 @@ export default function Footer() {
                 Customer Service
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5">
+                 <Link
+                  href="/careers"
+                  className="text-[#B9B3B3] text-[16px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
+                >
+                  Careers
+                </Link>
                 <Link
                   href="/#faq"
                   onClick={(e) => handleLinkClick(e, "/#faq")}
@@ -205,20 +211,15 @@ export default function Footer() {
                   href="/terms"
                   className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                 >
-                  Terms
+                  Terms and Conditions
                 </Link>
                 <Link
                   href="/terms-of-service"
                   className="text-[#B9B3B3] text-[16px] sm:text-[17px] lg:text-[18px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
                 >
-                  Teams of Service
+                  Terms of Service for IT Services
                 </Link>
-                <Link
-                  href="/careers"
-                  className="text-[#B9B3B3] text-[16px] font-normal leading-[140%] hover:text-[#F2F2F2] transition-colors whitespace-nowrap"
-                >
-                  Careers
-                </Link>
+               
               </div>
             </motion.div>
 
